@@ -1,10 +1,7 @@
 package com.example.mylibrarytts;
 
-import android.os.AsyncTask;
-import android.os.StrictMode;
-
-import java.io.IOException;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -21,19 +18,31 @@ public class MyLibTesting {
         return "hihi";
     }
 
-  public  String run(String url) throws IOException {
+  public String GetMethod(String url) throws Exception {
 
         Request request = new Request.Builder()
                 .url(url)
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
-
             return response.body().string();
+
         }
     }
 
+    public String PostUrlEncoded(String url, Map<String,Object> data) throws Exception {
 
+
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            return response.body().string();
+
+        }
+    }
 }
 
 

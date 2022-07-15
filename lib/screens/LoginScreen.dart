@@ -30,12 +30,12 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocConsumer<AppCubit, AppStates>(listener: (context, state) async {
       if (state is AppLoginSuccessStates) {
         String? token = await FirebaseMessaging.instance.getToken();
-        CacheHelper.saveData(
-            key: 'swift', value: AppCubit.get(context).element.toLowerCase());
+
         AppCubit.get(context)
             .addTokenToUser(AppCubit.get(context).userModel?.data.email, token);
         CacheHelper.saveData(key: 'token', value: state.userModel.token);
         CacheHelper.saveData(key: 'email', value: state.userModel.data.email);
+        CacheHelper.saveData(key: 'phoneNumber', value: state.userModel.data.phoneNumber);
 
         showToast(message: state.userModel.message);
         navigateAndFinish(context, HomeScreen());

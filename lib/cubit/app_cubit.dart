@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:testingg/cubit/app_states.dart';
+import 'package:testingg/models/UserModelNative.dart';
 
 import 'package:testingg/models/userModel.dart';
 import 'package:testingg/network/local/cache_helper.dart';
@@ -77,7 +81,7 @@ class AppCubit extends Cubit<AppStates> {
     currentIndex = index;
     emit(AppChangeBottomNavStates());
   }
-
+  //-----------------------------------------------------------------------//
   UserModel? userModel;
 
   void userLogin({required String phone_number, required String password}) {
@@ -91,6 +95,7 @@ class AppCubit extends Cubit<AppStates> {
     ).then((value) {
       userModel = UserModel.fromJson(value.data);
       emit(AppLoginSuccessStates(userModel!));
+
       emit(LoginSaveTokenInitialStates());
     }).catchError((error) {
       print(error.toString());
@@ -98,6 +103,18 @@ class AppCubit extends Cubit<AppStates> {
     });
   }
 
+  Future loginNative({required String phoneNumber, required String password}) async {
+    emit(LoadLoggedInUserInitial());
+    userModel1= null;
+    const MethodChannel testChannel = MethodChannel("payit/login");
+    var response= await testChannel.invokeMethod("loginNative",{"phoneNumber":phoneNumber,"password" :password});
+    userModel1 = UserModel1.fromJson(jsonDecode(response));
+    print(userModel1?.phoneNumber);
+    emit(LoadLoggedInUserSuccessStates());
+  }
+
+
+  //-----------------------------------------------------------------------//
   void userSignUp({
     required String? email,
     required String? phoneNumber,
@@ -119,6 +136,7 @@ class AppCubit extends Cubit<AppStates> {
         'cin': cin,
       },
     ).then((value) {
+
       emit(AppSigninSuccessStates());
     }).catchError((error) {
       print(error.toString());
@@ -153,6 +171,12 @@ class AppCubit extends Cubit<AppStates> {
     });
   }
 
+
+
+
+
+
+  //-----------------------------------------------------------------------//
   void loadLoggedInUser(email) {
     userModel = null;
     if (email != null) {
@@ -168,6 +192,22 @@ class AppCubit extends Cubit<AppStates> {
       });
     }
   }
+
+UserModel1? userModel1;
+
+  Future loadLoggedInUserNative(phoneNumber) async {
+    emit(LoadLoggedInUserInitial());
+    userModel1= null;
+     const MethodChannel testChannel = MethodChannel("payit/loadUser");
+    var response= await testChannel.invokeMethod("loadLoggedInUserNative",{"phoneNumber":phoneNumber});
+    userModel1 = UserModel1.fromJson(jsonDecode(response));
+    print(userModel1?.phoneNumber);
+    emit(LoadLoggedInUserSuccessStates());
+  }
+
+  //-----------------------------------------------------------------------//
+
+
 
   void Makevirement(montant, destinataire, message, emetteur) {
     String operation_type = "virement";

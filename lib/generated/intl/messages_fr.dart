@@ -39,7 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cin existe déjà"),
         "dh": MessageLookupByLibrary.simpleMessage("MAD"),
         "enter_your_phone_number":
-            MessageLookupByLibrary.simpleMessage("entrer votre Email"),
+            MessageLookupByLibrary.simpleMessage("entrer votre phone number"),
         "enter_your_phone_number_and_your_cin":
             MessageLookupByLibrary.simpleMessage(
                 "Entrez votre numéro de téléphone et votre CIN"),

@@ -7,14 +7,17 @@ import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.MethodChannel;
+import okhttp3.ResponseBody;
 
 import com.example.mylibrarytts.MyLibTesting;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 
 public class MainActivity extends FlutterActivity {
-    private static final String CHANNEL = "samples.flutter.dev/battery";
-
+    private static final String LoadUserCHANNEL = "payit/loadUser";
+    private static final String LoginCHANNEL = "payit/login";
 
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
@@ -22,17 +25,19 @@ public class MainActivity extends FlutterActivity {
         StrictMode.setThreadPolicy(policy);
 
         super.configureFlutterEngine(flutterEngine);
-        String url ="http://3.217.215.70:8081/wallet/registration/userByphone?phone_number=0626708079";
+        String url ="http://3.217.215.70:8081/wallet/registration/";
 
-        new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
+        new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), LoadUserCHANNEL)
                 .setMethodCallHandler(
                         (call, result) -> {
-                            if (call.method.equals("testMyMesthode")){
-                                String myLibTesting = null;
+                            if (call.method.equals("loadLoggedInUserNative")){
+                                String phoneNumber = call.argument("phoneNumber");
+                                String user = null;
                                 try {
-                                    myLibTesting = new MyLibTesting().run(url);
-                                    result.success(myLibTesting);
-                                } catch (IOException e) {
+                                    user = new MyLibTesting().GetMethod(url+"userByphone?phone_number="+phoneNumber);
+                                    System.out.println(url);
+                                    result.success(user);
+                                } catch (Exception e) {
                                     e.printStackTrace();
                                 }
 
@@ -40,7 +45,30 @@ public class MainActivity extends FlutterActivity {
                         }
                 );
 
-}}
+        new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), LoginCHANNEL)
+                .setMethodCallHandler(
+                        (call, result) -> {
+                            if (call.method.equals("loginNative")){
+                                String phoneNumber = call.argument("phoneNumber");
+                                String password = call.argument("password");
+                                String loginResp = null;
+                                try {
+                                    loginResp = new MyLibTesting().GetMethod(url+"userByphone?phone_number="+phoneNumber);
+                                    System.out.println(url);
+                                    result.success(loginResp);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        }
+                );
+
+
+
+    }
+
+}
 
 
 
