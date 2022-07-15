@@ -1,114 +1,162 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:testingg/cubit/app_cubit.dart';
+import 'package:testingg/cubit/app_states.dart';
+import 'package:testingg/cubit/bloc_observer.dart';
+import 'package:testingg/network/remote/dio_helper.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'package:testingg/screens/AccueilScreen.dart';
+import 'package:testingg/screens/HomeScreen.dart';
+import 'package:testingg/screens/LoginScreen.dart';
+import 'package:testingg/screens/signup/SignupScreen1.dart';
+import 'package:testingg/shared/component.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'generated/l10n.dart';
+import 'network/local/cache_helper.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-     
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+  await CacheHelper.init();
+  DioHelper.init();
+
+  String? token;
+
+  try {
+    token = CacheHelper.getData(key: 'token');
+  } catch (e) {
+    print(e);
   }
+
+  if (token == null) {
+    AppCubit.widget = const LoginScreen();
+  } else if (jwtVerification(token) == true) {
+
+    AppCubit.widget = const HomeScreen();
+  } else {
+    AppCubit.widget = const LoginScreen();
+  }
+
+  BlocOverrides.runZoned(
+        () {
+      runApp(MyApp());
+    },
+    blocObserver: MyBlocObserver(),
+  );
 }
 
-class MyHomePage extends StatefulWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
 
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class _MyAppState extends State<MyApp> {
+  FirebaseDynamicLinks dynamicLinks = FirebaseDynamicLinks.instance;
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+  _MyAppState();
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+  initState() {
+    super.initState();
+    initLang();
+    initDynamicLinks();
+  }
 
-class _MyHomePageState extends State<MyHomePage> {
-  static const MethodChannel testChannel = MethodChannel("samples.flutter.dev/battery");
-  int _counter = 0;
-
-  void _incrementCounter() {
-    testChannel;
-    setState(() {
-
-      _counter++;
+  Future<void> initDynamicLinks() async {
+    dynamicLinks.onLink.listen((dynamicLinkData) {
+      showToast(message: "Email Verified");
+      Get.to(() => const LoginScreen());
+    }).onError((error) {
+      print('onLink error');
+      print(error.message);
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: gettestMethode,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+  Future<void> initLang() async {
+    String? lang = CacheHelper.getData(key: "lang");
+    if (lang != null) {
+      AppCubit.currentLocale = Locale(lang);
+    }
   }
 
-  Future gettestMethode() async {
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+              create: (context) => AppCubit()
+                ..loadLoggedInUser(CacheHelper.getData(key: 'email'))),
+        ],
+        child: BlocConsumer<AppCubit, AppStates>(
+          listener: (context, state) {
+            if (state is LoadLoggedInUserErrorStates) {
+              Get.off(() => const LoginScreen());
+            }
+          },
+          builder: (context, state) => GetMaterialApp(
+            locale: AppCubit.currentLocale,
+            supportedLocales: S.delegate.supportedLocales,
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            home: AnimatedSplashScreen(
+              splashIconSize: 500,
+              // nextScreen: ,
+              nextScreen: AppCubit.widget,
+              backgroundColor: Colors.white,
+              splashTransition: SplashTransition.fadeTransition,
+              duration: 3000,
+              splash: Center(
+                child: Column(
+                  children: [
+                    Container(
+                      height: 150,
+                      width: 150,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('images/Payit.png'),
+                        ),
+                      ),
+                    ),
+                    TyperAnimatedTextKit(
+                      text: const ["Discover The Future \n With US..."],
+                      textStyle: GoogleFonts.manrope(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FontStyle.normal,
+                      ),
+                      textAlign: TextAlign.center,
+                      speed: const Duration(milliseconds: 100),
+                    ),
+                    const Spacer(),
+                    const CircularProgressIndicator(
+                        backgroundColor: Colors.green,
+                        color: Color(0xff4c6611)),
+                  ],
+                ),
+              ),
+            ),
+            routes: {
+              SignupScreen1.id: (context) => const SignupScreen1(),
+              LoginScreen.id: (context) => const LoginScreen(),
+              // HomePage.id: (context) => const HomePage(),
 
-   var response= await testChannel.invokeMethod("testMyMesthode");
-   print("----------------------RESPONSE------------------------");
-   print(response);
+              AccueilScreen.id: (context) => AccueilScreen(),
+            },
+          ),
+        ));
   }
 }
