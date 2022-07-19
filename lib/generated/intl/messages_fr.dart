@@ -57,7 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "my_qr_code": MessageLookupByLibrary.simpleMessage("Mon QR Code"),
         "next": MessageLookupByLibrary.simpleMessage("Suivant"),
         "not_member": MessageLookupByLibrary.simpleMessage(
-            "vous n\'vait pas un compte?\'"),
+            "vous n\'avait pas un compte?"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "password": MessageLookupByLibrary.simpleMessage("Mot de passe"),
         "payment": MessageLookupByLibrary.simpleMessage("Paiement"),

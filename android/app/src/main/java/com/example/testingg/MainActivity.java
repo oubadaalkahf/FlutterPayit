@@ -20,6 +20,7 @@ import java.util.Map;
 public class MainActivity extends FlutterActivity {
     private static final String LoadUserCHANNEL = "payit/loadUser";
     private static final String LoginCHANNEL = "payit/login";
+    private static final String HistoryCHANNEL = "payit/history";
 
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
@@ -49,7 +50,7 @@ public class MainActivity extends FlutterActivity {
 
         new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), LoginCHANNEL)
                 .setMethodCallHandler(
-                        (call, result) -> {
+                        (call, result)  -> {
                             if (call.method.equals("loginNative")){
                                 String phoneNumber = call.argument("phoneNumber");
                                 String password = call.argument("password");
@@ -58,19 +59,46 @@ public class MainActivity extends FlutterActivity {
                                 data.put("password",password);
 
 
+                                String test = null;
                                 try {
-                                    String loginResp = new MyLibTesting().PostUrlEncoded("http://3.217.215.70:8081/HPS-SWITCH/login", data);
-                                    System.out.println(url);
-                                    result.success(loginResp);
+                                    test = new MyLibTesting().PostUrlEncoded("http://3.217.215.70:8081/HPS-SWITCH/login", data);
+                                    result.success(test);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
+                                System.out.println(test+"HIIIIIIIIIII");
+
+
+
 
                             }
                         }
                 );
 
+        new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), HistoryCHANNEL)
+                .setMethodCallHandler(
+                        (call, result)  -> {
+                            if (call.method.equals("showHistoryEmetteur")){
+                                String phoneNumber = call.argument("phoneNumber");
 
+
+
+
+                                String test = null;
+                                try {       System.out.println("http://3.217.215.70:8081/transferws/showVirementEmetteur?phoneNumber="+phoneNumber);
+                                    test = new MyLibTesting().ShowHistory("http://3.217.215.70:8081/transferws/showVirementEmetteur?phoneNumber="+phoneNumber);
+                                    result.success(test);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                System.out.println(test+"HIIIIIIIIIII");
+
+
+
+
+                            }
+                        }
+                );
 
     }
 

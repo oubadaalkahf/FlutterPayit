@@ -3,10 +3,12 @@ package com.example.mylibrarytts;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -47,11 +49,24 @@ public class MyLibTesting {
 
         try (Response response = client.newCall(request).execute()) {
             System.out.println("HIIIIIIIIIIIIIIIIIIIIII");
-            System.out.println(response.body().string());
-            return response.body().string();
+
+            return Objects.requireNonNull(response.body()).string();
 
         }
     }
-}
+
+    public String ShowHistory(String url) throws Exception {
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        try (Response response = client.newCall(request).execute()) {
+            System.out.println("HIIIIIIIIIIIIIIIIIIIIII");
+
+            return Objects.requireNonNull(response.body()).string();
+
+        }
+
+}}
 
 

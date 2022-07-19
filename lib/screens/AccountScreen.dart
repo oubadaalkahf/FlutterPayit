@@ -19,7 +19,7 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String swift = CacheHelper.getData(key: 'swift');
+
     UserModel? userModel = AppCubit.get(context).userModel;
     return BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
@@ -103,10 +103,8 @@ class AccountScreen extends StatelessWidget {
                         const  SizedBox(
                           height: 25,
                         ),
-                        rowBuilder(att: "Banque", text: swift.toUpperCase()),
-                        const  SizedBox(
-                          height: 40,
-                        ),
+
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [

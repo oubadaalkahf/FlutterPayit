@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:testingg/cubit/app_states.dart';
+import 'package:testingg/models/TransactionModel.dart';
 import 'package:testingg/models/UserModelNative.dart';
 
 import 'package:testingg/models/userModel.dart';
@@ -103,17 +104,36 @@ class AppCubit extends Cubit<AppStates> {
   }
   //-----------------------------------------------------------------------//
   UserModel? userModel;
-
+  List<TransactionModel> transactions = [];
 
   Future<void> userLogin({required String phone_number, required String password}) async {
-    emit(LoadLoggedInUserInitial());
-    userModel1= null;
+    emit(AppLoginInitialStates());
+
     const MethodChannel testChannel = MethodChannel("payit/login");
-    var response= await testChannel.invokeMethod("loginNative",{"phoneNumber":phone_number,"password" :password});
-    userModel1 = UserModel1.fromJson(jsonDecode(response));
-    print(userModel1?.phoneNumber);
-    emit(LoadLoggedInUserSuccessStates());
+
+    var response= await  testChannel.invokeMethod("loginNative",{"phoneNumber":phone_number,"password" :password});
+   print("helllllllllllllllllo");
+    print(jsonDecode(response));
+   userModel = UserModel.fromJson(jsonDecode(response));
+   print(userModel?.data.phoneNumber);
+    emit(AppLoginSuccessStates(userModel!));
+
   }
+
+  Future<void> showHistory(String? phoneNumber)async {
+    print(phoneNumber);
+    const MethodChannel hsitoryChannel = MethodChannel("payit/history");
+    var history= await  hsitoryChannel.invokeMethod("showHistoryEmetteur",{"phoneNumber":phoneNumber});
+      List<dynamic> hy = jsonDecode(history);
+      hy.forEach((element) {
+        transactions.add(TransactionModel.fromJson(element));
+
+      });
+
+  }
+
+
+
 /*
 
   void userLogin({required String phone_number, required String password}) {
