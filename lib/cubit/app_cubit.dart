@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:testingg/cubit/app_states.dart';
 import 'package:testingg/models/UserModelNative.dart';
@@ -11,6 +12,12 @@ import 'package:testingg/models/userModel.dart';
 import 'package:testingg/network/local/cache_helper.dart';
 import 'package:testingg/network/remote/dio_helper.dart';
 import 'package:testingg/screens/AlimentationScreen.dart';
+import 'package:testingg/screens/HomeScreen.dart';
+import 'package:testingg/screens/TransactionsHistory/TransactionReceiveScreen.dart';
+import 'package:testingg/screens/TransactionsHistory/TransactionSentScreen.dart';
+import 'package:testingg/screens/Transfer/BillTransactionDetails.dart';
+import 'package:testingg/screens/Transfer/TransferQrCodeResult.dart';
+import 'package:testingg/shared/component.dart';
 
 import '../models/TransactionInfos.dart';
 import '../screens/AccueilScreen.dart';
@@ -38,10 +45,18 @@ class AppCubit extends Cubit<AppStates> {
   static AppCubit get(context) => BlocProvider.of(context);
   static late Widget widget;
   int currentIndex = 0;
+  int currentIndexHistory = 0;
   List<Widget> bottomScreens = [
     AccueilScreen(),
     TransferScreen(),
     AlimentationScreen(),
+  ];
+
+
+  List<Widget> screensHistory = [
+    TransactionReceiveScreen(),
+    TransactionSentScreen(),
+
   ];
 
   static Locale currentLocale= const Locale("fr");
@@ -81,8 +96,25 @@ class AppCubit extends Cubit<AppStates> {
     currentIndex = index;
     emit(AppChangeBottomNavStates());
   }
+
+  void changeBottomHistory(index) {
+    currentIndexHistory = index;
+    emit(AppChangeHistoryScreenStates());
+  }
   //-----------------------------------------------------------------------//
   UserModel? userModel;
+
+
+  Future<void> userLogin({required String phone_number, required String password}) async {
+    emit(LoadLoggedInUserInitial());
+    userModel1= null;
+    const MethodChannel testChannel = MethodChannel("payit/login");
+    var response= await testChannel.invokeMethod("loginNative",{"phoneNumber":phone_number,"password" :password});
+    userModel1 = UserModel1.fromJson(jsonDecode(response));
+    print(userModel1?.phoneNumber);
+    emit(LoadLoggedInUserSuccessStates());
+  }
+/*
 
   void userLogin({required String phone_number, required String password}) {
     emit(AppLoginInitialStates());
@@ -102,6 +134,7 @@ class AppCubit extends Cubit<AppStates> {
       emit(AppLoginErrorStates("Login Failed"));
     });
   }
+ */
 
   Future loginNative({required String phoneNumber, required String password}) async {
     emit(LoadLoggedInUserInitial());
@@ -209,7 +242,13 @@ UserModel1? userModel1;
 
 
 
-  void Makevirement(montant, destinataire, message, emetteur) {
+  void Makevirement(montant, destinataire, message,String emetteur) {
+    if(emetteur.startsWith("+212")){
+   emetteur=   emetteur.replaceAll("+212", "0");
+    }
+    if(destinataire.startsWith("+212")){
+    destinataire=  destinataire.replaceAll("+212", "0");
+    }
     String operation_type = "virement";
     emit(AppVirementInitialStates());
     DioHelper.postData(url: "transfer/operation", data: {
@@ -219,9 +258,11 @@ UserModel1? userModel1;
       "destinataire": destinataire,
       "message": message
     }).then((value) {
+      print(value.data);
       loadLoggedInUser(CacheHelper.getData(key: 'email'));
       emit(AppVirementSuccessStates());
       changeBottom(0);
+      Get.off(() =>  HomeScreen());
     }).catchError((error) {
       emit(AppVirementErrorStates());
     });
@@ -312,11 +353,7 @@ void verifyphone(phone) {
   void transferp2p(String pointofinitiationmethode,paidEntityRef,trans_curr,tran_amount,tran_purpose,oper_type){
     emit(AppGeneratedQrCodeInitialStates());
     print(pointofinitiationmethode);
-    print(paidEntityRef);
-    print(trans_curr);
-    print(tran_amount);
-    print(tran_purpose);
-    print(oper_type);
+
     print("-----------------------");
     DioHelper.postData(url: 'transferp2p', data: {
       "transaction_type" : "transfer p2p",
@@ -344,7 +381,7 @@ void verifyphone(phone) {
 
 
 
- void getTransactionInfo(String qrText){
+ void getTransactionInfo(String qrText,context){
 
    emit(AppTransactionInitialStates());
     DioHelper.postData(url: "/getqrdata",data: {
@@ -354,10 +391,16 @@ void verifyphone(phone) {
       print(value.data);
       print(transactionInfos?.transactionCurrency);
       emit(AppTransactionSuccessStates());
+    print(transactionInfos?.merchandPhoneNumber);
+    navigateAndFinish(context, BillTransactionDetails(transactionInfos));
     }).catchError((error){
       emit(AppTransactionErrorStates());
       print(error.toString());
     });
+    }
+    void getHistoryTransactionsEmetteur(String emetteur){
+      emit(AppTransactionHistoryEmetteurInitialStates());
+
     }
 
   

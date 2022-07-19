@@ -5,6 +5,8 @@ import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
 import 'package:testingg/models/userModel.dart';
 import 'package:testingg/network/local/cache_helper.dart';
+import 'package:testingg/screens/TransactionsHistory.dart';
+import 'package:testingg/shared/component.dart';
 
 
 import 'HomeScreen.dart';
@@ -113,7 +115,9 @@ class AccountScreen extends StatelessWidget {
                               style: TextStyle(fontSize: 17),
                             ),
                             InkWell(
-                              onTap: (){},
+                              onTap: (){
+                                navigateTo(context, TransactionsHistory());
+                              },
                               child: Ink(
                                 child:  SizedBox(
                                   height: 50,

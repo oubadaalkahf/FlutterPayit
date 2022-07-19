@@ -5,6 +5,7 @@ abstract class AppStates {}
 class AppInitialStates extends AppStates {}
 
 class AppChangeBottomNavStates extends AppStates {}
+class AppChangeHistoryScreenStates extends AppStates {}
 
 class AppStepPageStates extends AppStates {}
 
@@ -144,6 +145,12 @@ class AppTransactionSuccessStates extends AppStates {}
 class AppTransactionErrorStates extends AppStates {}
 class AppTransactionInitialStates extends AppStates {}
 
+
+
+class AppTransactionHistoryEmetteurInitialStates extends AppStates {}
+class AppTransactionHistoryEmetteurLoadingStates extends AppStates {}
+class AppTransactionHistoryEmetteurSuccessStates extends AppStates {}
+class AppTransactionHistoryEmetteurErrorStates extends AppStates {}
 
 
 

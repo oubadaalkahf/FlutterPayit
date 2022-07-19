@@ -49,4 +49,15 @@ class DioHelper {
       queryParameters: query,
     );
   }
+  static Future<Response> putData({
+    required url,
+    Map<String, dynamic>? query,
+    required Map<String, dynamic> data,
+  }) async {
+    return dio.put(
+      url,
+      data: data,
+      queryParameters: query,
+    );
+  }
 }

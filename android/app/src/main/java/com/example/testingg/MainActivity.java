@@ -14,6 +14,8 @@ import com.example.mylibrarytts.MyLibTesting;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends FlutterActivity {
     private static final String LoadUserCHANNEL = "payit/loadUser";
@@ -51,9 +53,13 @@ public class MainActivity extends FlutterActivity {
                             if (call.method.equals("loginNative")){
                                 String phoneNumber = call.argument("phoneNumber");
                                 String password = call.argument("password");
-                                String loginResp = null;
+                                Map<String,Object>data = new HashMap<>();
+                                data.put("phone_number",phoneNumber);
+                                data.put("password",password);
+
+
                                 try {
-                                    loginResp = new MyLibTesting().GetMethod(url+"userByphone?phone_number="+phoneNumber);
+                                    String loginResp = new MyLibTesting().PostUrlEncoded("http://3.217.215.70:8081/HPS-SWITCH/login", data);
                                     System.out.println(url);
                                     result.success(loginResp);
                                 } catch (Exception e) {
