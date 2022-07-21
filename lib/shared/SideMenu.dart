@@ -8,6 +8,7 @@ import 'package:testingg/screens/LoginScreen.dart';
 import 'package:testingg/screens/QrCodeScreen.dart';
 import 'package:testingg/screens/Routes/custom_page_route.dart';
 import 'package:testingg/screens/SettingsScreen.dart';
+import 'package:testingg/screens/TransactionsHistory.dart';
 import '../cubit/app_cubit.dart';
 import '../models/userModel.dart';
 
@@ -201,7 +202,9 @@ class SideMenu extends StatelessWidget {
                   fontStyle: FontStyle.normal,
                 ),
               ),
-              onTap: () => null,
+              onTap: () =>     Navigator.of(context).push(
+                CustomPageRouteLeft(child: TransactionsHistory()),
+              ),
             ),
           ),
           SizedBox(
@@ -255,7 +258,7 @@ class SideMenu extends StatelessWidget {
                 size: 32,
               ),
               onTap: (){
-                AppCubit.get(context).removeFcmToken(CacheHelper.removeData(key: 'email'));
+                AppCubit.get(context).removeFcmToken(AppCubit.get(context).userModel?.data.email);
                 CacheHelper.removeData(key: 'token');
                 CacheHelper.removeData(key: 'email');
 

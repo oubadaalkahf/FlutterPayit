@@ -195,7 +195,12 @@ class SettingsScreen extends StatelessWidget {
 
                     iconStyle: IconStyle(iconsColor: Colors.red,backgroundColor: Colors.transparent),
                     titleStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.red),
-                    onTap: () { AppCubit.get(context).removeFcmToken(CacheHelper.removeData(key: 'email'));
+
+                    onTap: () {
+                      print("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiisooo");
+                      print(AppCubit.get(context).userModel?.data.email);
+                      AppCubit.get(context).removeFcmToken(AppCubit.get(context).userModel?.data.email);
+
                     CacheHelper.removeData(key: 'token');
                     CacheHelper.removeData(key: 'email');
 

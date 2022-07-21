@@ -1,3 +1,4 @@
+import 'package:testingg/models/UserModelNative.dart';
 import 'package:testingg/models/userModel.dart';
 
 abstract class AppStates {}
@@ -11,52 +12,48 @@ class AppStepPageStates extends AppStates {}
 
 class AppLoadingInitialStates extends AppStates {}
 
+
+
 class AppLoginInitialStates extends AppStates {}
-
 class AppLoginLoadingStates extends AppStates {}
-class ChangeLanguageSuccessStates extends AppStates {}
-class ChangeLanguageInitialStates extends AppStates {}
-
 class AppLoginSuccessStates extends AppStates {
   final UserModel userModel;
 
   AppLoginSuccessStates(this.userModel);
 }
-
 class AppLoginErrorStates extends AppStates {
   final String error;
 
   AppLoginErrorStates(this.error);
 }
 
+
+
+class ChangeLanguageSuccessStates extends AppStates {}
+class ChangeLanguageInitialStates extends AppStates {}
+
+
 class AppSigninLoadingStates extends AppStates {}
-
 class AppSigninInitialStates extends AppStates {}
-
 class AppSigninSuccessStates extends AppStates {}
-
 class AppSigninErrorStates extends AppStates {
   final String error;
 
   AppSigninErrorStates(this.error);
 }
 
+
 class LoginSaveTokenInitialStates extends AppStates {}
-
 class LoginSaveTokenErrorStates extends AppStates {}
-
 class LoginSaveTokenSuccessStates extends AppStates {}
-
 class LoadLoggedInUserInitial extends AppStates {}
 
 class RemoveTokenInitialStates extends AppStates {}
-
 class RemoveTokenSuccessStates extends AppStates {}
-
 class RemoveTokenErrorStates extends AppStates {}
 
-class LoadLoggedInUserSuccessStates extends AppStates {}
 
+class LoadLoggedInUserSuccessStates extends AppStates {}
 class LoadLoggedInUserErrorStates extends AppStates {}
 
 class AppVirementInitialStates extends AppStates {}
@@ -148,9 +145,10 @@ class AppTransactionInitialStates extends AppStates {}
 
 
 class AppTransactionHistoryEmetteurInitialStates extends AppStates {}
-class AppTransactionHistoryEmetteurLoadingStates extends AppStates {}
 class AppTransactionHistoryEmetteurSuccessStates extends AppStates {}
 class AppTransactionHistoryEmetteurErrorStates extends AppStates {}
 
-
+class AppTransactionHistoryDestinataireInitialStates extends AppStates {}
+class AppTransactionHistoryDestinataireSuccessStates extends AppStates {}
+class AppTransactionHistoryDestinataireErrorStates extends AppStates {}
 

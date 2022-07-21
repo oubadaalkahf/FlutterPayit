@@ -37,11 +37,16 @@ Future<void> main() async {
     print(e);
   }
 
+
+
+
+
   if (token == null) {
     AppCubit.widget = const LoginScreen();
-  } else if (jwtVerification(token) == true) {
+  } else if (jwtVerification(token) == false) {
 
     AppCubit.widget = const HomeScreen();
+
   } else {
     AppCubit.widget = const LoginScreen();
   }
@@ -95,7 +100,7 @@ class _MyAppState extends State<MyApp> {
         providers: [
           BlocProvider(
               create: (context) => AppCubit()
-                ..loadLoggedInUser(CacheHelper.getData(key: 'email'))),
+                ..loadLoggedInUserNative(CacheHelper.getData(key: 'phoneNumber'))),
         ],
         child: BlocConsumer<AppCubit, AppStates>(
           listener: (context, state) {

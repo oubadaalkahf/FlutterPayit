@@ -28,12 +28,19 @@ class TransactionsHistory extends StatelessWidget {
                 borderRadius: 30,
                 height: 50,
                 selectedIndex: AppCubit.get(context).currentIndexHistory,
+
                 selectedBackgroundColors: [blueGreyColor, blueGreyColor],
-                selectedTextStyle: TextStyle(
+
+                selectedTextStyle:
+
+                TextStyle(
                     color: Colors.white,
                     fontSize: 18,
+
                     fontWeight: FontWeight.w700),
-                unSelectedTextStyle: TextStyle(
+                unSelectedTextStyle:
+
+                TextStyle(
                     color: Colors.black87,
                     fontSize: 14,
                     fontWeight: FontWeight.w500),

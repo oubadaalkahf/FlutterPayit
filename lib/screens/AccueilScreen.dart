@@ -30,7 +30,7 @@ class AccueilScreen extends StatelessWidget {
   Future<void> _refresh(context) async {
     await Future<void>.delayed(const Duration(seconds: 3));
     // when all needed is done change state
-    AppCubit.get(context).loadLoggedInUser(CacheHelper.getData(key: 'email'));
+    AppCubit.get(context).loadLoggedInUserNative(AppCubit.get(context).userModel?.data.phoneNumber);
     _controller.sink.add(SwipeRefreshState.hidden);
   }
 
@@ -40,8 +40,7 @@ class AccueilScreen extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {
           if (state is AppVersementSuccessStates) {
-            AppCubit.get(context)
-                .loadLoggedInUser(CacheHelper.getData(key: 'email'));
+            AppCubit.get(context).loadLoggedInUserNative(AppCubit.get(context).userModel?.data.phoneNumber);
           }
         },
         builder: (context, state) => Conditional.single(

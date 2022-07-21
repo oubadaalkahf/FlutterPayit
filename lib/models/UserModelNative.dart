@@ -1,21 +1,4 @@
 class UserModel1 {
-  UserModel1({
-    required this.email,
-    required this.cin,
-    required this.firstName,
-    required this.lastName,
-    required this.fcmToken,
-    required this.phoneNumber,
-    required this.solde,
-    required this.appUserRole,
-    required this.locked,
-    required this.enabled,
-    required this.username,
-    required this.authorities,
-    required this.accountNonExpired,
-    required this.accountNonLocked,
-    required this.credentialsNonExpired,
-  });
   late final String email;
   late final String cin;
   late final String firstName;
@@ -26,13 +9,13 @@ class UserModel1 {
   late final String appUserRole;
   late final bool locked;
   late final bool enabled;
-  late final String username;
+
   late final List<Authorities> authorities;
   late final bool accountNonExpired;
   late final bool accountNonLocked;
   late final bool credentialsNonExpired;
 
-  UserModel1.fromJson(Map<String, dynamic> json){
+  UserModel1.fromJson(Map<String, dynamic> json) {
     email = json['email'];
     cin = json['cin'];
     firstName = json['firstName'];
@@ -43,8 +26,10 @@ class UserModel1 {
     appUserRole = json['appUserRole'];
     locked = json['locked'];
     enabled = json['enabled'];
-    username = json['username'];
-    authorities = List.from(json['authorities']).map((e)=>Authorities.fromJson(e)).toList();
+
+    authorities = List.from(json['authorities'])
+        .map((e) => Authorities.fromJson(e))
+        .toList();
     accountNonExpired = json['accountNonExpired'];
     accountNonLocked = json['accountNonLocked'];
     credentialsNonExpired = json['credentialsNonExpired'];
@@ -62,8 +47,8 @@ class UserModel1 {
     _data['appUserRole'] = appUserRole;
     _data['locked'] = locked;
     _data['enabled'] = enabled;
-    _data['username'] = username;
-    _data['authorities'] = authorities.map((e)=>e.toJson()).toList();
+
+    _data['authorities'] = authorities.map((e) => e.toJson()).toList();
     _data['accountNonExpired'] = accountNonExpired;
     _data['accountNonLocked'] = accountNonLocked;
     _data['credentialsNonExpired'] = credentialsNonExpired;
@@ -77,7 +62,7 @@ class Authorities {
   });
   late final String authority;
 
-  Authorities.fromJson(Map<String, dynamic> json){
+  Authorities.fromJson(Map<String, dynamic> json) {
     authority = json['authority'];
   }
 
