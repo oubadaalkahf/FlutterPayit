@@ -85,6 +85,7 @@ dependencies:
   custom_radio_grouped_button: ^2.1.2
   group_radio_button: ^1.2.0
   flutter_toggle_tab: ^1.2.0
+  iconify_flutter: ^0.0.4
 
 flutter_icons:
   android: true
