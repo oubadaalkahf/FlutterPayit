@@ -50,7 +50,7 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
   String valueofoftransactioncurrency = '504';
 
   List<DropdownMenuItem<String>> get oeration_type {
-    List<DropdownMenuItem<String>> oeration_type = [
+    List<DropdownMenuItem<String>> operation_type = [
       DropdownMenuItem(child: Text("Transfer P2P"), value: "0"),
       DropdownMenuItem(
           child: Text("Paiement commercant a face 2 face"), value: "1"),
@@ -58,7 +58,7 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
           child: Text("Paiement commercant a distance"), value: "2"),
       DropdownMenuItem(child: Text("Paiement FMCG"), value: "3"),
     ];
-    return oeration_type;
+    return operation_type;
   }
 
   String valueOfOperationType = '0';
@@ -74,6 +74,7 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
           navigateTo(context, TransferQrCodeResult());
         }
     },builder: (context,state){
+
      return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -307,11 +308,11 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
                               print(transactionAmount.text);
                               AppCubit.get(context).transferp2p(
                                   '${character?.name}',
-                                  "+212" + phoneNumber.text, selectedValue,
+                                  "+212" + phoneNumber.text,
+                                  selectedValue,
                                   transactionAmount.text,
                                   purposeOfTransaction.text,
                                   selectedValueOperationType);
-
 
                             }
                           },

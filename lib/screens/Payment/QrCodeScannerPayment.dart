@@ -5,6 +5,7 @@ import 'package:testingg/screens/Payment/PaymentRoute.dart';
 import 'package:testingg/screens/Transfer/TransferRoute.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
+import '../../cubit/app_cubit.dart';
 import '../Transfer/FormulaireTransfert.dart';
 import '../Routes/CustomPageRouteRight.dart';
 import '../Routes/CustomPageRouteRight.dart';
@@ -35,6 +36,9 @@ class _QrCodeScannerPaymentState extends State<QrCodeScannerPayment> with Widget
 
     setState(() {
       _scanBarcode = barcodeScanRes;
+      if (!_scanBarcode.isEmpty || _scanBarcode.startsWith("000201")) {
+        AppCubit().getTransactionInfoPayment(_scanBarcode, context);
+      }
     });
   }
   String _scanBarcode = 'Unknown';

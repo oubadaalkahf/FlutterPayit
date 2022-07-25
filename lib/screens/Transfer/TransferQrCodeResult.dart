@@ -40,10 +40,7 @@ class TransferQrCodeResult extends StatelessWidget {
         body: Center(
           child: Column(
             children: [
-              SizedBox(
-                height: 30,
-              ),
-              Text("${transactionInfos?.transactionAmount}"),
+
               SizedBox(
                 height: 50,
               ),

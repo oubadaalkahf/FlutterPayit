@@ -38,7 +38,7 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
     setState(() {
       _scanBarcode = barcodeScanRes;
       if (!_scanBarcode.isEmpty || _scanBarcode.startsWith("000201")) {
-        AppCubit().getTransactionInfo(_scanBarcode, context);
+        AppCubit().getTransactionInfoTransfer(_scanBarcode, context);
       }
     });
   }

@@ -1,10 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:testingg/cubit/app_cubit.dart';
+import 'package:testingg/screens/Payment/PaiementQrCodeResult.dart';
 
 import 'package:testingg/screens/Payment/PaymentRoute.dart';
 
+import '../../cubit/app_states.dart';
+import '../../shared/PopUp.dart';
 import '../Routes/CustomPageRouteRight.dart';
 
 
@@ -29,6 +34,22 @@ class _FormulairePaymentState extends State<FormulairePayment> {
   var merchantcategory = TextEditingController();
   var merchantname = TextEditingController();
   var merchantcity = TextEditingController();
+
+  //operation_type
+  List<DropdownMenuItem<String>> get oeration_type_Payment {
+    List<DropdownMenuItem<String>> operation_type = [
+      DropdownMenuItem(child: Text("Transfer P2P"), value: "0"),
+      DropdownMenuItem(
+          child: Text("Paiement commercant a face 2 face"), value: "1"),
+      DropdownMenuItem(
+          child: Text("Paiement commercant a distance"), value: "2"),
+      DropdownMenuItem(child: Text("Paiement FMCG"), value: "3"),
+    ];
+    return operation_type;
+  }
+
+  String valueOfOperationType = '0';
+  String selectedValueOperationTypePayment = "0";
 
   // Initial Selected Value
   String valueofoperationtype = 'Transfer P2P';
@@ -60,14 +81,21 @@ class _FormulairePaymentState extends State<FormulairePayment> {
     ];
     return menuItems;
   }
-
-  point_of_initiation_methode? _character =
+  String selectedcountrycode = "MA";
+  point_of_initiation_methode? character =
       point_of_initiation_methode.dynamique;
 
-  String selectedcountrycode = "MA";
+
   @override
   Widget build(BuildContext context) {
     final formkey = GlobalKey<FormState>();
+    return BlocConsumer<AppCubit,AppStates>( listener: (context,state){
+      if(state is AppGeneratedQrCodeSuccessStates)
+      {
+        navigateTo(context, PaimentQrCodeResult());
+      }
+    },builder: (context,state){
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -117,20 +145,20 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                     RadioListTile<point_of_initiation_methode>(
                       title: const Text('dynamique'),
                       value: point_of_initiation_methode.dynamique,
-                      groupValue: _character,
+                      groupValue: character,
                       onChanged: (point_of_initiation_methode? value) {
                         setState(() {
-                          _character = value;
+                          character = value;
                         });
                       },
                     ),
                     RadioListTile<point_of_initiation_methode>(
                       title: const Text('statique'),
                       value: point_of_initiation_methode.statique,
-                      groupValue: _character,
+                      groupValue: character,
                       onChanged: (point_of_initiation_methode? value) {
                         setState(() {
-                          _character = value;
+                          character = value;
                         });
                       },
                     ),
@@ -316,9 +344,9 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                     Container(
                       height: 55,
                       decoration: ShapeDecoration(
+
                         shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 1.0,
+                          side: BorderSide(width: 1.0,
                               style: BorderStyle.solid,
                               color: Colors.grey),
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -326,28 +354,16 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                       ),
                       margin: EdgeInsets.only(),
                       width: double.infinity,
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton(
-                          // Initial Value
-                          value: valueofoperationtype,
-                          // Down Arrow Icon
-                          icon: const Icon(Icons.keyboard_arrow_down),
-                          // Array list of items
-                          items: Operation_type.map((String items) {
-                            return DropdownMenuItem(
-                              value: items,
-                              child: Text('  ' + items),
-                            );
-                          }).toList(),
-                          // After selecting the desired option,it will
-                          // change button value to selected value
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              valueofoperationtype = newValue!;
-                            });
-                          },
-                        ),
+                      child: DropdownButtonFormField(
+                        items: oeration_type_Payment,
+                        value:selectedValueOperationTypePayment ,
+                        onChanged: (String? value) {
+                          setState(() {
+                            selectedValueOperationTypePayment = value!;
+                          });
+                        },
                       ),
+
                     ),
                     SizedBox(
                       height: 8,
@@ -487,7 +503,20 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                       padding: const EdgeInsets.only(left: 210.0),
                       child: RaisedButton(
                         onPressed: () {
-                          if (formkey.currentState!.validate()) ;
+                          if (formkey.currentState!.validate()) {
+                            AppCubit.get(context).PaimnentCommercant(
+                              '${character?.name}',
+                              "+212" + phonenNumber.text,
+                              selectedValue,
+                              transactionAmount.text,
+                              purposeOfTransaction.text,
+                              selectedValueOperationTypePayment,
+                              merchantcategory.text,
+                              selectedcountrycode,
+                              merchantname.text,
+                              merchantcity.text,
+                            );
+                          }
                         },
                         textColor: Color(0xffFFFFFF),
                         padding: EdgeInsets.all(0),
@@ -522,5 +551,6 @@ class _FormulairePaymentState extends State<FormulairePayment> {
         ),
       ),
     );
+    },);
   }
 }

@@ -15,6 +15,7 @@ import 'package:testingg/network/remote/dio_helper.dart';
 import 'package:testingg/screens/AccountScreen.dart';
 import 'package:testingg/screens/AlimentationScreen.dart';
 import 'package:testingg/screens/HomeScreen.dart';
+import 'package:testingg/screens/Payment/BillPaymentDetails.dart';
 import 'package:testingg/screens/TransactionsHistory/TransactionReceiveScreen.dart';
 import 'package:testingg/screens/TransactionsHistory/TransactionSentScreen.dart';
 import 'package:testingg/screens/Transfer/BillTransactionDetails.dart';
@@ -395,7 +396,7 @@ transactionsDestinataire = [];
   }
 
   void transferp2p(String pointofinitiationmethode, paidEntityRef, trans_curr,
-      tran_amount, tran_purpose, oper_type) {
+      tran_amount, tran_purpose, oper_type,) {
     emit(AppGeneratedQrCodeInitialStates());
     print(pointofinitiationmethode);
 
@@ -418,10 +419,53 @@ transactionsDestinataire = [];
       emit(AppGeneratedQrCodeErrorStates());
     });
   }
+  void PaimnentCommercant(String pointofinitiationmethode,paidEntityRef,trans_curr,tran_amount,tran_purpose,oper_type,merchant_category_code,country_code,merchant_name,merchant_city
+      ){
+    emit(AppGeneratedQrCodeInitialStates());
+    //print(pointofinitiationmethode);
+  DioHelper.postData(url: 'transferp2p', data: {
+    "transaction_type": "paiement commercant" ,
+  "point_of_initiation_method": pointofinitiationmethode ,
+  "paid_entity_reference": paidEntityRef,
+  "transaction_currency": trans_curr,
+  "transaction_amount": tran_amount,
+  "purpose_of_transaction": tran_purpose,
+  "financial_institution_code": "999",
+  "operation_type": oper_type,
+  "merchant_category_code":merchant_category_code,
+  "country_code":country_code,
+  "merchant_name":merchant_name,
+  "merchant_city":merchant_city
+  }).then((value) {
+  print(value.data);
+  qrString = value.data;
+  emit(AppGeneratedQrCodeSuccessStates(value.data));
+  }).catchError((error) {
+  print(error.toString());
+  emit(AppGeneratedQrCodeErrorStates());
+  });
+}
 
   TransactionInfos? transactionInfos;
 
-  void getTransactionInfo(String qrText, context) {
+  void getTransactionInfoPayment(String qrText, context) {
+    emit(AppTransactionInitialStates());
+    DioHelper.postData(url: "/getqrdata", data: {
+      "qrText": qrText,
+    }).then((value) {
+      transactionInfos = TransactionInfos.fromJson(value.data);
+      print(value.data);
+      print(transactionInfos?.transactionCurrency);
+      emit(AppTransactionSuccessStates());
+      print(transactionInfos?.merchandPhoneNumber);
+      navigateAndFinish(context, BillPaymentDetails(transactionInfos));
+    }).catchError((error) {
+      emit(AppTransactionErrorStates());
+      print(error.toString());
+    });
+  }
+
+  void getTransactionInfoTransfer(String qrText, context) {
     emit(AppTransactionInitialStates());
     DioHelper.postData(url: "/getqrdata", data: {
       "qrText": qrText,
