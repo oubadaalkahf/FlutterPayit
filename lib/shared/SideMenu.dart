@@ -148,44 +148,7 @@ class SideMenu extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 30),
-            child: ListTile(
-              leading: Icon(
-                Icons.notifications_active,
-                color: Color(0xff4c91bc),
-                size: 32,
-              ),
-              title: Text(
-                S.of(context).notifications,
-                style: GoogleFonts.manrope(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FontStyle.normal,
-                ),
-              ),
-              onTap: () => null,
-              trailing: ClipOval(
-                child: Container(
-                  color: Colors.red,
-                  width: 20,
-                  height: 20,
-                  child: Center(
-                    child: Text(
-                      '1',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
+
           Padding(
             padding: EdgeInsets.only(left: 30),
             child: ListTile(

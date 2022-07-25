@@ -4,13 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iconify_flutter/icons/mdi.dart';
 import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
 import 'package:testingg/generated/l10n.dart';
 import 'package:testingg/screens/signup/OtpScreen.dart';
 import 'package:testingg/shared/component.dart';
 import '../Routes/custom_page_route.dart';
-
+import 'package:iconify_flutter/iconify_flutter.dart';
 class SignupScreen1 extends StatelessWidget {
   static String id = "SignupScreen1";
 
@@ -44,7 +45,7 @@ class SignupScreen1 extends StatelessWidget {
                   ),
                 )
               ])),
-
+          backgroundColor: Colors.blueGrey,
 
           body: Padding(
             padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 22),
@@ -145,6 +146,7 @@ class SignupScreen1 extends StatelessWidget {
                                 }
                               },
                               child: TextFormField(
+                                textCapitalization: TextCapitalization.characters,
                                 controller: cinController,
                                 onFieldSubmitted: (value){
                           AppCubit.get(context).verifycin(value);
@@ -153,7 +155,6 @@ class SignupScreen1 extends StatelessWidget {
                                FocusScope.of(context).nextFocus();
                                 },
                                 validator: (value)  {
-
                                   if (value!.isEmpty) {
 
                                     return S.of(context).the_cin_must_not_be_empty;
@@ -169,6 +170,10 @@ class SignupScreen1 extends StatelessWidget {
                                   fontSize: 14,
                                 ),
                                 decoration: InputDecoration(
+                                  prefixIcon: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child:Iconify(Mdi.smart_card_outline,color: Colors.green) ,
+                                  ),
                                   hintText: S.of(context).cin,
                                   fillColor: const Color(0xff243656),
                                   border: OutlineInputBorder(

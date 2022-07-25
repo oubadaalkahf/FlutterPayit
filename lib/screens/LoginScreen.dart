@@ -97,6 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       margin: EdgeInsets.only(top: 15, bottom: 30),
                       child: TextFormField(
+                        keyboardType: TextInputType.phone,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return S.of(context).the_Password_must_not_be_empty;

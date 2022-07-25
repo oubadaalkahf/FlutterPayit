@@ -66,19 +66,6 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   SettingsItem(
                     onTap: () {Navigator.pushAndRemoveUntil(
-                        context, CustomPageRouteLeft(child: QrCodeScreen()),(route)=>false
-                    );},
-                    icons: Icons.alternate_email_sharp,
-                    iconStyle: IconStyle(
-                      iconsColor: Colors.white,
-                      withBackground: true,
-                      backgroundColor: Color(0xff4c91bc),
-                    ),
-                    title: 'Changer Email ',
-                    subtitle: "${userModel?.data.email.toUpperCase()}",
-                  ),
-                  SettingsItem(
-                    onTap: () {Navigator.pushAndRemoveUntil(
                         context, CustomPageRouteLeft(child: PaymentRoute()),(route)=>false
                     );},
                     icons: Icons.dark_mode_rounded,

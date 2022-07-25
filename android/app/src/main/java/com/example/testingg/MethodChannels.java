@@ -64,6 +64,6 @@ public class MethodChannels {
                                     repository.register(call,result);
                                 }
                         }
-                );
+                     );
     }
 }

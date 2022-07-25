@@ -12,6 +12,7 @@ import 'package:testingg/models/UserModelNative.dart';
 import 'package:testingg/models/userModel.dart';
 import 'package:testingg/network/local/cache_helper.dart';
 import 'package:testingg/network/remote/dio_helper.dart';
+import 'package:testingg/screens/AccountScreen.dart';
 import 'package:testingg/screens/AlimentationScreen.dart';
 import 'package:testingg/screens/HomeScreen.dart';
 import 'package:testingg/screens/TransactionsHistory/TransactionReceiveScreen.dart';
@@ -49,7 +50,7 @@ class AppCubit extends Cubit<AppStates> {
   List<Widget> bottomScreens = [
     AccueilScreen(),
     TransferScreen(),
-    AlimentationScreen(),
+    AccountScreen(),
   ];
 
   List<Widget> screensHistory = [

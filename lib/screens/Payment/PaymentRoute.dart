@@ -66,8 +66,7 @@ class PaymentRoute extends StatelessWidget {
                       backgroundColor: Color(0xff4c91bc),
                     ),
                     title: 'Payer un commerçant ',
-                    subtitle:
-                    "${userModel?.data.firstName.toUpperCase()} ${userModel?.data.lastName.toUpperCase()}",
+
                   ),
                   SettingsItem(
                     onTap: () {

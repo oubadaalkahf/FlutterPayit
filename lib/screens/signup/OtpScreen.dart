@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
+import 'package:testingg/generated/l10n.dart';
 import 'package:testingg/screens/signup/SignupScreen2.dart';
 import 'package:testingg/shared/component.dart';
 import 'package:otp_text_field/otp_field.dart';
@@ -76,7 +77,7 @@ class OTP extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'STEP 2 : Validation ',
+                            S.of(context).step_2,
                             style: GoogleFonts.manrope(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
@@ -86,7 +87,7 @@ class OTP extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            'Enter the code sent to 0687171739 ',
+                            S.of(context).Enter_the_code_sent_to,
                             style: GoogleFonts.manrope(
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
@@ -123,19 +124,19 @@ class OTP extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
-                                "Didn't receive the code? ",
+                               Text(
+                                S.of(context).Didnt_receive_the_code,
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 15),
                               ),
                               TextButton(
                                 onPressed: () => snackBar("OTP resend!!"),
-                                child: const Text(
-                                  "RESEND",
+                                child:  Text(
+                                  S.of(context).RESEND,
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 16),
+                                      fontSize: 11),
                                 ),
                               )
                             ],
@@ -184,7 +185,7 @@ class OTP extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'NEXT',
+                                      S.of(context).NEXT,
                                       style: GoogleFonts.manrope(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w600,

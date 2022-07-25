@@ -90,8 +90,8 @@ class HomeScreen extends StatelessWidget {
 
             /// Profile
             SalomonBottomBarItem(
-              icon:const Icon(Icons.wallet_giftcard),
-              title:const Text("Alimentation"),
+              icon:const Icon( Icons.account_balance_wallet_rounded,),
+              title:const Text("Mon compte"),
               selectedColor: const Color(0xff4c91bc),
             ),
           ],

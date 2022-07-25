@@ -499,6 +499,156 @@ class S {
       args: [],
     );
   }
+
+  /// `STEP 2 : Identification \n`
+  String get step_2 {
+    return Intl.message(
+      'STEP 2 : Identification \n',
+      name: 'step_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the code sent to `
+  String get Enter_the_code_sent_to {
+    return Intl.message(
+      'Enter the code sent to ',
+      name: 'Enter_the_code_sent_to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vous n'avez pas reçu le code`
+  String get Didnt_receive_the_code {
+    return Intl.message(
+      'Vous n\'avez pas reçu le code',
+      name: 'Didnt_receive_the_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `RENVOYER`
+  String get RESEND {
+    return Intl.message(
+      'RENVOYER',
+      name: 'RESEND',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SUIVANT`
+  String get NEXT {
+    return Intl.message(
+      'SUIVANT',
+      name: 'NEXT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ÉTAPE 3 `
+  String get step_3 {
+    return Intl.message(
+      'ÉTAPE 3 ',
+      name: 'step_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Entrez votre prénom,Nom et l'adresse email `
+  String get Enter_your_first_last_name {
+    return Intl.message(
+      'Entrez votre prénom,Nom et l\'adresse email ',
+      name: 'Enter_your_first_last_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-mail`
+  String get Email {
+    return Intl.message(
+      'E-mail',
+      name: 'Email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prénom`
+  String get First_name {
+    return Intl.message(
+      'Prénom',
+      name: 'First_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nom`
+  String get Last_name {
+    return Intl.message(
+      'Nom',
+      name: 'Last_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Securité`
+  String get Security {
+    return Intl.message(
+      'Securité',
+      name: 'Security',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` Entrez un nouveau mot de passe 2 fois  `
+  String get Enter_new_password {
+    return Intl.message(
+      ' Entrez un nouveau mot de passe 2 fois  ',
+      name: 'Enter_new_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confrimer votre mot de passe `
+  String get Confirm_password {
+    return Intl.message(
+      'Confrimer votre mot de passe ',
+      name: 'Confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CREER`
+  String get CREATE {
+    return Intl.message(
+      'CREER',
+      name: 'CREATE',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ouvrir l'application de messagerie`
+  String get Open_Email_App {
+    return Intl.message(
+      'ouvrir l\'application de messagerie',
+      name: 'Open_Email_App',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

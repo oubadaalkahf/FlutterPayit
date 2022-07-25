@@ -22,6 +22,25 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "CREATE": MessageLookupByLibrary.simpleMessage("CREER"),
+        "Confirm_password": MessageLookupByLibrary.simpleMessage(
+            "Confrimer votre mot de passe "),
+        "Didnt_receive_the_code": MessageLookupByLibrary.simpleMessage(
+            "Vous n\'avez pas reçu le code"),
+        "Email": MessageLookupByLibrary.simpleMessage("E-mail"),
+        "Enter_new_password": MessageLookupByLibrary.simpleMessage(
+            " Entrez un nouveau mot de passe 2 fois "),
+        "Enter_the_code_sent_to":
+            MessageLookupByLibrary.simpleMessage("Entrer le code envoyer à "),
+        "Enter_your_first_last_name": MessageLookupByLibrary.simpleMessage(
+            "Entrez votre prénom,Nom et l\'adresse email "),
+        "First_name": MessageLookupByLibrary.simpleMessage("Prénom"),
+        "Last_name": MessageLookupByLibrary.simpleMessage("Nom"),
+        "NEXT": MessageLookupByLibrary.simpleMessage("SUIVANT"),
+        "Open_Email_App": MessageLookupByLibrary.simpleMessage(
+            "ouvrir l\'application de messagerie"),
+        "RESEND": MessageLookupByLibrary.simpleMessage("RENVOYER"),
+        "Security": MessageLookupByLibrary.simpleMessage("Securité"),
         "acceuil": MessageLookupByLibrary.simpleMessage("Acceuil"),
         "activation": MessageLookupByLibrary.simpleMessage("Activation"),
         "airplane_ticket":
@@ -39,7 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cin existe déjà"),
         "dh": MessageLookupByLibrary.simpleMessage("MAD"),
         "enter_your_phone_number":
-            MessageLookupByLibrary.simpleMessage("entrer votre phone number"),
+            MessageLookupByLibrary.simpleMessage(" numéro de telephone"),
         "enter_your_phone_number_and_your_cin":
             MessageLookupByLibrary.simpleMessage(
                 "Entrez votre numéro de téléphone et votre CIN"),
@@ -76,6 +95,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Parameters"),
         "step_1":
             MessageLookupByLibrary.simpleMessage("ÉTAPE 1 : Identification"),
+        "step_2":
+            MessageLookupByLibrary.simpleMessage("ÉTAPE 2 : Identification \n"),
+        "step_3": MessageLookupByLibrary.simpleMessage("ÉTAPE 3 "),
         "terms_of_use": MessageLookupByLibrary.simpleMessage(
             "En continuant, vous acceptez les termes et conditions d\'utilisation\n "),
         "the_cin_must_not_be_empty": MessageLookupByLibrary.simpleMessage(

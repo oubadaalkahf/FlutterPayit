@@ -49,5 +49,20 @@
   "airplane_ticket" : "Airplane\nTicket",
   "more" : "More\n",
   "payment" : "Payment",
-  "top_up_acceuil" : "Top up\n"
+  "top_up_acceuil" : "Top up\n",
+  "step_2" : "STEP 2 : Identification \n",
+  "Enter_the_code_sent_to" : "Enter the code sent to ",
+  "Didnt_receive_the_code" : "Vous n'avez pas reçu le code",
+  "RESEND" : "RENVOYER",
+  "NEXT" : "SUIVANT",
+  "step_3" : "ÉTAPE 3 ",
+  "Enter_your_first_last_name" : "Entrez votre prénom,Nom et l'adresse email ",
+  "Email" : "E-mail",
+  "First_name" : "Prénom",
+  "Last_name" : "Nom",
+  "Security" : "Securité",
+  "Enter_new_password" : " Entrez un nouveau mot de passe 2 fois  ",
+  "Confirm_password" : "Confrimer votre mot de passe ",
+  "CREATE" : "CREER",
+  "Open_Email_App": "ouvrir l'application de messagerie"
 }

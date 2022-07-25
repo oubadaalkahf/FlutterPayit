@@ -22,6 +22,25 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "CREATE": MessageLookupByLibrary.simpleMessage("CREER"),
+        "Confirm_password": MessageLookupByLibrary.simpleMessage(
+            "Confrimer votre mot de passe "),
+        "Didnt_receive_the_code": MessageLookupByLibrary.simpleMessage(
+            "Vous n\'avez pas reçu le code"),
+        "Email": MessageLookupByLibrary.simpleMessage("E-mail"),
+        "Enter_new_password": MessageLookupByLibrary.simpleMessage(
+            " Entrez un nouveau mot de passe 2 fois  "),
+        "Enter_the_code_sent_to":
+            MessageLookupByLibrary.simpleMessage("Enter the code sent to "),
+        "Enter_your_first_last_name": MessageLookupByLibrary.simpleMessage(
+            "Entrez votre prénom,Nom et l\'adresse email "),
+        "First_name": MessageLookupByLibrary.simpleMessage("Prénom"),
+        "Last_name": MessageLookupByLibrary.simpleMessage("Nom"),
+        "NEXT": MessageLookupByLibrary.simpleMessage("SUIVANT"),
+        "Open_Email_App": MessageLookupByLibrary.simpleMessage(
+            "ouvrir l\'application de messagerie"),
+        "RESEND": MessageLookupByLibrary.simpleMessage("RENVOYER"),
+        "Security": MessageLookupByLibrary.simpleMessage("Securité"),
         "acceuil": MessageLookupByLibrary.simpleMessage("Home"),
         "activation": MessageLookupByLibrary.simpleMessage("Activation"),
         "airplane_ticket":
@@ -70,6 +89,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "step_1":
             MessageLookupByLibrary.simpleMessage("STEP 1 : Identification"),
+        "step_2":
+            MessageLookupByLibrary.simpleMessage("STEP 2 : Identification \n"),
+        "step_3": MessageLookupByLibrary.simpleMessage("ÉTAPE 3 "),
         "terms_of_use": MessageLookupByLibrary.simpleMessage(
             "By continuing, you agree to the terms and conditions of use "),
         "the_Password_must_not_be_empty": MessageLookupByLibrary.simpleMessage(

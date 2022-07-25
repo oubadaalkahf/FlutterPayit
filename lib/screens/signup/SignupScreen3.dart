@@ -89,6 +89,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
                           Container(
                             margin: EdgeInsets.only(top: 22),
                             child: TextFormField(
+                              keyboardType: TextInputType.phone,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return "the Password must not be empty";
@@ -137,6 +138,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
                           Container(
                             margin: EdgeInsets.only(top: 22),
                             child: TextFormField(
+                              keyboardType: TextInputType.phone,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return "the Password must not be empty";

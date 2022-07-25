@@ -24,25 +24,7 @@ class AccountScreen extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) => Scaffold(
-              appBar: AppBar(
-                leading: IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      CustomPageRouteRight(child:const HomeScreen()),
-                    );
-                  },
-                ),
-                backgroundColor:const Color(0xff4c91bc),
-                elevation: 2,
-                actions: const [],
-                title:const Padding(
-                  padding: EdgeInsets.only(left: 78.0),
-                  child: Text(
-                    'Mon Compte',
-                  ),
-                ),
-              ),
+
               body: Column(
                 children: [
                   const  SizedBox(height: 25,),
