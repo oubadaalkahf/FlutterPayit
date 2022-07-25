@@ -40,7 +40,8 @@ class AccueilScreen extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {
           if (state is AppVersementSuccessStates) {
-            AppCubit.get(context).loadLoggedInUserNative(AppCubit.get(context).userModel?.data.phoneNumber);
+            print("----------------${CacheHelper.getData(key: 'phone')}");
+            AppCubit.get(context).loadLoggedInUserNative(CacheHelper.getData(key: 'phone'));
           }
         },
         builder: (context, state) => Conditional.single(

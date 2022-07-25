@@ -108,7 +108,7 @@ class AppCubit extends Cubit<AppStates> {
          "loginNative", {"phoneNumber": phone_number, "password": password});
      print(jsonDecode(response));
      userModel = UserModel.fromJson(jsonDecode(response));
-
+  CacheHelper.saveData(key: "phone", value: userModel?.data.phoneNumber);
      emit(AppLoginSuccessStates(userModel!));
    }catch(e){
      print(e.toString());
@@ -287,7 +287,7 @@ transactionsDestinataire = [];
   }
 
   //-----------------------------------------------------------------------//
-
+///////////////////////////////////////
   void Makevirement(montant, destinataire, message, String emetteur) {
     if (emetteur.startsWith("+212")) {
       emetteur = emetteur.replaceAll("+212", "0");
@@ -345,17 +345,17 @@ transactionsDestinataire = [];
     DioHelper.postData(url: "transfer/operation", data: {
       "operation_type": operation_type,
       "montant": montant,
-      "emetteur": emetteur,
+      "destinataire": emetteur,
       "message": message
     }).then((value) {
       loadLoggedInUserNative(userModel?.data.phoneNumber);
       emit(AppVersementSuccessStates());
-      userModel = null;
+
     }).catchError((error) {
       emit(AppVersementErrorStates());
     });
   }
-
+///////////////////////////////////////
   void verifycin(cin) {
     emit(AppVerifyCinInitialStates());
     DioHelper.getData(url: "verifycinn?cin=$cin").then((value) {
