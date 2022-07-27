@@ -7,6 +7,7 @@ import 'package:testingg/models/TransactionInfos.dart';
 import 'package:testingg/models/userModel.dart';
 import 'package:testingg/network/local/cache_helper.dart';
 import 'package:testingg/screens/AccountScreen.dart';
+import 'package:testingg/screens/Payment/QrCodeScannerPayment.dart';
 import 'package:testingg/screens/Routes/CustomPageRouteRight.dart';
 import 'package:testingg/shared/Colors.dart';
 import 'package:testingg/shared/component.dart';
@@ -15,6 +16,7 @@ import 'package:testingg/cubit/app_states.dart';
 
 import '../HomeScreen.dart';
 import '../Routes/custom_page_route.dart';
+import 'PaymentRoute.dart';
 
 
 class BillPaymentDetails extends StatelessWidget {
@@ -26,24 +28,26 @@ class BillPaymentDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit,AppStates>( listener: (context,state){
-      if (state is AppVersementSuccessStates) {
-        Navigator.pushAndRemoveUntil(
-            context,
-            CustomPageRouteLeft(child: HomeScreen()),
-                (route) => false);
-      }
+
     },builder: (context,state){
       return Scaffold(
         appBar: AppBar(
-
-          backgroundColor:const Color(0xff4c91bc),
-          elevation: 2,
-
-          title:Center(
-            child: Text(
-              'Bill',
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context)
+                  .push(CustomPageRouteRight(child: QrCodeScannerPayment()));
+            },
+          ),
+          title: Padding(
+            padding: const EdgeInsets.only(left: 50.0),
+            child: const Text(
+              'Bill payment',
+              style: TextStyle(color: Colors.white),
             ),
           ),
+          backgroundColor: Color(0xff4c91bc),
+          elevation: 0,
         ),
         body: Column(
           children: [
@@ -69,34 +73,40 @@ class BillPaymentDetails extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
+                  rowBuilder(
+                      att: "account payable to ",
+                      text: "${transactionInfos?.merchandPhoneNumber}"),
 
-                  rowBuilder(
-                      att: "Merchand Name",
-                      text: "${transactionInfos?.merchandName}"),
-                  const  SizedBox(
-                    height: 25,
-                  ),
-                  rowBuilder(att: "merchand city ", text:"${transactionInfos?.merchandCity}"),
                   const  SizedBox(
                     height: 25,
                   ),
                   rowBuilder(
-                      att: "Transaction Currency",
-                      text: "${transactionInfos?.transactionCurrency}"),
+                      att: "mecrchand city ",
+                      text: "${transactionInfos?.merchandCity}"),
                   const  SizedBox(
                     height: 25,
-                  ),
+                  ) ,
                   rowBuilder(
-                      att: "Transaction Amount",
+                      att: "Amount",
                       text: "${transactionInfos?.transactionAmount}"),
                   const  SizedBox(
                     height: 25,
                   ),
-                  rowBuilder(att: "Payment Type", text:"${transactionInfos?.paiementType}"),
+                  rowBuilder(
+                      att: "Currency",
+                      text: "${transactionInfos?.transactionCurrency}"),
+
                   const  SizedBox(
-                    height: 40,
+                    height: 25,
                   ),
 
+                  rowBuilder(
+                      att: "Paiment type ",
+                      text: "${transactionInfos?.paiementType}"),
+
+                  const  SizedBox(
+                    height: 25,
+                  ),
                   Container(
                     width: MediaQuery.of(context).size.width/2.5,
                     child: Material(
@@ -118,7 +128,7 @@ class BillPaymentDetails extends StatelessWidget {
                                 color: Colors.transparent,
                                 borderRadius: BorderRadius.circular(40)),
                             child: const Text(
-                              'Accept Transfer',
+                              'Pay',
                               style: TextStyle(color: Colors.white,fontSize: 15),
                             ),
                             alignment: Alignment.center,
@@ -127,6 +137,7 @@ class BillPaymentDetails extends StatelessWidget {
                       ),
                     ),
                   ),
+
                 ],
               ),
             ),

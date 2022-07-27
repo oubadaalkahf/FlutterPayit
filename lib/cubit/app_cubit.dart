@@ -399,7 +399,6 @@ transactionsDestinataire = [];
       tran_amount, tran_purpose, oper_type,) {
     emit(AppGeneratedQrCodeInitialStates());
     print(pointofinitiationmethode);
-
     print("-----------------------");
     DioHelper.postData(url: 'transferp2p', data: {
       "transaction_type": "transfer p2p",
@@ -421,6 +420,17 @@ transactionsDestinataire = [];
   }
   void PaimnentCommercant(String pointofinitiationmethode,paidEntityRef,trans_curr,tran_amount,tran_purpose,oper_type,merchant_category_code,country_code,merchant_name,merchant_city
       ){
+
+    print(country_code);
+    print(trans_curr);
+    print(tran_purpose);
+    print(oper_type);
+    print(merchant_city);
+    print(merchant_name);
+    print(country_code);
+    print(tran_amount);
+
+
     emit(AppGeneratedQrCodeInitialStates());
     //print(pointofinitiationmethode);
   DioHelper.postData(url: 'transferp2p', data: {

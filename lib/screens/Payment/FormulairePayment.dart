@@ -176,6 +176,10 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                       height: 8,
                     ),
                     TextFormField(
+                      keyboardType: TextInputType.phone,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(9),
+                      ],
                       controller: phonenNumber,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -183,6 +187,7 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                         }
                       },
                       decoration: InputDecoration(
+                        prefix:Text("+212 | "),
                         contentPadding: const EdgeInsets.symmetric(),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
@@ -220,6 +225,9 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                         Container(
                           width: 150,
                           child: TextFormField(
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(4),
+                            ],
                             controller: transactionAmount,
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -228,7 +236,7 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                             },
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.symmetric(),
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 6),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                     color: Color(0xff4c91bc), width: 2.0),
@@ -287,7 +295,7 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                         }
                       },
                       decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.symmetric(),
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 6),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
                               color: Color(0xff4c91bc), width: 2.0),
@@ -457,7 +465,7 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                         }
                       },
                       decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.symmetric(),
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 6),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
                               color: Color(0xff4c91bc), width: 2.0),
@@ -486,7 +494,7 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                         }
                       },
                       decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.symmetric(),
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 6),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
                               color: Color(0xff4c91bc), width: 2.0),

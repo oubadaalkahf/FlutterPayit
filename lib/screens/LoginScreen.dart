@@ -1,5 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:testingg/cubit/app_cubit.dart';
@@ -64,6 +65,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     margin:const EdgeInsets.only(top: 70),
                     child: TextFormField(
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(10),
+                      ],
                       keyboardType: TextInputType.phone,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -78,6 +82,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontSize: 14,
                       ),
                       decoration: InputDecoration(
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.all(0.0),
+                          child: Icon(
+                            Icons.phone,
+                            color: Colors.green,
+                          ), // icon is 48px widget.
+                        ),
                         hintText:S.of(context).enter_your_phone_number,
                         fillColor:const Color(0xff243656),
                         border: OutlineInputBorder(
@@ -96,6 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     margin:const EdgeInsets.only(top: 15, bottom: 30),
                     child: TextFormField(
+                      keyboardType: TextInputType.phone,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return S.of(context).the_Password_must_not_be_empty;
@@ -110,6 +122,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       obscureText: _isObscure,
                       decoration: InputDecoration(
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.all(0.0),
+                          child: Icon(
+                            Icons.lock,
+                            color: Colors.green,
+                          ), // icon is 48px widget.
+                        ),
                         hintText: S.of(context).password,
                         suffixIcon: IconButton(
                           icon: Icon(

@@ -76,20 +76,20 @@ class BillTransactionDetails extends StatelessWidget {
                     height: 25,
                   ),
                   rowBuilder(
-                      att: "Merchand Phone Number",
+                      att: "Phone Number",
                       text: "${transactionInfos?.merchandPhoneNumber}"),
-                  const  SizedBox(
-                    height: 25,
-                  ),
-                  rowBuilder(
-                      att: "Transaction Currency",
-                      text: "${transactionInfos?.transactionCurrency}"),
                   const  SizedBox(
                     height: 25,
                   ),
                   rowBuilder(
                       att: "Transaction Amount",
                       text: "${transactionInfos?.transactionAmount}"),
+                  const  SizedBox(
+                    height: 25,
+                  ),
+                  rowBuilder(
+                      att: "Transaction Currency",
+                      text: "${transactionInfos?.transactionCurrency}"),
                   const  SizedBox(
                     height: 25,
                   ),

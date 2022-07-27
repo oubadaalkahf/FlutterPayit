@@ -145,6 +145,7 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
                         height: 8,
                       ),
                       TextFormField(
+                          keyboardType: TextInputType.phone,
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(9),
                           ],
@@ -154,7 +155,6 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
                             return " Phone Number must not be empty";
                           }
                         },
-                        keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
                             prefix:Text("+212 | "),
                             contentPadding: const EdgeInsets.symmetric(horizontal: 6),

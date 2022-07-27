@@ -134,7 +134,7 @@ class _QrCodeScannerPaymentState extends State<QrCodeScannerPayment> with Widget
                     InkWell(
                       onTap: (){ scanQR();},
                       child: new Image.asset(
-                        'images/qrscann.png',
+                        'images/scannercodeqr.gif',
                         width: 150.0,
                         height: 150.0,
 
@@ -162,7 +162,6 @@ class _QrCodeScannerPaymentState extends State<QrCodeScannerPayment> with Widget
           Text('Le QR code doit respecter la norme EMV CO'),
         ],
       ),
-
     ),
   );
 }

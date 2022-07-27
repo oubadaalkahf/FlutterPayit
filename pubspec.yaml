@@ -142,6 +142,8 @@ flutter:
     - OTPP.png
     - avatar2.png
     - transfert-de-donnees.png
+    - scanner.gif
+    - scannercodeqr.gif
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

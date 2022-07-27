@@ -87,41 +87,7 @@ class AccountScreen extends StatelessWidget {
                         ),
 
 
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            const    Text(
-                              'Dernières opérations ',
-                              style: TextStyle(fontSize: 17),
-                            ),
-                            InkWell(
-                              onTap: (){
-                                navigateTo(context, TransactionsHistory());
-                              },
-                              child: Ink(
-                                child:  SizedBox(
-                                  height: 50,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: const [
-                                      Text('HISTORIQUE', style: TextStyle(
-                                        color: Color(0xff4c91bc),
-                                      ),), // <-- Text
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Icon( // <-- Icon
-                                        Icons.arrow_forward_sharp,
-                                        size: 24.0,
-                                        color: Color(0xff4c91bc),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+
                       ],
                     ),
                   ),
