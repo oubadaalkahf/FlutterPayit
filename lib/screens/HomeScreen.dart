@@ -38,7 +38,6 @@ class HomeScreen extends StatelessWidget {
               ));
     }));
   }
-
   Widget builderWidget(context, index) {
     return Scaffold(
       drawer: SideMenu(),
@@ -60,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                   : Padding(
                       padding: const EdgeInsets.only(left: 78.0),
                       child: Text(
-                        S.of(context).top_up,
+                        S.of(context).my_account,
                       ),
                     ),
           backgroundColor:const  Color(0xff4c91bc)),

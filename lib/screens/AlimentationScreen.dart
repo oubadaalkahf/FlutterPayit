@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
+import 'package:testingg/screens/AccueilScreen.dart';
 import 'package:testingg/screens/HomeScreen.dart';
 import 'package:testingg/shared/component.dart';
+
+import 'Routes/CustomPageRouteRight.dart';
 
 
 class AlimentationScreen extends StatelessWidget {
@@ -21,6 +24,25 @@ class AlimentationScreen extends StatelessWidget {
       }
     }, builder: (context, state) {
       return Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context)
+                  .push(CustomPageRouteRight(child: HomeScreen()));
+            },
+          ),
+          title: Padding(
+            padding: const EdgeInsets.only(left: 50.0),
+            child: const Text(
+              'Alimentation',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          backgroundColor: Color(0xff4c91bc),
+          elevation: 0,
+        ),
+
 
         backgroundColor: Colors.white,
         bottomSheet: Container(
