@@ -35,12 +35,28 @@ class MessageLookup extends MessageLookupByLibrary {
         "Enter_your_first_last_name": MessageLookupByLibrary.simpleMessage(
             "Entrez votre prénom,Nom et l\'adresse email "),
         "First_name": MessageLookupByLibrary.simpleMessage("Prénom"),
+        "Invoice_payment":
+            MessageLookupByLibrary.simpleMessage("Paiement\nfactures"),
+        "Language": MessageLookupByLibrary.simpleMessage("Langue"),
         "Last_name": MessageLookupByLibrary.simpleMessage("Nom"),
+        "Money_transfer":
+            MessageLookupByLibrary.simpleMessage("ransfert\nd\'argent"),
+        "More": MessageLookupByLibrary.simpleMessage("Plus\n"),
         "NEXT": MessageLookupByLibrary.simpleMessage("SUIVANT"),
         "Open_Email_App": MessageLookupByLibrary.simpleMessage(
             "ouvrir l\'application de messagerie"),
+        "Pay_your_merchand":
+            MessageLookupByLibrary.simpleMessage("Payer un\ncommerçant"),
+        "Phone_charging":
+            MessageLookupByLibrary.simpleMessage("Recharge\nMobile"),
         "RESEND": MessageLookupByLibrary.simpleMessage("RENVOYER"),
         "Security": MessageLookupByLibrary.simpleMessage("Securité"),
+        "Splash_Screen":
+            MessageLookupByLibrary.simpleMessage("DISCOVER THE FUTURE WITH US"),
+        "Ticket_plan": MessageLookupByLibrary.simpleMessage("Ticket\nAvion "),
+        "Top_up_your_wallet":
+            MessageLookupByLibrary.simpleMessage("Alimenter \nmon PAYIT"),
+        "Transfer_to": MessageLookupByLibrary.simpleMessage("Transférer à"),
         "acceuil": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "activation": MessageLookupByLibrary.simpleMessage("تفعيل"),
         "airplane_ticket":

@@ -8,6 +8,7 @@ import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
 import 'package:testingg/screens/AccueilScreen.dart';
 import 'package:testingg/screens/SettingsScreen.dart';
+import 'package:testingg/screens/Transfer/BillTransactionDetails.dart';
 import 'package:testingg/screens/Transfer/TransferQrCodeResult.dart';
 import 'package:testingg/screens/Transfer/TransferRoute.dart';
 import 'package:testingg/shared/SideMenu.dart';
@@ -313,7 +314,6 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
                                   transactionAmount.text,
                                   purposeOfTransaction.text,
                                   selectedValueOperationType);
-
                             }
                           },
                           textColor: Color(0xffFFFFFF),

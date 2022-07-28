@@ -22,25 +22,41 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "CREATE": MessageLookupByLibrary.simpleMessage("CREER"),
-        "Confirm_password": MessageLookupByLibrary.simpleMessage(
-            "Confrimer votre mot de passe "),
-        "Didnt_receive_the_code": MessageLookupByLibrary.simpleMessage(
-            "Vous n\'avez pas reçu le code"),
+        "CREATE": MessageLookupByLibrary.simpleMessage("CREATE"),
+        "Confirm_password":
+            MessageLookupByLibrary.simpleMessage("Confrim your password"),
+        "Didnt_receive_the_code":
+            MessageLookupByLibrary.simpleMessage("Didnt receive the code "),
         "Email": MessageLookupByLibrary.simpleMessage("E-mail"),
-        "Enter_new_password": MessageLookupByLibrary.simpleMessage(
-            " Entrez un nouveau mot de passe 2 fois  "),
+        "Enter_new_password":
+            MessageLookupByLibrary.simpleMessage(" Enter your password twice"),
         "Enter_the_code_sent_to":
             MessageLookupByLibrary.simpleMessage("Enter the code sent to "),
         "Enter_your_first_last_name": MessageLookupByLibrary.simpleMessage(
-            "Entrez votre prénom,Nom et l\'adresse email "),
-        "First_name": MessageLookupByLibrary.simpleMessage("Prénom"),
-        "Last_name": MessageLookupByLibrary.simpleMessage("Nom"),
-        "NEXT": MessageLookupByLibrary.simpleMessage("SUIVANT"),
-        "Open_Email_App": MessageLookupByLibrary.simpleMessage(
-            "ouvrir l\'application de messagerie"),
-        "RESEND": MessageLookupByLibrary.simpleMessage("RENVOYER"),
-        "Security": MessageLookupByLibrary.simpleMessage("Securité"),
+            "Enter your first,last name and email address "),
+        "First_name": MessageLookupByLibrary.simpleMessage("First name"),
+        "Invoice_payment":
+            MessageLookupByLibrary.simpleMessage("Invoice\npayment"),
+        "Language": MessageLookupByLibrary.simpleMessage("Language"),
+        "Last_name": MessageLookupByLibrary.simpleMessage("Last name"),
+        "Money_transfer":
+            MessageLookupByLibrary.simpleMessage("Money Transfer"),
+        "More": MessageLookupByLibrary.simpleMessage("More"),
+        "NEXT": MessageLookupByLibrary.simpleMessage("NEXT"),
+        "Open_Email_App":
+            MessageLookupByLibrary.simpleMessage("Open Email APP"),
+        "Pay_your_merchand":
+            MessageLookupByLibrary.simpleMessage("Pay your\nmerchand"),
+        "Phone_charging":
+            MessageLookupByLibrary.simpleMessage("Recharge\nMobile"),
+        "RESEND": MessageLookupByLibrary.simpleMessage("RESEND"),
+        "Security": MessageLookupByLibrary.simpleMessage("Security"),
+        "Splash_Screen":
+            MessageLookupByLibrary.simpleMessage("DISCOVER THE FUTURE WITH US"),
+        "Ticket_plan": MessageLookupByLibrary.simpleMessage("Ticket\nPlan "),
+        "Top_up_your_wallet":
+            MessageLookupByLibrary.simpleMessage("Top Up \nYour PAYIT"),
+        "Transfer_to": MessageLookupByLibrary.simpleMessage("Transfer to"),
         "acceuil": MessageLookupByLibrary.simpleMessage("Home"),
         "activation": MessageLookupByLibrary.simpleMessage("Activation"),
         "airplane_ticket":
@@ -91,7 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("STEP 1 : Identification"),
         "step_2":
             MessageLookupByLibrary.simpleMessage("STEP 2 : Identification \n"),
-        "step_3": MessageLookupByLibrary.simpleMessage("ÉTAPE 3 "),
+        "step_3": MessageLookupByLibrary.simpleMessage("STEP 3 "),
         "terms_of_use": MessageLookupByLibrary.simpleMessage(
             "By continuing, you agree to the terms and conditions of use "),
         "the_Password_must_not_be_empty": MessageLookupByLibrary.simpleMessage(

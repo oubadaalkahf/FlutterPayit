@@ -16,7 +16,6 @@ class QrCodeScannerTransfer extends StatefulWidget {
   @override
   _QrCodeScannerTransferState createState() => _QrCodeScannerTransferState();
 }
-
 class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
     with WidgetsBindingObserver {
   Future<void> scanQR() async {
@@ -29,12 +28,10 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
-
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.
     if (!mounted) return;
-
     setState(() {
       _scanBarcode = barcodeScanRes;
       if (!_scanBarcode.isEmpty || _scanBarcode.startsWith("000201")) {
@@ -42,7 +39,6 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
       }
     });
   }
-
   String _scanBarcode = 'Unknown';
   @override
   Widget build(BuildContext context) {
@@ -107,7 +103,7 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
       );
 
   Widget _buildMidContainerWithButton() {
-    final buttonHeight = 170.0;
+    final buttonHeight = 10.0;
     return Stack(
       children: [
         // Use same background color like the second container
@@ -139,7 +135,7 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
                         scanQR();
                       },
                       child: new Image.asset(
-                        'images/qrscann.png',
+                        'images/scannercodeqr.gif',
                         width: 150.0,
                         height: 150.0,
                       ),
@@ -153,7 +149,6 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
       ],
     );
   }
-
   Widget _buildBottomContainer() => Flexible(
         flex: 5,
         child: Container(

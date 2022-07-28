@@ -1,3 +1,4 @@
+import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -49,13 +50,111 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Scaffold(
           backgroundColor: Colors.white,
           body: ListView(
-            padding:const EdgeInsets.only(left: 55, right: 55, top: 120),
+            padding:const EdgeInsets.only(left: 55, right: 55, top: 65),
             physics:const BouncingScrollPhysics(),
             children: [
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  InkWell(
+
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 235.0),
+                      child: Column(
+                        children: const [
+                          Icon(Icons.language,size: 40,color:Colors.blueGrey,),
+                          Text('Langue',style: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              ),),
+                        ],
+                      ),
+                    ),
+                    onTap: (){{
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (context) => Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  S.of(context).choose_language_title,
+                                  style: TextStyle(
+                                      color: Colors.blueGrey,
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 20),
+
+                                ),
+                                ListTile(
+                                  leading: Text(
+                                    'العربية',
+                                    style: GoogleFonts.manrope(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FontStyle.normal,
+                                    ),
+                                  ),
+
+
+                                  onTap: () {
+                                    AppCubit.get(context).changeLocale("ar",context);
+
+                                    print("ar");   print(S.of(context).logout);
+
+
+                                  },
+                                ),
+                                SizedBox(height: 5,),
+                                ListTile(
+                                  leading: Text(
+                                    'Français',
+                                    style: GoogleFonts.manrope(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FontStyle.normal,
+                                    ),
+                                  ),
+
+                                  onTap: () {
+
+                                    AppCubit.get(context).changeLocale("fr",context);
+
+                                    print("fr");
+                                    print(S.of(context).logout);
+
+
+                                  },
+                                ),
+                                SizedBox(height: 5,),
+                                ListTile(
+                                  leading: Text(
+                                    'english',
+                                    style: GoogleFonts.manrope(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FontStyle.normal,
+                                    ),
+                                  ),
+
+                                  onTap: () {
+
+                                    AppCubit.get(context).changeLocale("en",context);
+
+                                    print("en");
+                                    print(S.of(context).logout);
+
+
+
+                                  },
+                                ),
+                              ],
+                            ),
+                          ));
+                    }
+                      //action code when clicked
+
+                    },
+                  ),
                   Container(
                     height: 130,
                     width: 200,

@@ -520,50 +520,50 @@ class S {
     );
   }
 
-  /// `Vous n'avez pas reçu le code`
+  /// `Didnt receive the code `
   String get Didnt_receive_the_code {
     return Intl.message(
-      'Vous n\'avez pas reçu le code',
+      'Didnt receive the code ',
       name: 'Didnt_receive_the_code',
       desc: '',
       args: [],
     );
   }
 
-  /// `RENVOYER`
+  /// `RESEND`
   String get RESEND {
     return Intl.message(
-      'RENVOYER',
+      'RESEND',
       name: 'RESEND',
       desc: '',
       args: [],
     );
   }
 
-  /// `SUIVANT`
+  /// `NEXT`
   String get NEXT {
     return Intl.message(
-      'SUIVANT',
+      'NEXT',
       name: 'NEXT',
       desc: '',
       args: [],
     );
   }
 
-  /// `ÉTAPE 3 `
+  /// `STEP 3 `
   String get step_3 {
     return Intl.message(
-      'ÉTAPE 3 ',
+      'STEP 3 ',
       name: 'step_3',
       desc: '',
       args: [],
     );
   }
 
-  /// `Entrez votre prénom,Nom et l'adresse email `
+  /// `Enter your first,last name and email address `
   String get Enter_your_first_last_name {
     return Intl.message(
-      'Entrez votre prénom,Nom et l\'adresse email ',
+      'Enter your first,last name and email address ',
       name: 'Enter_your_first_last_name',
       desc: '',
       args: [],
@@ -580,71 +580,171 @@ class S {
     );
   }
 
-  /// `Prénom`
+  /// `First name`
   String get First_name {
     return Intl.message(
-      'Prénom',
+      'First name',
       name: 'First_name',
       desc: '',
       args: [],
     );
   }
 
-  /// `Nom`
+  /// `Last name`
   String get Last_name {
     return Intl.message(
-      'Nom',
+      'Last name',
       name: 'Last_name',
       desc: '',
       args: [],
     );
   }
 
-  /// `Securité`
+  /// `Security`
   String get Security {
     return Intl.message(
-      'Securité',
+      'Security',
       name: 'Security',
       desc: '',
       args: [],
     );
   }
 
-  /// ` Entrez un nouveau mot de passe 2 fois  `
+  /// ` Enter your password twice`
   String get Enter_new_password {
     return Intl.message(
-      ' Entrez un nouveau mot de passe 2 fois  ',
+      ' Enter your password twice',
       name: 'Enter_new_password',
       desc: '',
       args: [],
     );
   }
 
-  /// `Confrimer votre mot de passe `
+  /// `Confrim your password`
   String get Confirm_password {
     return Intl.message(
-      'Confrimer votre mot de passe ',
+      'Confrim your password',
       name: 'Confirm_password',
       desc: '',
       args: [],
     );
   }
 
-  /// `CREER`
+  /// `CREATE`
   String get CREATE {
     return Intl.message(
-      'CREER',
+      'CREATE',
       name: 'CREATE',
       desc: '',
       args: [],
     );
   }
 
-  /// `ouvrir l'application de messagerie`
+  /// `Open Email APP`
   String get Open_Email_App {
     return Intl.message(
-      'ouvrir l\'application de messagerie',
+      'Open Email APP',
       name: 'Open_Email_App',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transfer to`
+  String get Transfer_to {
+    return Intl.message(
+      'Transfer to',
+      name: 'Transfer_to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Money Transfer`
+  String get Money_transfer {
+    return Intl.message(
+      'Money Transfer',
+      name: 'Money_transfer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Top Up \nYour PAYIT`
+  String get Top_up_your_wallet {
+    return Intl.message(
+      'Top Up \nYour PAYIT',
+      name: 'Top_up_your_wallet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay your\nmerchand`
+  String get Pay_your_merchand {
+    return Intl.message(
+      'Pay your\nmerchand',
+      name: 'Pay_your_merchand',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recharge\nMobile`
+  String get Phone_charging {
+    return Intl.message(
+      'Recharge\nMobile',
+      name: 'Phone_charging',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invoice\npayment`
+  String get Invoice_payment {
+    return Intl.message(
+      'Invoice\npayment',
+      name: 'Invoice_payment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ticket\nPlan `
+  String get Ticket_plan {
+    return Intl.message(
+      'Ticket\nPlan ',
+      name: 'Ticket_plan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More`
+  String get More {
+    return Intl.message(
+      'More',
+      name: 'More',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DISCOVER THE FUTURE WITH US`
+  String get Splash_Screen {
+    return Intl.message(
+      'DISCOVER THE FUTURE WITH US',
+      name: 'Splash_Screen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get Language {
+    return Intl.message(
+      'Language',
+      name: 'Language',
       desc: '',
       args: [],
     );

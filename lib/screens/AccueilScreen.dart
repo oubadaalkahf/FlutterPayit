@@ -15,6 +15,7 @@ import 'package:testingg/screens/SettingsScreen.dart';
 import 'package:testingg/screens/Transfer/TransferRoute.dart';
 import 'package:swipe_refresh/swipe_refresh.dart';
 
+import '../generated/l10n.dart';
 import '../shared/component.dart';
 import 'AlimentationScreen.dart';
 import 'Routes/CustomPageRouteRight.dart';
@@ -238,9 +239,9 @@ class AccueilScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    "Transférer à",
-                    style: TextStyle(
+                   Text(
+                  S.of(context).transfer_to,
+                    style: const TextStyle(
                         fontSize: 21,
                         fontWeight: FontWeight.w800,
                         fontFamily: 'avenir'),
@@ -303,19 +304,19 @@ class AccueilScreen extends StatelessWidget {
                 crossAxisCount: 4,
                 childAspectRatio: 0.7,
                 children: [
-                  serviceWidget("transfert-de-donnees1", "Transfert\nd'argent",
+                  serviceWidget("transfert-de-donnees1",S.of(context).Money_transfer,
                       context, TransferRoute()),
-                  serviceWidget("top-up", "Alimenter \nmon PAYIT", context,
+                  serviceWidget("top-up", S.of(context).Top_up_your_wallet, context,
                       AlimentationScreen()),
                   serviceWidget(
-                      "store", "Payer un\ncommerçant", context, PaymentRoute()),
+                      "store",S.of(context).Pay_your_merchand, context, PaymentRoute()),
                   serviceWidget(
-                      "phone", "Recharge\nMobile", context, SettingsScreen()),
-                  serviceWidget("invoice", "Paiement\nfactures", context,
+                      "phone",S.of(context).Phone_charging, context, SettingsScreen()),
+                  serviceWidget("invoice", S.of(context).Invoice_payment, context,
                       SettingsScreen()),
                   serviceWidget(
-                      "flight", "Ticket\nAvion", context, SettingsScreen()),
-                  serviceWidget("more", "Plus\n", context, SettingsScreen()),
+                      "flight",S.of(context).Ticket_plan, context, SettingsScreen()),
+                  serviceWidget("more", S.of(context).more, context, SettingsScreen()),
                 ],
               )
             ],

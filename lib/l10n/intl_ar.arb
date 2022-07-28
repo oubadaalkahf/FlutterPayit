@@ -61,5 +61,16 @@
   "Enter_new_password" : " Entrez un nouveau mot de passe 2 fois  ",
   "Confirm_password" : "Confrimer votre mot de passe ",
   "CREATE" : "CREER",
-  "Open_Email_App": "ouvrir l'application de messagerie"
+  "Open_Email_App": "ouvrir l'application de messagerie",
+  "Transfer_to": "Transférer à",
+  "Money_transfer" : "ransfert\nd'argent",
+  "Top_up_your_wallet":"Alimenter \nmon PAYIT",
+  "Pay_your_merchand": "Payer un\ncommerçant",
+  "Phone_charging": "Recharge\nMobile",
+  "Invoice_payment": "Paiement\nfactures",
+  "Ticket_plan" : "Ticket\nAvion ",
+  "More" : "Plus\n",
+  "Splash_Screen": "DISCOVER THE FUTURE WITH US",
+  "Language" : "Langue"
+
 }

@@ -22,7 +22,7 @@ class FormulairePayment extends StatefulWidget {
   State<FormulairePayment> createState() => _FormulairePaymentState();
 }
 
-enum point_of_initiation_methode { dynamique, statique }
+enum point_of_initiation_methode { dynamic, static }
 
 class _FormulairePaymentState extends State<FormulairePayment> {
   var pointofinitiationmethode = TextEditingController();
@@ -83,7 +83,7 @@ class _FormulairePaymentState extends State<FormulairePayment> {
   }
   String selectedcountrycode = "MA";
   point_of_initiation_methode? character =
-      point_of_initiation_methode.dynamique;
+      point_of_initiation_methode.dynamic;
 
 
   @override
@@ -143,8 +143,8 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                       height: 8,
                     ),
                     RadioListTile<point_of_initiation_methode>(
-                      title: const Text('dynamique'),
-                      value: point_of_initiation_methode.dynamique,
+                      title: const Text('dynamic'),
+                      value: point_of_initiation_methode.dynamic,
                       groupValue: character,
                       onChanged: (point_of_initiation_methode? value) {
                         setState(() {
@@ -153,8 +153,8 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                       },
                     ),
                     RadioListTile<point_of_initiation_methode>(
-                      title: const Text('statique'),
-                      value: point_of_initiation_methode.statique,
+                      title: const Text('static'),
+                      value: point_of_initiation_methode.static,
                       groupValue: character,
                       onChanged: (point_of_initiation_methode? value) {
                         setState(() {
@@ -507,11 +507,13 @@ class _FormulairePaymentState extends State<FormulairePayment> {
                     SizedBox(
                       height: 10,
                     ),
+
                     Padding(
                       padding: const EdgeInsets.only(left: 210.0),
                       child: RaisedButton(
                         onPressed: () {
                           if (formkey.currentState!.validate()) {
+
                             AppCubit.get(context).PaimnentCommercant(
                               '${character?.name}',
                               "+212" + phonenNumber.text,
