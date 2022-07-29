@@ -105,8 +105,7 @@ class AppCubit extends Cubit<AppStates> {
       {required String phone_number, required String pwd}) async {
     var bytes = utf8.encode(pwd);
     var password = sha1.convert(bytes);
-    print(bytes);
-    print(password.toString());
+
     emit(AppLoginInitialStates());
    try{
      const MethodChannel AuthCHANNEL = MethodChannel("payit/auth");
