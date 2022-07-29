@@ -172,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           AppCubit.get(context).userLogin(
                               phone_number: phoneNumberController.text,
-                              password: passwordLogController.text);
+                              pwd: passwordLogController.text);
                         }
                       },
                       textColor:const Color(0xffFFFFFF),
