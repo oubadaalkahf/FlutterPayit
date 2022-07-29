@@ -8,19 +8,19 @@ import 'package:get/get.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:testingg/cubit/app_states.dart';
 import 'package:testingg/models/TransactionModel.dart';
-import 'package:testingg/models/UserModelNative.dart';
+
 
 import 'package:testingg/models/userModel.dart';
 import 'package:testingg/network/local/cache_helper.dart';
 import 'package:testingg/network/remote/dio_helper.dart';
 import 'package:testingg/screens/AccountScreen.dart';
-import 'package:testingg/screens/AlimentationScreen.dart';
+
 import 'package:testingg/screens/HomeScreen.dart';
 import 'package:testingg/screens/Payment/BillPaymentDetails.dart';
 import 'package:testingg/screens/TransactionsHistory/TransactionReceiveScreen.dart';
 import 'package:testingg/screens/TransactionsHistory/TransactionSentScreen.dart';
 import 'package:testingg/screens/Transfer/BillTransactionDetails.dart';
-import 'package:testingg/screens/Transfer/TransferQrCodeResult.dart';
+
 import 'package:testingg/shared/component.dart';
 
 import '../models/TransactionInfos.dart';
@@ -52,26 +52,25 @@ class AppCubit extends Cubit<AppStates> {
   List<Widget> bottomScreens = [
     AccueilScreen(),
     TransferScreen(),
-    AccountScreen(),
+  const  AccountScreen(),
   ];
 
   List<Widget> screensHistory = [
-    TransactionReceiveScreen(),
-    TransactionSentScreen(),
+  const  TransactionReceiveScreen(),
+const    TransactionSentScreen(),
   ];
 
   static Locale currentLocale = const Locale("fr");
 
   void changeLocale(String _locale, context) {
     emit(ChangeLanguageInitialStates());
-    print(currentLocale.toString());
+
     currentLocale = Locale(_locale);
     CacheHelper.saveData(key: 'lang', value: _locale);
     Restart.restartApp();
     emit(ChangeLanguageSuccessStates());
     Navigator.pop(context);
-    print("Cache Helper ------------");
-    print(CacheHelper.getData(key: "lang"));
+
   }
 
   int currentStep = 0;
@@ -110,7 +109,7 @@ class AppCubit extends Cubit<AppStates> {
    try{
      const MethodChannel AuthCHANNEL = MethodChannel("payit/auth");
      var response = await AuthCHANNEL.invokeMethod(
-         "loginNative", {"phoneNumber": phone_number, "password": password.toString()});
+         "loginNative", {"phoneNumber": phone_number, "password": password.toString(),"session": CacheHelper.getData(key: "session")});
      print(jsonDecode(response));
      userModel = UserModel.fromJson(jsonDecode(response));
   CacheHelper.saveData(key: "phone", value: userModel?.data.phoneNumber);
@@ -150,7 +149,7 @@ transactionsDestinataire = [];
           .invokeMethod("showHistoryDestinataire", {"phoneNumber": phoneNumber});
 
       List<dynamic> destinataire = jsonDecode(history);
-      print(destinataire);
+
       destinataire.forEach((element) {
         transactionsDestinataire.add(TransactionModel.fromJson(element));
       });
@@ -193,20 +192,7 @@ transactionsDestinataire = [];
    }
   }
 
-  /**
-   *  void addTokenToUser(email, deviceToken) {
-      emit(LoginSaveTokenInitialStates());
 
-      DioHelper.postDataLogins(
-      url: "fcm_token",
-      data: {"email": email, "fcmToken": deviceToken}).then((value) {
-      emit(LoginSaveTokenSuccessStates());
-      }).catchError((error) {
-      print(error.toString());
-      emit(LoginSaveTokenErrorStates());
-      });
-      }
-   */
   Future<void> addTokenToUser(email, deviceToken) async {
     emit(LoginSaveTokenInitialStates());
    try{
@@ -232,48 +218,19 @@ transactionsDestinataire = [];
       emit(RemoveTokenSuccessStates());
 
     }catch(e){
-      print(e.toString());
+
       emit(RemoveTokenErrorStates());
     }
   }
-  /**
-   * void removeFcmToken(email) {
-      emit(RemoveTokenInitialStates());
-      print(email);
-      DioHelper.postDataLogins(
-      url: "remove_fcm_token?user_email=$email",
-      data: {},
-      ).then((value) {
-      emit(RemoveTokenSuccessStates());
-      }).catchError((error) {
-      print(error.toString());
-      emit(RemoveTokenErrorStates());
-      });
-      }
-   */
+
 
   //-----------------------------------------------------------------------//
-  /**
-   * void loadLoggedInUser(email) {
-      userModel = null;
-      if (email != null) {
-      emit(LoadLoggedInUserInitial());
 
-      DioHelper.getData(url: "user?email=$email").then((value) {
-      print(value.data);
-      userModel = UserModel.fromJson(value.data);
-      emit(LoadLoggedInUserSuccessStates());
-      }).catchError((error) {
-      print(error.toString());
-      emit(LoadLoggedInUserErrorStates());
-      });
-      }
-      }
-   */
 
 
 
   Future loadLoggedInUserNative(phoneNumber) async {
+    print("your session id is " + CacheHelper.getData(key: "session"));
     emit(LoadLoggedInUserInitial());
     try {
       userModel = null;
@@ -291,8 +248,8 @@ transactionsDestinataire = [];
     }
   }
 
-  //-----------------------------------------------------------------------//
-///////////////////////////////////////
+  //------------------HADI-----------------------------------------------------//
+
   void Makevirement(montant, destinataire, message, String emetteur) {
     if (emetteur.startsWith("+212")) {
       emetteur = emetteur.replaceAll("+212", "0");
@@ -302,6 +259,8 @@ transactionsDestinataire = [];
     }
     String operation_type = "virement";
     emit(AppVirementInitialStates());
+    print(emetteur);
+    print(destinataire);
     DioHelper.postData(url: "transfer/operation", data: {
       "operation_type": operation_type,
       "montant": montant,
@@ -309,6 +268,7 @@ transactionsDestinataire = [];
       "destinataire": destinataire,
       "message": message
     }).then((value) {
+      print("THEEEEEEEEEEEN");
       print(value.data);
       loadLoggedInUserNative(userModel?.data.phoneNumber);
       emit(AppVirementSuccessStates());
@@ -319,48 +279,94 @@ transactionsDestinataire = [];
     });
   }
 
-  void sendOtp(String phone) {
+  void sendOtp(String phoneNumber) async{
     emit(AppSendOtpInitialState());
-    DioHelper.postData(url: "otp/send", data: {"phoneNumber": phone})
-        .then((value) {
-      print("OTP SEND SUCCESS");
-      emit(AppSendOtpSuccessState(value.data));
-    }).catchError((error) {
-      print(error.toString());
-      emit(AppSendOtpErrorState());
-    });
+    const MethodChannel USERCHANNEL = MethodChannel("payit/user");
+   try{
+     print("hi");
+     var response = await USERCHANNEL
+         .invokeMethod("sendOtp", {"phoneNumber": phoneNumber});
+     print(response);
+     emit(AppSendOtpSuccessState(response));
+   }catch(e){
+     print(e.toString());
+   }
   }
 
-  void verifyOtp(String otp) {
+  void verifyOtp(String otp) async{
     emit(AppVerifyOtpInitialState());
-    DioHelper.postData(
-        url: "otp/verify",
-        data: {"phoneNumber": phone_number, "otp": otp}).then((value) {
+    const MethodChannel USERCHANNEL = MethodChannel("payit/user");
+    try{
+      print("hi");
+      var response = await USERCHANNEL
+          .invokeMethod("verifyOtp", {"phoneNumber": phone_number,"otp" : otp});
       verified = true;
-      emit(AppVerifyOtpSuccessState(value.data));
-    }).catchError((error) {
-      emit(AppVerifyOtpErrorState(error.toString()));
-      print(error.toString());
-    });
+      print(response);
+      emit(AppVerifyOtpSuccessState(response));
+    }catch(e){
+      print(e.toString());
+    }
+
+  }
+  void getSessionid() async{
+    emit(AppGetSessionIdInitStates());
+    const MethodChannel USERCHANNEL = MethodChannel("payit/user");
+    try{
+
+      var response = await USERCHANNEL
+          .invokeMethod("getSessionid");
+
+     CacheHelper.saveData(key: "session", value:response);
+      emit(AppGetSessionIdSuccesStates());
+    }catch(e){
+      print(e.toString());
+      emit(AppGetSessionIdErrorStates());
+    }
   }
 
-  void makeVersement(montant, message, emetteur) {
-    String operation_type = "versement";
+
+  void makeVersement(montant, message, destinataire) async{
+
     emit(AppVersementInitialStates());
-    DioHelper.postData(url: "transfer/operation", data: {
+    const MethodChannel USERCHANNEL = MethodChannel("payit/user");
+    try{
+
+      var response = await USERCHANNEL
+          .invokeMethod("makeVersement",
+          {
+            "montant": montant,
+            "destinataire": destinataire,
+            "message": message,
+                });
+      loadLoggedInUserNative(userModel?.data.phoneNumber);
+      emit(AppVersementSuccessStates());
+      print(response);
+      emit(AppSendOtpSuccessState(response));
+    }catch(e){
+      print(e.toString());
+      emit(AppVersementErrorStates());
+    }
+  }
+
+  /**
+   *  void makeVersement(montant, message, emetteur) {
+      String operation_type = "versement";
+      emit(AppVersementInitialStates());
+      DioHelper.postData(url: "transfer/operation", data: {
       "operation_type": operation_type,
       "montant": montant,
       "destinataire": emetteur,
       "message": message
-    }).then((value) {
+      }).then((value) {
       loadLoggedInUserNative(userModel?.data.phoneNumber);
       emit(AppVersementSuccessStates());
 
-    }).catchError((error) {
+      }).catchError((error) {
       emit(AppVersementErrorStates());
-    });
-  }
-///////////////////////////////////////
+      });
+      }
+   */
+
   void verifycin(cin) {
     emit(AppVerifyCinInitialStates());
     DioHelper.getData(url: "verifycinn?cin=$cin").then((value) {
@@ -377,7 +383,7 @@ transactionsDestinataire = [];
     DioHelper.getData(url: "verifypnn?phone_number=$phone").then((value) {
       emit(AppVerifyPhoneSuccessStates());
       verifiedphone = value.data;
-      print("verify phone");
+
       print(verifiedphone);
     }).catchError((error) {
       print(error.toString());
@@ -390,7 +396,7 @@ transactionsDestinataire = [];
     DioHelper.getData(url: "verifyemail?email=$email").then((value) {
       emit(AppVerifyEmailSuccessStates());
       verifiedEmail = value.data;
-      print("verify email");
+
       print(verifiedEmail);
     }).catchError((error) {
       print(error.toString());
@@ -498,6 +504,10 @@ transactionsDestinataire = [];
   void getHistoryTransactionsEmetteur(String emetteur) {
     emit(AppTransactionHistoryEmetteurInitialStates());
   }
+
+
+
+
 }
 
 bool jwtVerification(String token) {
