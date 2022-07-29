@@ -41,6 +41,7 @@ dependencies:
   shared_preferences: ^2.0.15
   flutter_conditional_rendering: ^2.0.0
   dio: ^4.0.0
+  crypto: ^3.0.2
   bloc: ^8.0.3
   salomon_bottom_bar: ^3.3.1
   curved_navigation_bar: ^1.0.3

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:crypto/crypto.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -101,13 +102,16 @@ class AppCubit extends Cubit<AppStates> {
 
 
   Future<void> userLogin(
-      {required String phone_number, required String password}) async {
-
+      {required String phone_number, required String pwd}) async {
+    var bytes = utf8.encode(pwd);
+    var password = sha1.convert(bytes);
+    print(bytes);
+    print(password.toString());
     emit(AppLoginInitialStates());
    try{
      const MethodChannel AuthCHANNEL = MethodChannel("payit/auth");
      var response = await AuthCHANNEL.invokeMethod(
-         "loginNative", {"phoneNumber": phone_number, "password": password});
+         "loginNative", {"phoneNumber": phone_number, "password": password.toString()});
      print(jsonDecode(response));
      userModel = UserModel.fromJson(jsonDecode(response));
   CacheHelper.saveData(key: "phone", value: userModel?.data.phoneNumber);

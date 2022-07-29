@@ -27,7 +27,7 @@ Future<void> main() async {
   Firebase.initializeApp();
 
   await CacheHelper.init();
-  DioHelper.init();
+  
 
   String? token;
 
