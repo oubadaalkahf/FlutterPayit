@@ -31,6 +31,8 @@ public class MainActivity extends FlutterActivity {
             channels.historyChannel(flutterEngine);
             channels.authChannel(flutterEngine);
 
+
+
     }
 
 }
