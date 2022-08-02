@@ -5,8 +5,13 @@ import androidx.annotation.NonNull;
 import com.example.mylibrarytts.Auth;
 import com.example.mylibrarytts.User;
 
+import java.security.Key;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -35,9 +40,10 @@ public class AppRepository {
         }
     }
 
-    public void login(@NonNull MethodCall call, MethodChannel.Result result){
+    public void login(@NonNull MethodCall call, MethodChannel.Result result) throws ParseException {
         String phoneNumber = call.argument("phoneNumber");
         String password = call.argument("password");
+
 
 
 
@@ -98,7 +104,7 @@ public class AppRepository {
         }
     }
 
-    public void removeFcmToken(MethodCall call, MethodChannel.Result result) {
+    public void removeFcmToken(@NonNull MethodCall call, MethodChannel.Result result) {
         String email = call.argument("email");
 
         try{
@@ -108,4 +114,52 @@ public class AppRepository {
             e.printStackTrace();
         }
     }
+
+
+    public void sendOtp(@NonNull MethodCall call, MethodChannel.Result result) {
+        String phoneNumber = call.argument("phoneNumber");
+
+        try{
+            String sendOtp= new User().sendOtp(phoneNumber);
+            result.success(sendOtp);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void verifyOtp(@NonNull MethodCall call, MethodChannel.Result result) {
+        String phoneNumber = call.argument("phoneNumber");
+        String otp = call.argument("otp");
+
+        try{
+            String verifyOtp= new User().verifyOtp(phoneNumber,otp);
+            result.success(verifyOtp);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void makeVersement(MethodCall call, MethodChannel.Result result) {
+        String montant = call.argument("montant");
+        String destinataire = call.argument("destinataire");
+        String message = call.argument("message");
+
+        try{
+            String makeVersement= new User().makeVersement(montant,destinataire,message);
+            result.success(makeVersement);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void getSessionId(MethodCall call, MethodChannel.Result result) {
+
+        try{
+            String sessionId= new User().getSessionId();
+            result.success(sessionId);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

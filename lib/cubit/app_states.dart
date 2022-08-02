@@ -152,3 +152,13 @@ class AppTransactionHistoryDestinataireInitialStates extends AppStates {}
 class AppTransactionHistoryDestinataireSuccessStates extends AppStates {}
 class AppTransactionHistoryDestinataireErrorStates extends AppStates {}
 
+
+
+class AppGetSessionIdSuccesStates extends AppStates {}
+class AppGetSessionIdInitStates extends AppStates {}
+class AppGetSessionIdErrorStates extends AppStates {}
+
+
+
+
+
