@@ -101,19 +101,18 @@ const    TransactionSentScreen(),
 
 
   Future<void> userLogin(
-      {required String phone_number, required String pwd}) async {
-    var bytes = utf8.encode(pwd);
-    var password = sha1.convert(bytes);
+      {required String phone_number, required String password}) async {
+
 
     emit(AppLoginInitialStates());
    try{
      const MethodChannel AuthCHANNEL = MethodChannel("payit/auth");
      var response = await AuthCHANNEL.invokeMethod(
-         "loginNative", {"phoneNumber": phone_number, "password": password.toString(),"session": CacheHelper.getData(key: "session")});
+         "loginNative", {"phoneNumber": phone_number, "password": password});
      print(jsonDecode(response));
-     userModel = UserModel.fromJson(jsonDecode(response));
+    userModel = UserModel.fromJson(jsonDecode(response));
   CacheHelper.saveData(key: "phone", value: userModel?.data.phoneNumber);
-     emit(AppLoginSuccessStates(userModel!));
+    emit(AppLoginSuccessStates(userModel!));
    }catch(e){
      print(e.toString());
      showToast(message: "login failed");
@@ -230,18 +229,14 @@ transactionsDestinataire = [];
 
 
   Future loadLoggedInUserNative(phoneNumber) async {
-    print("your session id is " + CacheHelper.getData(key: "session"));
+
     emit(LoadLoggedInUserInitial());
     try {
       userModel = null;
       const MethodChannel USERCHANNEL = MethodChannel("payit/user");
       var response = await USERCHANNEL
           .invokeMethod("loadLoggedInUserNative", {"phoneNumber": phoneNumber});
-      userModel = UserModel.fromJson(jsonDecode(response));
-      print(userModel?.data.phoneNumber);
-      emit(LoadLoggedInUserSuccessStates());
-      showHistoryEmetteur(userModel?.data.phoneNumber);
-      showHistoryDestinataire(userModel?.data.phoneNumber);
+
     }catch(e){
       print(e.toString());
       emit(LoadLoggedInUserErrorStates());

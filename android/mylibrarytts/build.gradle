@@ -27,12 +27,14 @@ android {
 
 dependencies {
 
+
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
 
     implementation files('libs\\commons-codec-1.7.jar')
+    implementation files('libs\\retrofit-2.9.0.jar')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

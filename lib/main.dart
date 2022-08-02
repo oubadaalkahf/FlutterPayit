@@ -100,7 +100,7 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) => AppCubit()..getSessionid()
+              create: (context) => AppCubit()
                 ..loadLoggedInUserNative(CacheHelper.getData(key: 'phoneNumber'))),
         ],
         child: BlocConsumer<AppCubit, AppStates>(

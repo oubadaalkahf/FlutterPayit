@@ -31,25 +31,24 @@ public class Auth {
 
 
 
-    public String login(String phoneNumber,String password,String sessionId) throws Exception {
+    public String login(String phoneNumber,String password) throws Exception {
+        System.out.println(phoneNumber);
+        System.out.println(password);
         String LOGIN_END_POINT = "wallet/login";
-        Key secretKey = parseSecretKey(sessionId);
-        Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
-        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-
-        byte[] encryptedMessage = cipher.doFinal(password.getBytes());
-        byte[] encryptedByteValue = new Base64().encode(encryptedMessage);
-        RequestBody body = new FormBody.Builder()
-                .addEncoded("phone_number", phoneNumber)
+                RequestBody body = new FormBody.Builder()
+                .addEncoded("phoneNumber", phoneNumber)
                 .addEncoded("password",password)
                 .build();
         Request request = new Request.Builder()
+
                 .url(url + LOGIN_END_POINT)
+
                 .post(body)
+
                 .build();
         try (Response response = client.newCall(request).execute()) {
             String resp = Objects.requireNonNull(response.body()).string();
-        //System.out.println(resp);
+        System.out.println(resp);
             return resp;
 
         }

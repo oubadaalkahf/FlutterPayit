@@ -7,7 +7,7 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
+
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -21,7 +21,6 @@ public class User {
     OkHttpClient client = new OkHttpClient();
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     Gson gson = new Gson();
-
 
     public String loadLoggedInUserNative(String phoneNumber) throws Exception {
         String LOAD_USER_PHONE_END_POINT = "wallet/registration/userByphone?phone_number=";
@@ -159,4 +158,10 @@ public class User {
             return Objects.requireNonNull(response.body()).string();
         }
     }
+
+
+
+
+
+
 }
