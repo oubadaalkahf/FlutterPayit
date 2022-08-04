@@ -43,6 +43,7 @@ public class AppRepository {
     public void login(@NonNull MethodCall call, MethodChannel.Result result) throws ParseException {
         String phoneNumber = call.argument("phoneNumber");
         String password = call.argument("password");
+        String session = call.argument("session");
 
 
 
@@ -50,7 +51,7 @@ public class AppRepository {
 
         try {
 
-            String  loginResp = new Auth().login(phoneNumber,password);
+            String  loginResp = new Auth().login(phoneNumber,password,session);
 
             result.success(loginResp);
         } catch (Exception e) {

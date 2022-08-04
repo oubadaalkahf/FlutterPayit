@@ -102,13 +102,15 @@ const    TransactionSentScreen(),
 
   Future<void> userLogin(
       {required String phone_number, required String password}) async {
+  String sessionid = CacheHelper.getData(key: "session");
+
 
 
     emit(AppLoginInitialStates());
    try{
      const MethodChannel AuthCHANNEL = MethodChannel("payit/auth");
      var response = await AuthCHANNEL.invokeMethod(
-         "loginNative", {"phoneNumber": phone_number, "password": password});
+         "loginNative", {"phoneNumber": phone_number, "password": password,"session":sessionid});
      print(jsonDecode(response));
     userModel = UserModel.fromJson(jsonDecode(response));
   CacheHelper.saveData(key: "phone", value: userModel?.data.phoneNumber);
@@ -310,7 +312,8 @@ transactionsDestinataire = [];
 
       var response = await USERCHANNEL
           .invokeMethod("getSessionid");
-
+      print("session id is");
+print(response);
      CacheHelper.saveData(key: "session", value:response);
       emit(AppGetSessionIdSuccesStates());
     }catch(e){
