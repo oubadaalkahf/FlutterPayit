@@ -102,15 +102,17 @@ const    TransactionSentScreen(),
 
   Future<void> userLogin(
       {required String phone_number, required String password}) async {
-  String sessionid = CacheHelper.getData(key: "session");
-
+  String sessionid = CacheHelper.getData(key: "sessionid");
+  String header= CacheHelper.getData(key: "header");
+print("LOGINNNNNNNNNn");
+print(header);
 
 
     emit(AppLoginInitialStates());
    try{
      const MethodChannel AuthCHANNEL = MethodChannel("payit/auth");
      var response = await AuthCHANNEL.invokeMethod(
-         "loginNative", {"phoneNumber": phone_number, "password": password,"session":sessionid});
+         "loginNative", {"phoneNumber": phone_number, "password": password,"session":sessionid,"header": header});
      print(jsonDecode(response));
     userModel = UserModel.fromJson(jsonDecode(response));
   CacheHelper.saveData(key: "phone", value: userModel?.data.phoneNumber);
@@ -238,7 +240,9 @@ transactionsDestinataire = [];
       const MethodChannel USERCHANNEL = MethodChannel("payit/user");
       var response = await USERCHANNEL
           .invokeMethod("loadLoggedInUserNative", {"phoneNumber": phoneNumber});
-
+      print(jsonDecode(response));
+      userModel = UserModel.fromJson(jsonDecode(response));
+      emit(LoadLoggedInUserSuccessStates());
     }catch(e){
       print(e.toString());
       emit(LoadLoggedInUserErrorStates());
@@ -310,11 +314,14 @@ transactionsDestinataire = [];
     const MethodChannel USERCHANNEL = MethodChannel("payit/user");
     try{
 
-      var response = await USERCHANNEL
+      Map<dynamic,dynamic> response = await USERCHANNEL
           .invokeMethod("getSessionid");
       print("session id is");
-print(response);
-     CacheHelper.saveData(key: "session", value:response);
+      CacheHelper.saveData(key: "header", value: response["header"].toString());
+      CacheHelper.saveData(key: "sessionid", value: response["sessionId"].toString());
+print( CacheHelper.getData(key: "header"));
+print( CacheHelper.getData(key: "sessionid"));
+    // CacheHelper.saveData(key: "session", value:response);
       emit(AppGetSessionIdSuccesStates());
     }catch(e){
       print(e.toString());

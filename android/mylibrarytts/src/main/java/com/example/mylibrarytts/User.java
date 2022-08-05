@@ -147,15 +147,18 @@ public class User {
 
     }
 
-    public String getSessionId() throws Exception {
+    public  Map<String,String> getSessionId() throws Exception {
         String SESSIONID_ENDPOINT = "wallet/registration/session";
-        RequestBody body = RequestBody.create(null, new byte[]{});
+
         Request request = new Request.Builder()
                 .url(url + SESSIONID_ENDPOINT)
                 .get()
                 .build();
         try (Response response = client.newCall(request).execute()) {
-            return Objects.requireNonNull(response.body()).string();
+            Map<String,String> data = new HashMap<String,String>();
+            data.put("header",response.headers().get("Set-Cookie"));
+           data.put("sessionId",Objects.requireNonNull(response.body()).string());
+            return data;
         }
     }
 
