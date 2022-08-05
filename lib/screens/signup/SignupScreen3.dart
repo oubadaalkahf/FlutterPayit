@@ -203,6 +203,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
                               onPressed: () {
                                 if (formkey.currentState!.validate()) {
                                   AppCubit.get(context).userSignUp(
+                                    gendre : AppCubit.get(context).gender,
                                       email: AppCubit.get(context).email,
                                       phoneNumber:
                                           AppCubit.get(context).phone_number,

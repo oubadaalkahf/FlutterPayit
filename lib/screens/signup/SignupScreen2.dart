@@ -1,3 +1,4 @@
+import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
 import 'package:testingg/screens/signup/ConfirmationEmailScreen.dart';
 import 'package:testingg/screens/signup/SignupScreen3.dart';
+import 'package:testingg/shared/Colors.dart';
 import 'package:testingg/shared/component.dart';
 
 import '../Routes/custom_page_route.dart';
@@ -63,7 +65,7 @@ class SignupScreen2 extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        left: 55, right: 55, top: 70, bottom: 30),
+                        left: 55, right: 55, top: 50, bottom: 30),
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -86,8 +88,36 @@ class SignupScreen2 extends StatelessWidget {
                               fontSize: 16,
                             ),
                           ),
-                          Container(
+                          SizedBox(
+                            height: 5,
+                          ),
+                          CustomRadioButton(
+                            enableShape: true,
 
+                            selectedBorderColor: Colors.grey,
+                            unSelectedBorderColor: Colors.grey,
+                            absoluteZeroSpacing: false,
+                            elevation: 0,
+                            unSelectedColor: Colors.white,
+                            buttonLables: const [
+                              'Monsieur',
+                              'Madame',
+                            ],
+                            buttonValues: const [
+                              "Monsieur",
+                              "Madame",
+                            ],
+                            buttonTextStyle: const ButtonTextStyle(
+                                selectedColor: Colors.white,
+                                unSelectedColor: Colors.black,
+                                textStyle: TextStyle(fontSize: 16)),
+                            radioButtonValue: (value) {
+                              print(value);
+                              AppCubit.get(context).gender = value.toString();
+                            },
+                            selectedColor:Colors.blueGrey,
+                          ),
+                          Container(
                             margin: const EdgeInsets.only(top: 22),
                             child: Focus(
                               canRequestFocus: false,

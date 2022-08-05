@@ -44,6 +44,7 @@ class AppCubit extends Cubit<AppStates> {
   String? password;
   String? cin;
   String? phone_number;
+  String? gender;
 
   static AppCubit get(context) => BlocProvider.of(context);
   static late Widget widget;
@@ -173,6 +174,7 @@ transactionsDestinataire = [];
     required String? firstName,
     required String? lastName,
     required String? cin,
+    required String? gender,
   }) async {
     emit(AppSigninInitialStates());
 
@@ -185,7 +187,8 @@ transactionsDestinataire = [];
          "password" : password,
        "firstName"  :firstName,
        "lastName": lastName,
-       "cin": cin
+       "cin": cin,
+       "gender" : gender
          });
      print(response.toString());
      emit(AppSigninSuccessStates());
