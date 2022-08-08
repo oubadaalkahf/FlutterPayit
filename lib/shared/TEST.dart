@@ -12,6 +12,7 @@ void showToast({required message}) => Fluttertoast.showToast(
     timeInSecForIosWeb: 5,
     fontSize: 16.0);
 
+
 void navigateTo(context, widget) => Navigator.push(
   context,
   MaterialPageRoute(

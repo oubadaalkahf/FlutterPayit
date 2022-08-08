@@ -44,6 +44,7 @@ class AppCubit extends Cubit<AppStates> {
   String? password;
   String? cin;
   String? phone_number;
+  String? gender;
 
   static AppCubit get(context) => BlocProvider.of(context);
   static late Widget widget;
@@ -102,13 +103,17 @@ const    TransactionSentScreen(),
 
   Future<void> userLogin(
       {required String phone_number, required String password}) async {
+  String sessionid = CacheHelper.getData(key: "sessionid");
+  String header= CacheHelper.getData(key: "header");
+print("LOGINNNNNNNNNn");
+print(header);
 
 
     emit(AppLoginInitialStates());
    try{
      const MethodChannel AuthCHANNEL = MethodChannel("payit/auth");
      var response = await AuthCHANNEL.invokeMethod(
-         "loginNative", {"phoneNumber": phone_number, "password": password});
+         "loginNative", {"phoneNumber": phone_number, "password": password,"session":sessionid,"header": header});
      print(jsonDecode(response));
     userModel = UserModel.fromJson(jsonDecode(response));
   CacheHelper.saveData(key: "phone", value: userModel?.data.phoneNumber);
@@ -169,6 +174,7 @@ transactionsDestinataire = [];
     required String? firstName,
     required String? lastName,
     required String? cin,
+    required String? gender,
   }) async {
     emit(AppSigninInitialStates());
 
@@ -181,7 +187,8 @@ transactionsDestinataire = [];
          "password" : password,
        "firstName"  :firstName,
        "lastName": lastName,
-       "cin": cin
+       "cin": cin,
+       "gender" : gender
          });
      print(response.toString());
      emit(AppSigninSuccessStates());
@@ -236,7 +243,9 @@ transactionsDestinataire = [];
       const MethodChannel USERCHANNEL = MethodChannel("payit/user");
       var response = await USERCHANNEL
           .invokeMethod("loadLoggedInUserNative", {"phoneNumber": phoneNumber});
-
+      print(jsonDecode(response));
+      userModel = UserModel.fromJson(jsonDecode(response));
+      emit(LoadLoggedInUserSuccessStates());
     }catch(e){
       print(e.toString());
       emit(LoadLoggedInUserErrorStates());
@@ -308,10 +317,14 @@ transactionsDestinataire = [];
     const MethodChannel USERCHANNEL = MethodChannel("payit/user");
     try{
 
-      var response = await USERCHANNEL
+      Map<dynamic,dynamic> response = await USERCHANNEL
           .invokeMethod("getSessionid");
-
-     CacheHelper.saveData(key: "session", value:response);
+      print("session id is");
+      CacheHelper.saveData(key: "header", value: response["header"].toString());
+      CacheHelper.saveData(key: "sessionid", value: response["sessionId"].toString());
+print( CacheHelper.getData(key: "header"));
+print( CacheHelper.getData(key: "sessionid"));
+    // CacheHelper.saveData(key: "session", value:response);
       emit(AppGetSessionIdSuccesStates());
     }catch(e){
       print(e.toString());

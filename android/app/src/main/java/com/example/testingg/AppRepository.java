@@ -43,6 +43,8 @@ public class AppRepository {
     public void login(@NonNull MethodCall call, MethodChannel.Result result) throws ParseException {
         String phoneNumber = call.argument("phoneNumber");
         String password = call.argument("password");
+        String session = call.argument("session");
+        String header = call.argument("header");
 
 
 
@@ -50,7 +52,7 @@ public class AppRepository {
 
         try {
 
-            String  loginResp = new Auth().login(phoneNumber,password);
+            String  loginResp = new Auth().login(phoneNumber,password,session);
 
             result.success(loginResp);
         } catch (Exception e) {
@@ -155,7 +157,7 @@ public class AppRepository {
     public void getSessionId(MethodCall call, MethodChannel.Result result) {
 
         try{
-            String sessionId= new User().getSessionId();
+            Map<String,String> sessionId= new User().getSessionId();
             result.success(sessionId);
         }catch(Exception e){
             e.printStackTrace();
