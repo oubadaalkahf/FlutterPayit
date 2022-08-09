@@ -36,9 +36,8 @@ public class Auth {
 
 
     public String login(String phoneNumber,String password,String header,String session) throws Exception {
-        System.out.println(phoneNumber);
-        System.out.println(password);
-        System.out.println("--------------------------------------------------------------");
+
+
         // STEP 1 :  PASSWORD TO SHA1
         MessageDigest mDigest = MessageDigest.getInstance("SHA1");
         byte[] result = mDigest.digest(password.getBytes());
@@ -55,13 +54,12 @@ public class Auth {
 
         String encryptedByteValue   = Base64.encodeToString(encryptedMessage,Base64.URL_SAFE);
 
-        System.out.println(encryptedByteValue);
+
 
         String LOGIN_END_POINT = "wallet/login";
 
 
-      System.out.println(header);
-        System.out.println("--------------------------------------------------------------");
+
 
         RequestBody body = new FormBody.Builder()
                 .addEncoded("phoneNumber", phoneNumber)
@@ -74,11 +72,10 @@ public class Auth {
                 .post(body)
 
                 .build();
-        System.out.println(request.toString());
-        System.out.println(request.headers());
+
         try (Response response = client.newCall(request).execute()) {
             String resp = Objects.requireNonNull(response.body()).string();
-            System.out.println(resp);
+
             return resp;
 
         }
