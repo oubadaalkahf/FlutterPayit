@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
+import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,6 +35,8 @@ class AppCubit extends Cubit<AppStates> {
   bool? verifiedphone;
   bool? verifiedEmail;
   String? qrString;
+  String? header;
+  String? sessionid;
 
   AppCubit() : super(AppInitialStates());
 
@@ -103,10 +106,10 @@ const    TransactionSentScreen(),
 
   Future<void> userLogin(
       {required String phone_number, required String password}) async {
-  String sessionid = CacheHelper.getData(key: "sessionid");
-  String header= CacheHelper.getData(key: "header");
+
 print("LOGINNNNNNNNNn");
 print(header);
+print(sessionid);
 
 
     emit(AppLoginInitialStates());
@@ -177,7 +180,6 @@ transactionsDestinataire = [];
     required String? gender,
   }) async {
     emit(AppSigninInitialStates());
-
    try{
      const MethodChannel REGISTERCHANNEL = MethodChannel("payit/auth");
      var response = await REGISTERCHANNEL
@@ -313,18 +315,17 @@ transactionsDestinataire = [];
 
   }
   void getSessionid() async{
+
     emit(AppGetSessionIdInitStates());
     const MethodChannel USERCHANNEL = MethodChannel("payit/user");
     try{
 
       Map<dynamic,dynamic> response = await USERCHANNEL
           .invokeMethod("getSessionid");
-      print("session id is");
-      CacheHelper.saveData(key: "header", value: response["header"].toString());
-      CacheHelper.saveData(key: "sessionid", value: response["sessionId"].toString());
-print( CacheHelper.getData(key: "header"));
-print( CacheHelper.getData(key: "sessionid"));
-    // CacheHelper.saveData(key: "session", value:response);
+
+sessionid = response["sessionId"].toString();
+header = response["header"].toString();
+
       emit(AppGetSessionIdSuccesStates());
     }catch(e){
       print(e.toString());

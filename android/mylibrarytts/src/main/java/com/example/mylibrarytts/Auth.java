@@ -35,44 +35,10 @@ public class Auth {
     static byte[] iv = hexStringToByteArray("48E53E0639A76C5A5E0C5BC9E3A91538");
 
 
-    public String login(String phoneNumber,String password,String session) throws Exception {
+    public String login(String phoneNumber,String password,String header,String session) throws Exception {
         System.out.println(phoneNumber);
         System.out.println(password);
-
-
         System.out.println("--------------------------------------------------------------");
-        String SESSION_POINT = "wallet/registration/session";
-
-        String header=null;
-        Request request_session;
-        if(header != null){
-            request_session = new Request.Builder()
-
-                    .url(url + SESSION_POINT)
-                    .addHeader("Cookie", header)
-                    .get()
-                    .build();
-        }
-        else {
-            request_session = new Request.Builder()
-
-                    .url(url + SESSION_POINT)
-
-                    .get()
-                    .build();
-        }
-
-        String session_id=null;
-        try (Response session_resp = client.newCall(request_session).execute()) {
-            header = session_resp.headers().get("Set-Cookie");
-            System.out.println(header);
-            session_id = Objects.requireNonNull(session_resp.body()).string();
-            System.out.println(session_id);
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-
         // STEP 1 :  PASSWORD TO SHA1
         MessageDigest mDigest = MessageDigest.getInstance("SHA1");
         byte[] result = mDigest.digest(password.getBytes());
@@ -80,40 +46,21 @@ public class Auth {
         for (int i = 0; i < result.length; i++) {
             sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
         }
-
-
-
         //STEP 2 : PASSWORD ecnrypted with session
-        Key secretKey = parseSecretKey(session_id);
-
+        Key secretKey = parseSecretKey(session);
         Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, new IvParameterSpec(iv));
         byte[] encryptedMessage = cipher.doFinal(sb.toString().getBytes());
 
-        //     String encryptedByteValue   = new String(Base64.encode(encryptedMessage, Base64.NO_WRAP), "UTF-8");
-        String encryptedByteValue   = Base64.encodeToString(encryptedMessage, Base64.NO_WRAP);
+
+        String encryptedByteValue   = Base64.encodeToString(encryptedMessage,Base64.URL_SAFE);
 
         System.out.println(encryptedByteValue);
 
         String LOGIN_END_POINT = "wallet/login";
 
 
-        String SESSION_ID_POINT = "wallet/registration/session";
-
-
-        Request requestt = new Request.Builder()
-
-                .url(url + SESSION_ID_POINT)
-                .addHeader("Cookie", header)
-                .get()
-                .build();
-        String respppp=null;
-        try (Response responsettt = client.newCall(requestt).execute()) {
-            respppp = Objects.requireNonNull(responsettt.body()).string();
-            System.out.println(respppp);
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+      System.out.println(header);
         System.out.println("--------------------------------------------------------------");
 
         RequestBody body = new FormBody.Builder()
@@ -123,10 +70,12 @@ public class Auth {
         Request request = new Request.Builder()
 
                 .url(url + LOGIN_END_POINT)
-
-                .post(body)
                 .addHeader("Cookie", header)
+                .post(body)
+
                 .build();
+        System.out.println(request.toString());
+        System.out.println(request.headers());
         try (Response response = client.newCall(request).execute()) {
             String resp = Objects.requireNonNull(response.body()).string();
             System.out.println(resp);
