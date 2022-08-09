@@ -228,7 +228,10 @@ class SideMenu extends StatelessWidget {
                 Navigator.pushAndRemoveUntil(
                     context, CustomPageRouteLeft(child: LoginScreen()),(route)=>false
                 );
+
                 AppCubit.get(context).currentIndex=0;
+                AppCubit.get(context).userModel=null;
+
               },
             ),
           ),

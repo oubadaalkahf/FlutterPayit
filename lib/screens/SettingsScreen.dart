@@ -184,7 +184,7 @@ class SettingsScreen extends StatelessWidget {
                     titleStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.red),
 
                     onTap: () {
-                      print("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiisooo");
+
                       print(AppCubit.get(context).userModel?.data.email);
                       AppCubit.get(context).removeFcmToken(AppCubit.get(context).userModel?.data.email);
 
@@ -194,7 +194,9 @@ class SettingsScreen extends StatelessWidget {
                     Navigator.pushAndRemoveUntil(
                         context, CustomPageRouteLeft(child: LoginScreen()),(route)=>false
                     );
-                    AppCubit.get(context).currentIndex=0;},
+
+                    AppCubit.get(context).currentIndex=0;
+                      AppCubit.get(context).userModel=null;},
                     icons: Icons.exit_to_app_rounded,
                 subtitle: "Are you sure ? ",
                     title: S.of(context).logout,
