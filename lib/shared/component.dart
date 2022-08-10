@@ -269,7 +269,7 @@ Future<void> showMyDialogLogout({
 
 
 
-Widget historyWidget(TransactionModel transaction,context) {
+Widget historyWidget(TransactionModel transaction,context,String type) {
   return Container(
 //      height: 100.0,
     margin: EdgeInsets.only(bottom: 7, left: 16.0, right: 16.0),

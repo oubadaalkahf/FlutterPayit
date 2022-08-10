@@ -6,31 +6,26 @@ import 'package:testingg/models/TransactionModel.dart';
 import 'package:testingg/shared/Colors.dart';
 import 'package:testingg/shared/component.dart';
 
-
 class TransactionReceiveScreen extends StatelessWidget {
   const TransactionReceiveScreen({Key? key}) : super(key: key);
 
+
+
   @override
   Widget build(BuildContext context) {
-
-    return BlocConsumer<AppCubit,AppStates>( listener: (context,state){
-
-    },
-      builder: (context,state){
-      return  Expanded(
-        child: ListView.builder(
-
-          itemBuilder: (context,index)=> historyWidget(AppCubit.get(context).transactionsDestinataire[index],context),
-
-
-          itemCount: AppCubit.get(context).transactionsDestinataire.length,
-
-          shrinkWrap: true,
-
-          physics: BouncingScrollPhysics(),
-          ),
-      );
-      });
+    return BlocConsumer<AppCubit, AppStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          return Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, index) => historyWidget(
+                  AppCubit.get(context).transactionsDestinataire[index],
+                  context,"receive"),
+              itemCount: AppCubit.get(context).transactionsDestinataire.length,
+              shrinkWrap: true,
+              physics: BouncingScrollPhysics(),
+            ),
+          );
+        });
   }
-
 }

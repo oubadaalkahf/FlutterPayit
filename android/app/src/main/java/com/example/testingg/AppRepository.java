@@ -78,6 +78,8 @@ public class AppRepository {
         String firstName = call.argument("firstName");
         String lastName = call.argument("lastName");
         String cin = call.argument("cin");
+        String gender = call.argument("gender");
+
 
         Map<String,Object>data = new HashMap<>();
         data.put("email",email);
@@ -86,6 +88,7 @@ public class AppRepository {
         data.put("lastName",lastName);
         data.put("phoneNumber",phoneNumber);
         data.put("cin",cin);
+        data.put("gender",gender);
 
         try{
             String signupResp= new Auth().register(data);

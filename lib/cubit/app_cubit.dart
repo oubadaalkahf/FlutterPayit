@@ -247,7 +247,10 @@ transactionsDestinataire = [];
           .invokeMethod("loadLoggedInUserNative", {"phoneNumber": phoneNumber});
       print(jsonDecode(response));
       userModel = UserModel.fromJson(jsonDecode(response));
+
       emit(LoadLoggedInUserSuccessStates());
+      showHistoryEmetteur(userModel?.data.phoneNumber);
+      showHistoryDestinataire(userModel?.data.phoneNumber);
     }catch(e){
       print(e.toString());
       emit(LoadLoggedInUserErrorStates());

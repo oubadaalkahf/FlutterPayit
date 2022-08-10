@@ -20,6 +20,7 @@ import '../shared/component.dart';
 import 'AlimentationScreen.dart';
 import 'Routes/CustomPageRouteRight.dart';
 
+
 class AccueilScreen extends StatelessWidget {
   static String id = "Accueil";
   final _controller = StreamController<SwipeRefreshState>.broadcast();
@@ -114,6 +115,7 @@ class AccueilScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+
           Container(
             height: 60,
             width: 60,

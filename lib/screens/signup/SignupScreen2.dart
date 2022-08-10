@@ -105,8 +105,8 @@ class SignupScreen2 extends StatelessWidget {
                               'Madame',
                             ],
                             buttonValues: const [
-                              "Monsieur",
-                              "Madame",
+                              "Homme",
+                              "Femme",
                             ],
                             buttonTextStyle: const ButtonTextStyle(
                                 selectedColor: Colors.white,
