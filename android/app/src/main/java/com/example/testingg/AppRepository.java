@@ -52,7 +52,7 @@ public class AppRepository {
 
         try {
 
-            String  loginResp = new Auth().login(phoneNumber,password,session);
+            String  loginResp = new Auth().login(phoneNumber,password,header,session);
 
             result.success(loginResp);
         } catch (Exception e) {

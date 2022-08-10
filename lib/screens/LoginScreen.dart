@@ -157,9 +157,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Container(
                     height: 130,
-                    width: 200,
+                    width: 250,
                     margin:const EdgeInsets.only(top: 40),
-                    child:const Image(image:  AssetImage("images/blue_payit.png")),
+                    child:const Image(image:  AssetImage("images/payit_login.png")),
                   ),
                   Container(
                     margin:const EdgeInsets.only(top: 70),
