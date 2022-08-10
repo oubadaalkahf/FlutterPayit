@@ -5,11 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
 import 'package:testingg/generated/l10n.dart';
+import 'package:testingg/screens/signup/SignupScreen1.dart';
 import 'package:testingg/screens/signup/SignupScreen2.dart';
 import 'package:testingg/shared/component.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 
+import '../../shared/Colors.dart';
 import '../Routes/custom_page_route.dart';
 
 class OTP extends StatelessWidget {
@@ -25,6 +27,7 @@ class OTP extends StatelessWidget {
         ),
       );
     }
+
     final jobRoleCtrl = TextEditingController();
     final formkey = GlobalKey<FormState>();
     bool _isObscure = true;
@@ -66,7 +69,7 @@ class OTP extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        left: 55, right: 55, top: 70, bottom: 30),
+                        left: 55, right: 55, top: 25, bottom: 30),
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -89,6 +92,26 @@ class OTP extends StatelessWidget {
                               fontSize: 16,
                             ),
                           ),
+                  Row( mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                    Text(
+                    "${AppCubit.get(context).phone_number}",
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                    TextButton(
+                      onPressed: () => navigateAndFinish(context,SignupScreen1()),
+                      child: Text(
+                        S.of(context).MODIFY,
+                        style: TextStyle(
+                            color: Colors.blueGrey,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15),
+                      ),
+                    ),
+                  ]),
                           SizedBox(
                             height: 35,
                           ),
@@ -120,21 +143,21 @@ class OTP extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                               Text(
+                              Text(
                                 S.of(context).Didnt_receive_the_code,
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 15),
                               ),
                               TextButton(
                                 onPressed: () => snackBar("OTP resend!!"),
-                                child:  Text(
+                                child: Text(
                                   S.of(context).RESEND,
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 11),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                           const SizedBox(

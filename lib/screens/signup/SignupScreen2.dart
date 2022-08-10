@@ -167,33 +167,8 @@ class SignupScreen2 extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          CustomRadioButton(
-                            selectedBorderColor: Colors.grey,
-                            unSelectedBorderColor: Colors.grey,
-                            absoluteZeroSpacing: false,
-                            elevation: 0,
-                            unSelectedColor: Colors.white,
 
-                            buttonLables: const [
-                              'Monsieur',
-                              'Madame',
-                            ],
-                            buttonValues: const [
-                              "Monsieur",
-                              "Madame",
-                            ],
-                            buttonTextStyle: const ButtonTextStyle(
-                                selectedColor: Colors.white,
-                                unSelectedColor: Colors.black,
-                                textStyle: TextStyle(fontSize: 16)),
-                            radioButtonValue: (value) {
-                              print(value);
-                            },
-                            selectedColor: Theme.of(context).accentColor,
-                          ),
+
                           Container(
                             margin: const EdgeInsets.only(top: 30),
                             child: TextFormField(

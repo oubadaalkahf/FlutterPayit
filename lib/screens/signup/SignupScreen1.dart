@@ -223,9 +223,7 @@ class SignupScreen1 extends StatelessWidget {
                                   print(cinController.text);
                                   AppCubit.get(context)
                                       .sendOtp(phonenumberController.text);
-                                  Navigator.of(context)
-                                      .push(CustomPageRouteLeft(child: OTP()));
-
+                                navigateAndFinish(context,OTP());
 
                                   AppCubit.get(context).phone_number =
                                       phonenumberController.text;

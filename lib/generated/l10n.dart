@@ -540,6 +540,16 @@ class S {
     );
   }
 
+  /// `MODIFY`
+  String get MODIFY {
+    return Intl.message(
+      'MODIFY',
+      name: 'MODIFY',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `NEXT`
   String get NEXT {
     return Intl.message(

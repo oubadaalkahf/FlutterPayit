@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Paiement \nfactures"),
         "Language": MessageLookupByLibrary.simpleMessage("Langue"),
         "Last_name": MessageLookupByLibrary.simpleMessage("Nom"),
+        "MODIFY": MessageLookupByLibrary.simpleMessage("Modifier"),
         "Money_transfer":
             MessageLookupByLibrary.simpleMessage("transfert\nd\'argent"),
         "More": MessageLookupByLibrary.simpleMessage("Plus\n"),

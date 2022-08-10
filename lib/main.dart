@@ -18,6 +18,7 @@ import 'package:testingg/screens/AccueilScreen.dart';
 import 'package:testingg/screens/HomeScreen.dart';
 import 'package:testingg/screens/LoginScreen.dart';
 import 'package:testingg/screens/signup/SignupScreen1.dart';
+import 'package:testingg/shared/Colors.dart';
 import 'package:testingg/shared/component.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
@@ -151,8 +152,8 @@ class _MyAppState extends State<MyApp> {
                     ),
                     const Spacer(),
                     const CircularProgressIndicator(
-                        backgroundColor: Colors.green,
-                        color: Color(0xff4c6611)),
+                        backgroundColor: Colors.blueGrey,
+                        color:  Color(0xff4c91bc)),
                   ],
                 ),
               ),
