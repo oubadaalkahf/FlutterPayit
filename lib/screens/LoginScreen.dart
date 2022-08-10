@@ -63,94 +63,95 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: const EdgeInsets.only(left: 235.0),
                       child: Column(
                         children: const [
-                          Icon(Icons.language,size: 40,color:Colors.blueGrey,),
-                          Text('Langue',style: TextStyle(
+                          Icon(
+                            Icons.language,
+                            size: 40,
+                            color: Colors.blueGrey,
+                          ),
+                          Text(
+                            'Langue',
+                            style: TextStyle(
                               fontWeight: FontWeight.w300,
-                              ),),
+                            ),
+                          ),
                         ],
                       ),
                     ),
-                    onTap: (){{
-                      showModalBottomSheet(
-                          context: context,
-                          builder: (context) => Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  S.of(context).choose_language_title,
-                                  style: TextStyle(
-                                      color: Colors.blueGrey,
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 20),
+                    onTap: () {
+                      {
+                        showModalBottomSheet(
+                            context: context,
+                            builder: (context) => Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        S.of(context).choose_language_title,
+                                        style: TextStyle(
+                                            color: Colors.blueGrey,
+                                            fontWeight: FontWeight.w300,
+                                            fontSize: 20),
+                                      ),
+                                      ListTile(
+                                        leading: Text(
+                                          'العربية',
+                                          style: GoogleFonts.manrope(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle: FontStyle.normal,
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          AppCubit.get(context)
+                                              .changeLocale("ar", context);
+                                          print("ar");
+                                          print(S.of(context).logout);
+                                        },
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      ListTile(
+                                        leading: Text(
+                                          'Français',
+                                          style: GoogleFonts.manrope(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle: FontStyle.normal,
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          AppCubit.get(context)
+                                              .changeLocale("fr", context);
 
-                                ),
-                                ListTile(
-                                  leading: Text(
-                                    'العربية',
-                                    style: GoogleFonts.manrope(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FontStyle.normal,
-                                    ),
+                                          print("fr");
+                                          print(S.of(context).logout);
+                                        },
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      ListTile(
+                                        leading: Text(
+                                          'english',
+                                          style: GoogleFonts.manrope(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle: FontStyle.normal,
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          AppCubit.get(context)
+                                              .changeLocale("en", context);
+
+                                          print("en");
+                                          print(S.of(context).logout);
+                                        },
+                                      ),
+                                    ],
                                   ),
-
-
-                                  onTap: () {
-                                    AppCubit.get(context).changeLocale("ar",context);
-
-                                    print("ar");   print(S.of(context).logout);
-
-
-                                  },
-                                ),
-                                SizedBox(height: 5,),
-                                ListTile(
-                                  leading: Text(
-                                    'Français',
-                                    style: GoogleFonts.manrope(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FontStyle.normal,
-                                    ),
-                                  ),
-
-                                  onTap: () {
-
-                                    AppCubit.get(context).changeLocale("fr",context);
-
-                                    print("fr");
-                                    print(S.of(context).logout);
-
-
-                                  },
-                                ),
-                                SizedBox(height: 5,),
-                                ListTile(
-                                  leading: Text(
-                                    'english',
-                                    style: GoogleFonts.manrope(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FontStyle.normal,
-                                    ),
-                                  ),
-
-                                  onTap: () {
-
-                                    AppCubit.get(context).changeLocale("en",context);
-
-                                    print("en");
-                                    print(S.of(context).logout);
-
-
-
-                                  },
-                                ),
-                              ],
-                            ),
-                          ));
-                    }
+                                ));
+                      }
                       //action code when clicked
 
                     },
@@ -162,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child:const Image(image:  AssetImage("images/payit_login.png")),
                   ),
                   Container(
-                    margin:const EdgeInsets.only(top: 70),
+                    margin: const EdgeInsets.only(top: 70),
                     child: TextFormField(
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(10),
@@ -170,7 +171,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       keyboardType: TextInputType.phone,
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return S.of(context).the_phone_number_must_not_be_empty;
+                          return S
+                              .of(context)
+                              .the_phone_number_must_not_be_empty;
                         }
                         return null;
                       },
@@ -188,23 +191,23 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Colors.green,
                           ), // icon is 48px widget.
                         ),
-                        hintText:S.of(context).enter_your_phone_number,
-                        fillColor:const Color(0xff243656),
+                        hintText: S.of(context).enter_your_phone_number,
+                        fillColor: const Color(0xff243656),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(
-                              color: Colors.green, width: 2.0),
+                          borderSide:
+                              const BorderSide(color: Colors.green, width: 2.0),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(
-                              color: Colors.green, width: 2.0),
+                          borderSide:
+                              const BorderSide(color: Colors.green, width: 2.0),
                         ),
                       ),
                     ),
                   ),
                   Container(
-                    margin:const EdgeInsets.only(top: 15, bottom: 30),
+                    margin: const EdgeInsets.only(top: 15, bottom: 30),
                     child: TextFormField(
                       keyboardType: TextInputType.phone,
                       validator: (value) {
@@ -248,8 +251,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(
-                              color: Colors.green, width: 2.0),
+                          borderSide:
+                              const BorderSide(color: Colors.green, width: 2.0),
                         ),
                       ),
                     ),
@@ -258,8 +261,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color:const Color(0xff1546A0).withOpacity(0.5),
-                          offset:const Offset(0, 24),
+                          color: const Color(0xff1546A0).withOpacity(0.5),
+                          offset: const Offset(0, 24),
                           blurRadius: 50,
                           spreadRadius: -18,
                         ),
@@ -274,16 +277,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               password: passwordLogController.text);
                         }
                       },
-                      textColor:const Color(0xffFFFFFF),
-                      padding:const EdgeInsets.all(0),
-                      shape:const StadiumBorder(),
+                      textColor: const Color(0xffFFFFFF),
+                      padding: const EdgeInsets.all(0),
+                      shape: const StadiumBorder(),
                       child: Container(
                         width: 275,
                         height: 65,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          gradient:const LinearGradient(
+                          gradient: const LinearGradient(
                             colors: [
                               Colors.green,
                               Color(0xff1546A0),
@@ -302,11 +305,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   Container(
-                    margin:const EdgeInsets.only(top: 65),
+                    margin: const EdgeInsets.only(top: 65),
                     child: Text(
                       S.of(context).not_member,
                       style: GoogleFonts.manrope(
-                        color:const Color(0xff1546A0).withOpacity(0.5),
+                        color: const Color(0xff1546A0).withOpacity(0.5),
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                       ),
@@ -316,7 +319,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     margin: const EdgeInsets.only(top: 28),
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color:   const Color(0xffF5F7FA),
+                        color: const Color(0xffF5F7FA),
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(10),
@@ -327,14 +330,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   Container(
-                      margin:const EdgeInsets.only(top: 22, bottom: 22),
+                      margin: const EdgeInsets.only(top: 22, bottom: 22),
                       child: TextButton(
                         onPressed: () {
-                          navigateTo(context,const SignupScreen1());
+                          navigateTo(context, const SignupScreen1());
                         },
-                        child:  Text(
+                        child: Text(
                           S.of(context).register,
-                          style:const TextStyle(
+                          style: const TextStyle(
                             color: Colors.black,
                             fontFamily: 'Montserrat',
                           ),

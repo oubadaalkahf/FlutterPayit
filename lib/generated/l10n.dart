@@ -550,10 +550,10 @@ class S {
     );
   }
 
-  /// `STEP 3 `
+  /// `STEP 3 : information `
   String get step_3 {
     return Intl.message(
-      'STEP 3 ',
+      'STEP 3 : information ',
       name: 'step_3',
       desc: '',
       args: [],
@@ -600,10 +600,10 @@ class S {
     );
   }
 
-  /// `Security`
+  /// `STEP 4 Security`
   String get Security {
     return Intl.message(
-      'Security',
+      'STEP 4 Security',
       name: 'Security',
       desc: '',
       args: [],
@@ -745,6 +745,116 @@ class S {
     return Intl.message(
       'Language',
       name: 'Language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `the Email must not be empty `
+  String get emailcontrollermsg {
+    return Intl.message(
+      'the Email must not be empty ',
+      name: 'emailcontrollermsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name must not be empty `
+  String get firstnamecontrollermsg {
+    return Intl.message(
+      'First Name must not be empty ',
+      name: 'firstnamecontrollermsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Name must not be empty`
+  String get lastnameecontrollermsg {
+    return Intl.message(
+      'Last Name must not be empty',
+      name: 'lastnameecontrollermsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email already exist`
+  String get email_existe {
+    return Intl.message(
+      'Email already exist',
+      name: 'email_existe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email `
+  String get HintEmail {
+    return Intl.message(
+      'Email ',
+      name: 'HintEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name`
+  String get HintFirstname {
+    return Intl.message(
+      'First Name',
+      name: 'HintFirstname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Name`
+  String get HintLastname {
+    return Intl.message(
+      'Last Name',
+      name: 'HintLastname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get Password {
+    return Intl.message(
+      'Password',
+      name: 'Password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `confirm password`
+  String get confirm_password {
+    return Intl.message(
+      'confirm password',
+      name: 'confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `password must not be empty`
+  String get passwordcontrollermg {
+    return Intl.message(
+      'password must not be empty',
+      name: 'passwordcontrollermg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `your phone number is verified`
+  String get phonenumberverified {
+    return Intl.message(
+      'your phone number is verified',
+      name: 'phonenumberverified',
       desc: '',
       args: [],
     );

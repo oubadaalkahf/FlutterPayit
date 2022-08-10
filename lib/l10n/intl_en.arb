@@ -55,7 +55,7 @@
   "Didnt_receive_the_code" : "Didnt receive the code ",
   "RESEND" : "RESEND",
   "NEXT" : "NEXT",
-  "step_3" : "STEP 3 ",
+  "step_3" : "STEP 3 : information ",
   "Enter_your_first_last_name" : "Enter your first,last name and email address ",
   "Email" : "E-mail",
   "First_name" : "First name",
@@ -74,5 +74,17 @@
   "Ticket_plan" : "Ticket\nPlan ",
   "More" : "More",
   "Splash_Screen": "DISCOVER THE FUTURE WITH US",
-  "Language" : "Language"
+  "Language" : "Language",
+  "emailcontrollermsg": "the Email must not be empty ",
+  "firstnamecontrollermsg": "First Name must not be empty ",
+  "lastnameecontrollermsg": "Last Name must not be empty",
+  "email_existe": "Email already exist",
+  "HintEmail": "Email ",
+  "HintFirstname" :"First Name",
+  "HintLastname": "Last Name",
+  "Security": "STEP 4 Security",
+  "Password": "Password",
+  "confirm_password": "confirm password",
+  "passwordcontrollermg": "password must not be empty",
+  "phonenumberverified": "your phone number is verified"
 }

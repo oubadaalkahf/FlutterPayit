@@ -12,7 +12,7 @@ import 'package:testingg/screens/Payment/PaymentRoute.dart';
 import 'package:testingg/screens/Transfer/FormulaireTransfert.dart';
 import 'package:testingg/screens/Routes/custom_page_route.dart';
 import 'package:testingg/screens/SettingsScreen.dart';
-import 'package:testingg/screens/Transfer/TransferRoute.dart';
+import 'package:testingg/screens/Transfer/TransferMoney.dart';
 import 'package:swipe_refresh/swipe_refresh.dart';
 
 import '../generated/l10n.dart';

@@ -108,7 +108,7 @@ class BillTransactionDetails extends StatelessWidget {
                           String? destinataire = AppCubit.get(context).userModel?.data.phoneNumber;
                           String? emetteur = transactionInfos?.merchandPhoneNumber;
                           print("hello");
-                          AppCubit.get(context).Makevirement(transactionInfos?.transactionAmount, destinataire, "hi",emetteur!);
+                          AppCubit.get(context).Makevirement(montant: transactionInfos?.transactionAmount,destinataire:  destinataire!, message: "hi",emetteur: emetteur!);
 
                         },
                         child: Ink(

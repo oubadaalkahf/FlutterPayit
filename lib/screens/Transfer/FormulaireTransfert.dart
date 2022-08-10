@@ -10,11 +10,15 @@ import 'package:testingg/screens/AccueilScreen.dart';
 import 'package:testingg/screens/SettingsScreen.dart';
 import 'package:testingg/screens/Transfer/BillTransactionDetails.dart';
 import 'package:testingg/screens/Transfer/TransferQrCodeResult.dart';
-import 'package:testingg/screens/Transfer/TransferRoute.dart';
+import 'package:testingg/screens/Transfer/TransferMoney.dart';
 import 'package:testingg/shared/SideMenu.dart';
 import 'package:text_form_field_wrapper/text_form_field_wrapper.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:status_change/status_change.dart';
 
 import '../../shared/PopUp.dart';
+import '../HomeScreen.dart';
 import '../Routes/CustomPageRouteRight.dart';
 
 class FormulaireTransfert extends StatefulWidget {
@@ -51,7 +55,7 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
   String valueofoftransactioncurrency = '504';
 
   List<DropdownMenuItem<String>> get oeration_type {
-    List<DropdownMenuItem<String>> operation_type = [
+    List<DropdownMenuItem<String>> operationType = [
       DropdownMenuItem(child: Text("Transfer P2P"), value: "0"),
       DropdownMenuItem(
           child: Text("Paiement commercant a face 2 face"), value: "1"),
@@ -59,7 +63,7 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
           child: Text("Paiement commercant a distance"), value: "2"),
       DropdownMenuItem(child: Text("Paiement FMCG"), value: "3"),
     ];
-    return operation_type;
+    return operationType;
   }
 
   String valueOfOperationType = '0';
@@ -300,6 +304,54 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 210.0),
+                        child: Container(
+                          width: 135,
+                          height: 55,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: AnimatedButton(
+                            text: 'VALIDER',
+                            color: Color(0xff4c91bc),
+                            pressEvent: () {
+                              if (formkey.currentState!.validate()) {
+                                AwesomeDialog(
+                                context: context,
+                                dialogType: DialogType.WARNING,
+                                headerAnimationLoop: false,
+                                animType: AnimType.TOPSLIDE,
+                                showCloseIcon: true,
+                                title: 'INFOS',
+                                desc:
+                                'Vous venez d\'envoyer un montant de ${transactionAmount.text} DH ',
+                                btnCancelOnPress: () {Navigator.of(context).push(
+                                  CustomPageRouteRight(child: HomeScreen()),
+                                ); },
+                                btnOkOnPress: ()  {
+                                   {
+                                    print("hiiiiiiiiii");
+                                    print(character?.name);
+                                    print("hiiiiiiiiii2");
+                                    print(transactionAmount.text);
+                                    AppCubit.get(context).transferp2p(
+                                        '${character?.name}',
+                                        "+212" + phoneNumber.text,
+                                        selectedValue,
+                                        transactionAmount.text,
+                                        purposeOfTransaction.text,
+                                        selectedValueOperationType);
+
+                                  }
+                                },
+                              ).show();
+                              }
+                            },
+                          ),
+                        ),
+                      ),
+
+                    /*  Padding(
+                        padding: const EdgeInsets.only(left: 210.0),
                         child: RaisedButton(
                           onPressed: () {
                             if (formkey.currentState!.validate()) {
@@ -314,6 +366,7 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
                                   transactionAmount.text,
                                   purposeOfTransaction.text,
                                   selectedValueOperationType);
+
                             }
                           },
                           textColor: Color(0xffFFFFFF),
@@ -337,7 +390,7 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
                             ),
                           ),
                         ),
-                      ),
+                      ), */
                     ],
                   ),
                 ),
@@ -348,4 +401,10 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
       );
     },);
   }
+
+
+
+
+
 }
+

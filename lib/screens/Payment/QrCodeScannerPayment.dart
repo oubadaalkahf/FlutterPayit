@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:testingg/screens/Payment/PaymentRoute.dart';
-import 'package:testingg/screens/Transfer/TransferRoute.dart';
+import 'package:testingg/screens/Transfer/TransferMoney.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 import '../../cubit/app_cubit.dart';
@@ -133,7 +133,7 @@ class _QrCodeScannerPaymentState extends State<QrCodeScannerPayment> with Widget
                   children: [
                     InkWell(
                       onTap: (){ scanQR();},
-                      child: new Image.asset(
+                      child: Image.asset(
                         'images/scannercodeqr.gif',
                         width: 150.0,
                         height: 150.0,

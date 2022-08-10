@@ -6,6 +6,8 @@ import 'package:testingg/cubit/app_states.dart';
 import 'package:testingg/screens/signup/ConfirmationEmailScreen.dart';
 import 'package:testingg/shared/component.dart';
 
+import '../../generated/l10n.dart';
+
 class SignupScreen3 extends StatefulWidget {
   static String id = "SignupScreen";
 
@@ -70,7 +72,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'STEP 4 : Security ',
+                            S.of(context).Security,
                             style: GoogleFonts.manrope(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
@@ -80,7 +82,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
                             height: 5,
                           ),
                           Text(
-                            'Enter your new password twice',
+                            S.of(context).Enter_new_password,
                             style: GoogleFonts.manrope(
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
@@ -92,7 +94,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
                               keyboardType: TextInputType.phone,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return "the Password must not be empty";
+                                  return S.of(context).passwordcontrollermg;
                                 }
                                 return null;
                               },
@@ -108,7 +110,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
                                   Icons.password,
                                   color: Colors.green,
                                 ),
-                                hintText: 'Password',
+                                hintText: S.of(context).password,
                                 suffixIcon: IconButton(
                                   icon: Icon(
                                     _isObscure
@@ -141,7 +143,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
                               keyboardType: TextInputType.phone,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return "the Password must not be empty";
+                                  return S.of(context).Enter_new_password;
                                 }
                                 return null;
                               },
@@ -157,7 +159,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
                                   Icons.password,
                                   color: Colors.green,
                                 ),
-                                hintText: 'Confirm password',
+                                hintText: S.of(context).confirm_password,
                                 suffixIcon: IconButton(
                                   icon: Icon(
                                     _isObscure
@@ -203,7 +205,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
                               onPressed: () {
                                 if (formkey.currentState!.validate()) {
                                   AppCubit.get(context).userSignUp(
-                                    gender: AppCubit.get(context).gender,
+                                      gender: AppCubit.get(context).gender,
                                       email: AppCubit.get(context).email,
                                       phoneNumber:
                                           AppCubit.get(context).phone_number,
@@ -234,7 +236,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'CREATE',
+                                      S.of(context).NEXT,
                                       style: GoogleFonts.manrope(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w600,

@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Enter_your_first_last_name": MessageLookupByLibrary.simpleMessage(
             "Entrez votre prénom,Nom et l\'adresse email "),
         "First_name": MessageLookupByLibrary.simpleMessage("Prénom"),
+        "HintEmail": MessageLookupByLibrary.simpleMessage("Adresse email "),
+        "HintFirstname": MessageLookupByLibrary.simpleMessage("Nom"),
+        "HintLastname": MessageLookupByLibrary.simpleMessage("Prenom"),
         "Invoice_payment":
             MessageLookupByLibrary.simpleMessage("Paiement \nfactures"),
         "Language": MessageLookupByLibrary.simpleMessage("Langue"),
@@ -45,12 +48,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "NEXT": MessageLookupByLibrary.simpleMessage("SUIVANT"),
         "Open_Email_App": MessageLookupByLibrary.simpleMessage(
             "ouvrir l\'application de messagerie"),
+        "Password": MessageLookupByLibrary.simpleMessage("mot de passe"),
         "Pay_your_merchand":
             MessageLookupByLibrary.simpleMessage("Payer un\ncommerçant"),
         "Phone_charging":
             MessageLookupByLibrary.simpleMessage("Recharge \nMobile"),
         "RESEND": MessageLookupByLibrary.simpleMessage("RENVOYER"),
-        "Security": MessageLookupByLibrary.simpleMessage("Securité"),
+        "Security": MessageLookupByLibrary.simpleMessage("ETAPE 4 : Securité"),
         "Splash_Screen": MessageLookupByLibrary.simpleMessage(
             "DÉCOUVREZ LE FUTUR AVEC NOUS"),
         "Ticket_plan": MessageLookupByLibrary.simpleMessage("Ticket\nAvion "),
@@ -72,14 +76,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "cin": MessageLookupByLibrary.simpleMessage("CIN"),
         "cin_already_exist":
             MessageLookupByLibrary.simpleMessage("Cin existe déjà"),
+        "confirm_password":
+            MessageLookupByLibrary.simpleMessage("confimer mot de passe"),
         "dh": MessageLookupByLibrary.simpleMessage("MAD"),
+        "email_existe": MessageLookupByLibrary.simpleMessage(
+            "l\'adresse email existe deja"),
+        "emailcontrollermsg": MessageLookupByLibrary.simpleMessage(
+            "l\'adresse email ne doit pas être vide "),
         "enter_your_phone_number":
             MessageLookupByLibrary.simpleMessage(" numéro de telephone"),
         "enter_your_phone_number_and_your_cin":
             MessageLookupByLibrary.simpleMessage(
                 "Entrez votre numéro de téléphone et votre CIN"),
+        "firstnamecontrollermsg": MessageLookupByLibrary.simpleMessage(
+            "le Nom ne doit pas être vide  "),
         "hello": MessageLookupByLibrary.simpleMessage("Bonjour"),
         "home": MessageLookupByLibrary.simpleMessage("Accueil"),
+        "lastnameecontrollermsg": MessageLookupByLibrary.simpleMessage(
+            "le Prenom  ne doit pas être vide "),
         "log_in": MessageLookupByLibrary.simpleMessage("connexion"),
         "logout": MessageLookupByLibrary.simpleMessage("deconnexion"),
         "merchant_payment":
@@ -95,9 +109,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "vous n\'avait pas un compte?"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "password": MessageLookupByLibrary.simpleMessage("Mot de passe"),
+        "passwordcontrollermg": MessageLookupByLibrary.simpleMessage(
+            "le mot de passe ne doit pas être vide"),
         "payment": MessageLookupByLibrary.simpleMessage("Paiement"),
         "phone_number_already_exist": MessageLookupByLibrary.simpleMessage(
             "Le numéro de téléphone existe déjà"),
+        "phonenumberverified": MessageLookupByLibrary.simpleMessage(
+            "votre numéro de téléphone est vérifié "),
         "receive_money":
             MessageLookupByLibrary.simpleMessage("Recevoir de L\'argent\n"),
         "register":
@@ -113,7 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ÉTAPE 1 : Identification"),
         "step_2":
             MessageLookupByLibrary.simpleMessage("ÉTAPE 2 : Identification \n"),
-        "step_3": MessageLookupByLibrary.simpleMessage("ÉTAPE 3 "),
+        "step_3": MessageLookupByLibrary.simpleMessage("ÉTAPE 3: information"),
         "terms_of_use": MessageLookupByLibrary.simpleMessage(
             "En continuant, vous acceptez les termes et conditions d\'utilisation\n "),
         "the_cin_must_not_be_empty": MessageLookupByLibrary.simpleMessage(

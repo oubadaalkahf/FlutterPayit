@@ -115,11 +115,10 @@ class BillPaymentDetails extends StatelessWidget {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(30),
                         onTap: () {
-                          String? destinataire = AppCubit.get(context).userModel?.data.phoneNumber;
-                          String? emetteur = transactionInfos?.merchandPhoneNumber;
+                          String? emetteur = AppCubit.get(context).userModel?.data.phoneNumber;
+                          String?  destinataire= transactionInfos?.merchandPhoneNumber;
                           print("hello");
-                          AppCubit.get(context).Makevirement(transactionInfos?.transactionAmount, destinataire, "hi",emetteur!);
-
+                          AppCubit.get(context).Makevirement(montant: transactionInfos?.transactionAmount,emetteur: emetteur!,message: "hi", destinataire: destinataire!);
                         },
                         child: Ink(
                           child: Container(
@@ -137,7 +136,6 @@ class BillPaymentDetails extends StatelessWidget {
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),

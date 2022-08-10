@@ -256,7 +256,26 @@ transactionsDestinataire = [];
 
   //------------------HADI-----------------------------------------------------//
 
-  void Makevirement(montant, destinataire, message, String emetteur) {
+  void sendOtp(String phoneNumber) async{
+    emit(AppSendOtpInitialState());
+    const MethodChannel USERCHANNEL = MethodChannel("payit/user");
+   try{
+     print("hi");
+     var response = await USERCHANNEL
+         .invokeMethod("sendOtp", {"phoneNumber": phoneNumber});
+     print(response);
+     emit(AppSendOtpSuccessState(response));
+   }catch(e){
+     print(e.toString());
+   }
+  }
+
+  void Makevirement({
+  required montant,
+  required destinataire,
+  required message,
+  required String emetteur
+}) {
     if (emetteur.startsWith("+212")) {
       emetteur = emetteur.replaceAll("+212", "0");
     }
@@ -283,20 +302,6 @@ transactionsDestinataire = [];
     }).catchError((error) {
       emit(AppVirementErrorStates());
     });
-  }
-
-  void sendOtp(String phoneNumber) async{
-    emit(AppSendOtpInitialState());
-    const MethodChannel USERCHANNEL = MethodChannel("payit/user");
-   try{
-     print("hi");
-     var response = await USERCHANNEL
-         .invokeMethod("sendOtp", {"phoneNumber": phoneNumber});
-     print(response);
-     emit(AppSendOtpSuccessState(response));
-   }catch(e){
-     print(e.toString());
-   }
   }
 
   void verifyOtp(String otp) async{
@@ -339,7 +344,6 @@ header = response["header"].toString();
     emit(AppVersementInitialStates());
     const MethodChannel USERCHANNEL = MethodChannel("payit/user");
     try{
-
       var response = await USERCHANNEL
           .invokeMethod("makeVersement",
           {
@@ -436,6 +440,28 @@ header = response["header"].toString();
       emit(AppGeneratedQrCodeErrorStates());
     });
   }
+  void transfertP2PUser(
+      tran_amount, tran_purpose, ) {
+    emit(AppGeneratedQrCodeInitialStates());
+    print("-----------------------");
+    DioHelper.postData(url: 'transferp2p', data: {
+      "transaction_type": "transfer p2p",
+      "point_of_initiation_method": "11",
+      "paid_entity_reference": "+212687171739",
+      "transaction_currency": "508",
+      "transaction_amount": tran_amount,
+      "purpose_of_transaction": tran_purpose,
+      "financial_institution_code": "999",
+      "operation_type": "0"
+    }).then((value) {
+      print(value.data);
+      qrString = value.data;
+      emit(AppGeneratedQrCodeSuccessStates(value.data));
+    }).catchError((error) {
+      print(error.toString());
+      emit(AppGeneratedQrCodeErrorStates());
+    });
+  }
   void PaimnentCommercant(String pointofinitiationmethode,paidEntityRef,trans_curr,tran_amount,tran_purpose,oper_type,merchant_category_code,country_code,merchant_name,merchant_city
       ){
 
@@ -492,7 +518,6 @@ header = response["header"].toString();
       print(error.toString());
     });
   }
-
   void getTransactionInfoTransfer(String qrText, context) {
     emit(AppTransactionInitialStates());
     DioHelper.postData(url: "/getqrdata", data: {

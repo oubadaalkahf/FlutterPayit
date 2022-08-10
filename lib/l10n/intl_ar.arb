@@ -71,6 +71,17 @@
   "Ticket_plan" : "Ticket\nAvion ",
   "More" : "Plus\n",
   "Splash_Screen": "DISCOVER THE FUTURE WITH US",
-  "Language" : "Langue"
-
+  "Language" : "Langue",
+  "emailcontrollermsg": "l'adresse email ne doit pas être vide ",
+  "firstnamecontrollermsg": "le ne doit pas être vide  ",
+  "lastnameecontrollermsg": "le prenom email ne doit pas être vide ",
+  "email_existe": "l'adresse email existe deja",
+  "HintEmail": "adresse email ",
+  "HintFirstname" :"nom",
+  "HintLastname": "prenom",
+  "Security": "STEP 4 : Securité",
+ "Password": "mot de passe",
+  "confirm_password": "confimer mot de passe",
+  "passwordcontrollermg": "le mot de passe ne doit pas être vide",
+  "phonenumberverified": "your phone number is verified"
 }

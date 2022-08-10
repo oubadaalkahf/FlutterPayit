@@ -48,7 +48,7 @@
   "Didnt_receive_the_code" : "Vous n'avez pas reçu le code",
   "RESEND" : "RENVOYER",
   "NEXT" : "SUIVANT",
-  "step_3" : "ÉTAPE 3 ",
+  "step_3" : "ÉTAPE 3: information",
   "Enter_your_first_last_name" : "Entrez votre prénom,Nom et l'adresse email ",
   "Email" : "E-mail",
   "First_name" : "Prénom",
@@ -67,5 +67,20 @@
   "Ticket_plan" : "Ticket\nAvion ",
   "More" : "Plus\n",
   "Splash_Screen": "DÉCOUVREZ LE FUTUR AVEC NOUS",
-  "Language" : "Langue"
+  "Language" : "Langue",
+  "emailcontrollermsg": "l'adresse email ne doit pas être vide ",
+  "firstnamecontrollermsg": "le Nom ne doit pas être vide  ",
+  "lastnameecontrollermsg": "le Prenom  ne doit pas être vide ",
+  "email_existe": "l'adresse email existe deja",
+  "HintEmail": "Adresse email ",
+  "HintFirstname" :"Nom",
+  "HintLastname": "Prenom",
+  "Security": "ETAPE 4 : Securité",
+  "Password": "mot de passe",
+  "confirm_password": "confimer mot de passe",
+  "passwordcontrollermg": "le mot de passe ne doit pas être vide",
+  "phonenumberverified": "votre numéro de téléphone est vérifié "
+
+
+
 }

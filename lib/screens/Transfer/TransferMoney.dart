@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
+import 'package:testingg/screens/Transfer/TransferMoneyRoute.dart';
 import '../../generated/l10n.dart';
 import '../../cubit/app_cubit.dart';
 import 'FormulaireTransfert.dart';
@@ -46,7 +47,6 @@ class TransferRoute extends StatelessWidget {
               SizedBox(
                 height: 120,
               ),
-
               SettingsGroup(
                 items: [
                   SettingsItem(
@@ -56,7 +56,7 @@ class TransferRoute extends StatelessWidget {
                           CustomPageRouteLeft(child: QrCodeScannerTransfer()),
                           (route) => false);
                     },
-                    icons: CupertinoIcons.down_arrow ,
+                    icons: CupertinoIcons.down_arrow,
                     iconStyle: IconStyle(
                       backgroundColor: Color(0xff4c91bc),
                     ),
@@ -67,7 +67,7 @@ class TransferRoute extends StatelessWidget {
                     onTap: () {
                       Navigator.pushAndRemoveUntil(
                           context,
-                          CustomPageRouteLeft(child: FormulaireTransfert()),
+                          CustomPageRouteLeft(child: TransferMoneyRoute()),
                           (route) => false);
                     },
                     icons: CupertinoIcons.up_arrow,
@@ -80,7 +80,6 @@ class TransferRoute extends StatelessWidget {
                   ),
                 ],
               ),
-
               // You can add a settings title
             ],
           ),

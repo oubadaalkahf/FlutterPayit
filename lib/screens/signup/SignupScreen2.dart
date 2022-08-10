@@ -10,6 +10,7 @@ import 'package:testingg/screens/signup/SignupScreen3.dart';
 import 'package:testingg/shared/Colors.dart';
 import 'package:testingg/shared/component.dart';
 
+import '../../generated/l10n.dart';
 import '../Routes/custom_page_route.dart';
 
 class SignupScreen2 extends StatelessWidget {
@@ -72,7 +73,7 @@ class SignupScreen2 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'STEP 3: Information ',
+                            S.of(context).step_3,
                             style: GoogleFonts.manrope(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
@@ -82,7 +83,7 @@ class SignupScreen2 extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            'Enter your first name,Last name and your email',
+                            S.of(context).enter_your_phone_number_and_your_cin,
                             style: GoogleFonts.manrope(
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
@@ -121,25 +122,27 @@ class SignupScreen2 extends StatelessWidget {
                             margin: const EdgeInsets.only(top: 22),
                             child: Focus(
                               canRequestFocus: false,
-                              onFocusChange: (hasfocus){
-                                if(!hasfocus){
-                                  AppCubit.get(context).verifyEmail(emailController.text);
+                              onFocusChange: (hasfocus) {
+                                if (!hasfocus) {
+                                  AppCubit.get(context)
+                                      .verifyEmail(emailController.text);
                                 }
                               },
                               child: TextFormField(
-                                onEditingComplete: (){
+                                onEditingComplete: () {
                                   FocusScope.of(context).nextFocus();
                                 },
                                 keyboardType: TextInputType.emailAddress,
                                 controller: emailController,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "the Email must not be empty";
-                                  }else if(AppCubit.get(context).verifiedEmail==true)
-                                    {
-                                      return "the Email Already Exist";
-                                    }else
-                                  return null;
+                                    return S.of(context).emailcontrollermsg;
+                                  } else if (AppCubit.get(context)
+                                          .verifiedEmail ==
+                                      true) {
+                                    return S.of(context).email_existe;
+                                  } else
+                                    return null;
                                 },
                                 style: GoogleFonts.manrope(
                                   fontWeight: FontWeight.w400,
@@ -150,7 +153,7 @@ class SignupScreen2 extends StatelessWidget {
                                     Icons.alternate_email,
                                     color: Colors.green,
                                   ),
-                                  hintText: 'Email ',
+                                  hintText: S.of(context).HintEmail,
                                   fillColor: const Color(0xff243656),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20),
@@ -164,17 +167,44 @@ class SignupScreen2 extends StatelessWidget {
                               ),
                             ),
                           ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          CustomRadioButton(
+                            selectedBorderColor: Colors.grey,
+                            unSelectedBorderColor: Colors.grey,
+                            absoluteZeroSpacing: false,
+                            elevation: 0,
+                            unSelectedColor: Colors.white,
+
+                            buttonLables: const [
+                              'Monsieur',
+                              'Madame',
+                            ],
+                            buttonValues: const [
+                              "Monsieur",
+                              "Madame",
+                            ],
+                            buttonTextStyle: const ButtonTextStyle(
+                                selectedColor: Colors.white,
+                                unSelectedColor: Colors.black,
+                                textStyle: TextStyle(fontSize: 16)),
+                            radioButtonValue: (value) {
+                              print(value);
+                            },
+                            selectedColor: Theme.of(context).accentColor,
+                          ),
                           Container(
                             margin: const EdgeInsets.only(top: 30),
                             child: TextFormField(
-                              onEditingComplete: (){
+                              onEditingComplete: () {
                                 FocusScope.of(context).nextFocus();
                               },
                               controller: firstnameController,
                               keyboardType: TextInputType.name,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return "the first name must not be empty";
+                                  return S.of(context).firstnamecontrollermsg;
                                 }
                                 return null;
                               },
@@ -187,7 +217,7 @@ class SignupScreen2 extends StatelessWidget {
                                   Icons.person,
                                   color: Colors.green,
                                 ),
-                                hintText: 'First  name ',
+                                hintText: S.of(context).HintFirstname,
                                 fillColor: const Color(0xff243656),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20),
@@ -206,13 +236,12 @@ class SignupScreen2 extends StatelessWidget {
                             margin: const EdgeInsets.only(top: 22),
                             child: TextFormField(
                               controller: lasttnameController,
-                              onEditingComplete: (){
+                              onEditingComplete: () {
                                 FocusScope.of(context).nextFocus();
                               },
                               validator: (value) {
-
                                 if (value!.isEmpty) {
-                                  return "the Last name must not be empty";
+                                  return S.of(context).lastnameecontrollermsg;
                                 }
                                 return null;
                               },
@@ -225,7 +254,7 @@ class SignupScreen2 extends StatelessWidget {
                                   Icons.person,
                                   color: Colors.green,
                                 ),
-                                hintText: 'Last name ',
+                                hintText: S.of(context).HintLastname,
                                 fillColor: const Color(0xff243656),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20),
@@ -238,7 +267,6 @@ class SignupScreen2 extends StatelessWidget {
                               ),
                             ),
                           ),
-
                           const SizedBox(
                             height: 190,
                           ),
@@ -257,7 +285,7 @@ class SignupScreen2 extends StatelessWidget {
                             child: RaisedButton(
                               onPressed: () {
                                 if (formkey.currentState!.validate()) {
-                                 AppCubit.get(context).email =
+                                  AppCubit.get(context).email =
                                       emailController.text;
                                   AppCubit.get(context).firstName =
                                       firstnameController.text;
@@ -266,8 +294,6 @@ class SignupScreen2 extends StatelessWidget {
                                   Navigator.of(context).push(
                                     CustomPageRouteLeft(child: SignupScreen3()),
                                   );
-
-
                                 }
                               },
                               textColor: const Color(0xffFFFFFF),
@@ -290,7 +316,7 @@ class SignupScreen2 extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'NEXT',
+                                      S.of(context).NEXT,
                                       style: GoogleFonts.manrope(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w600,

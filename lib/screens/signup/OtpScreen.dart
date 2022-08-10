@@ -25,13 +25,9 @@ class OTP extends StatelessWidget {
         ),
       );
     }
-
     final jobRoleCtrl = TextEditingController();
-
     final formkey = GlobalKey<FormState>();
-
     bool _isObscure = true;
-
     var otpController = OtpFieldController();
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {

@@ -4,7 +4,8 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
-import 'package:testingg/screens/Transfer/TransferRoute.dart';
+import 'package:testingg/screens/Transfer/TransferMoney.dart';
+import 'package:testingg/screens/Transfer/TransferMoneyRoute.dart';
 import 'package:testingg/shared/Colors.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
@@ -50,7 +51,7 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
                   Navigator.of(context).push(
-                    CustomPageRouteRight(child: const TransferRoute()),
+                    CustomPageRouteRight(child: const TransferMoneyRoute()),
                   );
                 },
               ),
@@ -103,7 +104,7 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
       );
 
   Widget _buildMidContainerWithButton() {
-    final buttonHeight = 10.0;
+    final buttonHeight =170.0;
     return Stack(
       children: [
         // Use same background color like the second container
@@ -113,7 +114,7 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
           offset: Offset(0.0, -buttonHeight / 2.0),
           child: Center(
             child: GestureDetector(
-              onTap: () {/* do stuff */},
+              onTap: () { /* do stuff */ },
               child: Container(
                 height: buttonHeight,
                 decoration: BoxDecoration(
@@ -127,19 +128,20 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
                   ],
                 ),
                 padding: const EdgeInsets.fromLTRB(24.0, 10.0, 24.0, 0.0),
-                child: Column(
+                child:  Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     InkWell(
-                      onTap: () {
-                        scanQR();
-                      },
-                      child: new Image.asset(
+                      onTap: (){ scanQR();},
+                      child: Image.asset(
                         'images/scannercodeqr.gif',
                         width: 150.0,
                         height: 150.0,
+
                       ),
                     ),
+
+
                   ],
                 ),
               ),

@@ -44,7 +44,7 @@ class PaimentQrCodeResult extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-              Text("${transactionInfos?.transactionAmount}"),
+
               SizedBox(
                 height: 50,
               ),

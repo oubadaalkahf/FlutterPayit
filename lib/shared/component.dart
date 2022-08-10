@@ -123,8 +123,8 @@ Future<void> showMyDialog({
               ),
               onPressed: () {
                 print('Confirmed');
-                AppCubit.get(context).Makevirement(montantController,
-                    destinataireController, messageController, emetteur);
+                AppCubit.get(context).Makevirement(montant: montantController,
+                  destinataire:   destinataireController, message: messageController,emetteur:  emetteur);
                 Navigator.of(context).pop();
               },
             ),
@@ -247,8 +247,8 @@ Future<void> showMyDialogLogout({
               ),
               onPressed: () {
                 print('Confirmed');
-                AppCubit.get(context).Makevirement(montantController,
-                    destinataireController, messageController, emetteur);
+                AppCubit.get(context).Makevirement(montant: montantController,
+               destinataire:      destinataireController,message:  messageController,emetteur:  emetteur);
                 Navigator.of(context).pop();
               },
             ),

@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Enter_your_first_last_name": MessageLookupByLibrary.simpleMessage(
             "Entrez votre prénom,Nom et l\'adresse email "),
         "First_name": MessageLookupByLibrary.simpleMessage("Prénom"),
+        "HintEmail": MessageLookupByLibrary.simpleMessage("adresse email "),
+        "HintFirstname": MessageLookupByLibrary.simpleMessage("nom"),
+        "HintLastname": MessageLookupByLibrary.simpleMessage("prenom"),
         "Invoice_payment":
             MessageLookupByLibrary.simpleMessage("Paiement\nfactures"),
         "Language": MessageLookupByLibrary.simpleMessage("Langue"),
@@ -45,12 +48,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "NEXT": MessageLookupByLibrary.simpleMessage("SUIVANT"),
         "Open_Email_App": MessageLookupByLibrary.simpleMessage(
             "ouvrir l\'application de messagerie"),
+        "Password": MessageLookupByLibrary.simpleMessage("mot de passe"),
         "Pay_your_merchand":
             MessageLookupByLibrary.simpleMessage("Payer un\ncommerçant"),
         "Phone_charging":
             MessageLookupByLibrary.simpleMessage("Recharge\nMobile"),
         "RESEND": MessageLookupByLibrary.simpleMessage("RENVOYER"),
-        "Security": MessageLookupByLibrary.simpleMessage("Securité"),
+        "Security": MessageLookupByLibrary.simpleMessage("STEP 4 : Securité"),
         "Splash_Screen":
             MessageLookupByLibrary.simpleMessage("DISCOVER THE FUTURE WITH US"),
         "Ticket_plan": MessageLookupByLibrary.simpleMessage("Ticket\nAvion "),
@@ -70,14 +74,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "cin": MessageLookupByLibrary.simpleMessage("رقم البطاقة الوطنية"),
         "cin_already_exist": MessageLookupByLibrary.simpleMessage(
             "رقم البطاقة الوطنية موجود سابقا "),
+        "confirm_password":
+            MessageLookupByLibrary.simpleMessage("confimer mot de passe"),
         "dh": MessageLookupByLibrary.simpleMessage("درهم"),
+        "email_existe": MessageLookupByLibrary.simpleMessage(
+            "l\'adresse email existe deja"),
+        "emailcontrollermsg": MessageLookupByLibrary.simpleMessage(
+            "l\'adresse email ne doit pas être vide "),
         "enter_your_phone_number":
             MessageLookupByLibrary.simpleMessage("أدخل البريد الالكتروني"),
         "enter_your_phone_number_and_your_cin":
             MessageLookupByLibrary.simpleMessage(
                 "المرجو ادخال رقم الهاتف متبوع برقم البطاقة الوطنية"),
+        "firstnamecontrollermsg":
+            MessageLookupByLibrary.simpleMessage("le ne doit pas être vide  "),
         "hello": MessageLookupByLibrary.simpleMessage("مرحبا"),
         "home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
+        "lastnameecontrollermsg": MessageLookupByLibrary.simpleMessage(
+            "le prenom email ne doit pas être vide "),
         "log_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "merchant_payment":
@@ -91,9 +105,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "not_member": MessageLookupByLibrary.simpleMessage("لست عضوا؟"),
         "notifications": MessageLookupByLibrary.simpleMessage("اشعارات"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة السر"),
+        "passwordcontrollermg": MessageLookupByLibrary.simpleMessage(
+            "le mot de passe ne doit pas être vide"),
         "payment": MessageLookupByLibrary.simpleMessage("الدفع"),
         "phone_number_already_exist": MessageLookupByLibrary.simpleMessage(
             "الرقم الذي ادخلتم موجود سابقا"),
+        "phonenumberverified": MessageLookupByLibrary.simpleMessage(
+            "your phone number is verified"),
         "receive_money":
             MessageLookupByLibrary.simpleMessage("استقبال الأموال"),
         "register": MessageLookupByLibrary.simpleMessage("سجل الأن"),

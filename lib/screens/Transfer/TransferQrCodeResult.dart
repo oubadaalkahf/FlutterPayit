@@ -8,7 +8,7 @@ import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../Routes/CustomPageRouteRight.dart';
-import 'TransferRoute.dart';
+import 'TransferMoney.dart';
 
 class TransferQrCodeResult extends StatelessWidget {
   TransferQrCodeResult({Key? key}) : super(key: key);
@@ -40,7 +40,6 @@ class TransferQrCodeResult extends StatelessWidget {
         body: Center(
           child: Column(
             children: [
-
               SizedBox(
                 height: 50,
               ),

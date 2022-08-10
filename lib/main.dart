@@ -26,7 +26,7 @@ import 'network/local/cache_helper.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp();
-
+DioHelper.init();
   await CacheHelper.init();
   DioHelper.init();
 
