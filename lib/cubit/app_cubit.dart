@@ -420,9 +420,14 @@ header = response["header"].toString();
     });
   }
 
-  void transferp2p(String pointofinitiationmethode, paidEntityRef, trans_curr,
+  void transferp2p(String pointofinitiationmethode,String paidEntityRef, trans_curr,
       tran_amount, tran_purpose, oper_type,) {
+
     emit(AppGeneratedQrCodeInitialStates());
+    if(paidEntityRef.startsWith("06")){
+      paidEntityRef=  paidEntityRef.replaceRange(0, 1, "+212");
+    }
+    print(paidEntityRef);
     print(pointofinitiationmethode);
     print("-----------------------");
     DioHelper.postData(url: 'transferp2p', data: {
@@ -449,9 +454,9 @@ header = response["header"].toString();
     print("-----------------------");
     DioHelper.postData(url: 'transferp2p', data: {
       "transaction_type": "transfer p2p",
-      "point_of_initiation_method": "11",
-      "paid_entity_reference": "+212687171739",
-      "transaction_currency": "508",
+      "point_of_initiation_method": "static",
+      "paid_entity_reference": userModel?.data.phoneNumber,
+      "transaction_currency": "504",
       "transaction_amount": tran_amount,
       "purpose_of_transaction": tran_purpose,
       "financial_institution_code": "999",

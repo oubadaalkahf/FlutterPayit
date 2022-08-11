@@ -120,14 +120,26 @@ class FormulaireUserTransfer extends StatelessWidget {
                           ); },
                           btnOkOnPress: ()  {
                             {
-                              print("hiiiiiiiiii");
-                              print("hiiiiiiiiii2");
-                              print(transactionAmount.text);
-                              print(purposeoftransactionontroller.text);
-                              AppCubit.get(context).transfertP2PUser(
+
+
+                              AppCubit.get(context).transferp2p(
+                                "static",
+                                 AppCubit.get(context).userModel!.data.phoneNumber,
+                                 "504",
                                  transactionAmount.text,
                                   purposeoftransactionontroller.text,
-                                 );
+                                "0"
+                                  );
+                              /*
+                              "transaction_type": "transfer p2p",
+      "point_of_initiation_method": pointofinitiationmethode,
+      "paid_entity_reference": paidEntityRef,
+      "transaction_currency": trans_curr,
+      "transaction_amount": tran_amount,
+      "purpose_of_transaction": tran_purpose,
+      "financial_institution_code": "999",
+      "operation_type": oper_type
+                               */
                             }
                             },
                         ).show();
