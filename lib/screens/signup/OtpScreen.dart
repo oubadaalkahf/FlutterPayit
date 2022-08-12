@@ -48,7 +48,7 @@ class OTP extends StatelessWidget {
               backgroundColor: Colors.blueGrey,
               title: Row(children: <Widget>[
                 Text(
-                  "  Ativation",
+                  "  Activation",
                   style: GoogleFonts.manrope(
                     fontWeight: FontWeight.w400,
                     fontSize: 24,

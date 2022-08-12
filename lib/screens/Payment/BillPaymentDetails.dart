@@ -24,9 +24,13 @@ class BillPaymentDetails extends StatelessWidget {
   BillPaymentDetails(this.transactionInfos);
 
 
-
   @override
   Widget build(BuildContext context) {
+
+
+    var dateTime = DateTime.parse(DateTime.now().toString());
+
+    var formate1 = "${dateTime.day}-${dateTime.month}-${dateTime.year}";
     return BlocConsumer<AppCubit,AppStates>( listener: (context,state){
 
     },builder: (context,state){
@@ -42,7 +46,7 @@ class BillPaymentDetails extends StatelessWidget {
           title: Padding(
             padding: const EdgeInsets.only(left: 50.0),
             child: const Text(
-              'Bill payment',
+              'Reçu de Paiement',
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -74,67 +78,99 @@ class BillPaymentDetails extends StatelessWidget {
                     height: 20,
                   ),
                   rowBuilder(
-                      att: "account payable to ",
+                      att: "Date ",
+                      text: "${formate1}"),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  rowBuilder(
+                      att: "Compte Payable à ",
                       text: "${transactionInfos?.merchandPhoneNumber}"),
 
                   const  SizedBox(
                     height: 25,
                   ),
                   rowBuilder(
-                      att: "mecrchand city ",
+                      att: "Ville",
                       text: "${transactionInfos?.merchandCity}"),
                   const  SizedBox(
                     height: 25,
                   ) ,
                   rowBuilder(
-                      att: "Amount",
-                      text: "${transactionInfos?.transactionAmount}"),
-                  const  SizedBox(
-                    height: 25,
-                  ),
-                  rowBuilder(
-                      att: "Currency",
-                      text: "${transactionInfos?.transactionCurrency}"),
+                      att: "Montant",
+                      text: "${transactionInfos?.transactionAmount} ${transactionInfos?.transactionCurrency}"),
 
                   const  SizedBox(
                     height: 25,
                   ),
-
                   rowBuilder(
-                      att: "Paiment type ",
+                      att: "Type",
                       text: "${transactionInfos?.paiementType}"),
 
                   const  SizedBox(
                     height: 25,
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width/2.5,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(30),
-                      color: blueGreyColor,
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(30),
-                        onTap: () {
-                          String? emetteur = AppCubit.get(context).userModel?.data.phoneNumber;
-                          String?  destinataire= transactionInfos?.merchandPhoneNumber;
-                          print("hello");
-                          AppCubit.get(context).Makevirement(montant: transactionInfos?.transactionAmount,emetteur: emetteur!,message: "hi", destinataire: destinataire!);
-                        },
-                        child: Ink(
-                          child: Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(40)),
-                            child: const Text(
-                              'Pay',
-                              style: TextStyle(color: Colors.white,fontSize: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width/2.5,
+                        child: Material(
+                          borderRadius: BorderRadius.circular(30),
+                          color: blueGreyColor,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(30),
+                            onTap: () {
+                              String? emetteur = AppCubit.get(context).userModel?.data.phoneNumber;
+                              String?  destinataire= transactionInfos?.merchandPhoneNumber;
+
+                              AppCubit.get(context).Makevirement(montant: transactionInfos?.transactionAmount,emetteur: emetteur!,message: "hi", destinataire: destinataire!);
+                            },
+                            child: Ink(
+                              child: Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(40)),
+                                child: const Text(
+                                  'Payer',
+                                  style: TextStyle(color: Colors.white,fontSize: 15),
+                                ),
+                                alignment: Alignment.center,
+                              ),
                             ),
-                            alignment: Alignment.center,
                           ),
                         ),
                       ),
-                    ),
+                      Container(
+                        width: MediaQuery.of(context).size.width/2.5,
+                        child: Material(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.redAccent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(30),
+                            onTap: () {
+                              AppCubit.get(context).currentIndex = 0;
+                              navigateAndFinish(context,HomeScreen());
+                              showToast(message: "Transaction Annulée");
+                             },
+                            child: Ink(
+                              child: Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(40)),
+                                child: const Text(
+                                  'Annuler',
+                                  style: TextStyle(color: Colors.white,fontSize: 15),
+                                ),
+                                alignment: Alignment.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

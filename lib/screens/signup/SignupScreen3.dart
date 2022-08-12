@@ -32,7 +32,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
       listener: (context, state) {
         if (state is AppSigninSuccessStates) {
           showToast(message: "registrated");
-          navigateAndFinish(context, const ConfirmationScreen());
+          navigateTo(context, const ConfirmationScreen());
         } else if (state is AppLoginErrorStates) {
           showToast(message: state.error);
         }
@@ -44,7 +44,7 @@ class _SignupScreen3State extends State<SignupScreen3> {
               backgroundColor: Colors.blueGrey,
               title: Row(children: <Widget>[
                 Text(
-                  "  Ativation",
+                  "  Activation",
                   style: GoogleFonts.manrope(
                     fontWeight: FontWeight.w400,
                     fontSize: 24,

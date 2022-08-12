@@ -474,6 +474,9 @@ header = response["header"].toString();
   void PaimnentCommercant(String pointofinitiationmethode,paidEntityRef,trans_curr,tran_amount,tran_purpose,oper_type,merchant_category_code,country_code,merchant_name,merchant_city
       ){
 
+    if(paidEntityRef.startsWith("06")){
+      paidEntityRef=  paidEntityRef.replaceRange(0, 1, "+212");
+    }
     print(country_code);
     print(trans_curr);
     print(tran_purpose);

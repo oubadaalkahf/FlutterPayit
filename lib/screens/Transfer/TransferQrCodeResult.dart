@@ -31,7 +31,7 @@ class TransferQrCodeResult extends StatelessWidget {
             },
           ),
           title: const Text(
-            'Transfert d\'argent par QR Code',
+            'Transfert d\'argent par Code QR',
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Color(0xff4c91bc),
@@ -54,7 +54,7 @@ class TransferQrCodeResult extends StatelessWidget {
               SizedBox(
                 height: 200,
               ),
-              Text("Ce QR code respecte les spécificatoin MarocPay"),
+              Text("Ce code QR respecte les spécificatoin MarocPay"),
             ],
           ),
         ),

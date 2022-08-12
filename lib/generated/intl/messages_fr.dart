@@ -33,7 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Enter_the_code_sent_to":
             MessageLookupByLibrary.simpleMessage("Entrer le code envoyer à "),
         "Enter_your_first_last_name": MessageLookupByLibrary.simpleMessage(
-            "Entrez votre prénom,Nom et l\'adresse email "),
+            "Entrez votre prénom, nom et l\'adresse email "),
         "First_name": MessageLookupByLibrary.simpleMessage("Prénom"),
         "HintEmail": MessageLookupByLibrary.simpleMessage("Adresse email "),
         "HintFirstname": MessageLookupByLibrary.simpleMessage("Nom"),

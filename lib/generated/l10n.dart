@@ -570,10 +570,10 @@ class S {
     );
   }
 
-  /// `Enter your first,last name and email address `
+  /// `Enter your first, last name and email address `
   String get Enter_your_first_last_name {
     return Intl.message(
-      'Enter your first,last name and email address ',
+      'Enter your first, last name and email address ',
       name: 'Enter_your_first_last_name',
       desc: '',
       args: [],
