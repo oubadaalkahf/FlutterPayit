@@ -299,13 +299,13 @@ Widget historyWidget(TransactionModel transaction,context,String type) {
                     children: <Widget>[
 
                       transaction.emetteur.contains("bank") ?    Text(
-                        "Deposit from",
+                        "Dépôt de",
                         style: TextStyle(
                             color: Colors.black
                             ,fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
                       ) :    Text(
-                        "Reveiced from",
+                        "Reçu de",
                         style: TextStyle(
                             color: Colors.black
                             ,fontWeight: FontWeight.bold),

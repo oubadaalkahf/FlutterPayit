@@ -15,7 +15,10 @@ class TransactionsHistory extends StatelessWidget {
     return BlocConsumer<AppCubit,AppStates>(listener: (context,state){},builder: (context,state){
       return Scaffold(
         appBar: AppBar(
-          title: Text("History"),
+          title: Padding(
+            padding: const EdgeInsets.only(left: 72),
+            child: Text("Historiques"),
+          ),
           backgroundColor: blueGreyColor,
         ),
         body: Padding(
@@ -44,7 +47,7 @@ class TransactionsHistory extends StatelessWidget {
                     color: Colors.black87,
                     fontSize: 14,
                     fontWeight: FontWeight.w500),
-                labels: ["Receive","Sent"],
+                labels: ["Reçu","Envoyer"],
                 selectedLabelIndex: (index) {
                   AppCubit.get(context).changeBottomHistory(index);
                 },

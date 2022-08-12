@@ -343,6 +343,37 @@ header = response["header"].toString();
   }
 
 
+  void changePassword({
+    required String password,
+    required String newPassword,
+    required String email,
+    required  context,
+
+
+  }) async{
+    const MethodChannel USERCHANNEL = MethodChannel("payit/user");
+    try{
+      var response = await USERCHANNEL
+          .invokeMethod("changePassword",
+          {
+            "password": password,
+            "email": email,
+            "newPassword": newPassword,
+          });
+
+      currentIndex = 0;
+   navigateAndFinish(context, HomeScreen());
+   showToast(message: response);
+      emit(AppVersementSuccessStates());
+      print(response);
+      emit(AppSendOtpSuccessState(response));
+    }catch(e){
+      print(e.toString());
+      emit(AppVersementErrorStates());
+    }
+  }
+
+
   void makeVersement(montant, message, destinataire) async{
 
     emit(AppVersementInitialStates());
@@ -530,6 +561,10 @@ header = response["header"].toString();
       print(error.toString());
     });
   }
+
+
+
+
   void getTransactionInfoTransfer(String qrText, context) {
     emit(AppTransactionInitialStates());
     DioHelper.postData(url: "/getqrdata", data: {

@@ -20,7 +20,7 @@ class TransactionReceiveScreen extends StatelessWidget {
             child: ListView.builder(
               itemBuilder: (context, index) => historyWidget(
                   AppCubit.get(context).transactionsDestinataire[index],
-                  context,"receive"),
+                  context,"Reçu"),
               itemCount: AppCubit.get(context).transactionsDestinataire.length,
               shrinkWrap: true,
               physics: BouncingScrollPhysics(),

@@ -219,7 +219,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         ),
                         Center(
                           child: RaisedButton(
-                            onPressed: () {},
+                            onPressed: () {
+
+                            },
                             textColor: const Color(0xffFFFFFF),
                             padding: const EdgeInsets.all(0),
                             shape:const  StadiumBorder(),

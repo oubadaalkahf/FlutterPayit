@@ -167,4 +167,11 @@ public class AppRepository {
         }
     }
 
+    public void changePassword(MethodCall call, MethodChannel.Result result) throws Exception {
+        String email = call.argument("email");
+        String password = call.argument("password");
+        String newPassword = call.argument("newPassword");
+        String changePassword = new User().changePassword(email,password,newPassword);
+        result.success(changePassword);
+    }
 }

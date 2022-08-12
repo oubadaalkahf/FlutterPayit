@@ -37,6 +37,14 @@ public class MethodChannels {
                                     break;
 
                                 case "getSessionid" : repository.getSessionId(call,result);
+                                break;
+                                case "changePassword" :
+                                    try {
+                                        repository.changePassword(call,result);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    break;
                             }
 
                         }

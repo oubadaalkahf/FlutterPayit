@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -163,8 +164,30 @@ public class User {
     }
 
 
+    public String changePassword(String email, String password, String newPassword) throws Exception{
+        String CHANGE_PASSWORD_ENDPOINT = "wallet/registration/changepassword";
+        MessageDigest mDigest = MessageDigest.getInstance("SHA1");
+       byte[] result = mDigest.digest(password.getBytes());
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < result.length; i++) {
+            sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
+        }
+        Map<String,Object>data = new HashMap<>();
+        data.put("email",email);
+        data.put("password",password);
+        data.put("newPassword",newPassword);
+        Type gsonType = new TypeToken<HashMap>(){}.getType();
+
+        String gsonString = gson.toJson(data,gsonType);
+        RequestBody body = RequestBody.create(JSON, gsonString);
+        Request request = new Request.Builder()
+                .url(url+CHANGE_PASSWORD_ENDPOINT)
+                .post(body)
+                .build();
+        try (Response response = client.newCall(request).execute()) {
 
 
-
-
+            return Objects.requireNonNull(response.body()).string();
+        }
+    }
 }

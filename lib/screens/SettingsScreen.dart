@@ -64,23 +64,7 @@ class SettingsScreen extends StatelessWidget {
                     title: 'réinitialiser mot de passe',
                     subtitle: "**********",
                   ),
-                  SettingsItem(
-                    onTap: () {Navigator.pushAndRemoveUntil(
-                        context, CustomPageRouteLeft(child: PaymentRoute()),(route)=>false
-                    );},
-                    icons: Icons.dark_mode_rounded,
-                    iconStyle: IconStyle(
-                      iconsColor: Colors.white,
-                      withBackground: true,
-                      backgroundColor: Color(0xff4c91bc),
-                    ),
-                    title: 'Mode Nuit ',
-                    subtitle: "English",
-                    trailing: Switch.adaptive(
-                      value: false,
-                      onChanged: (value) {},
-                    ),
-                  ),
+
                   SettingsItem(
                     onTap: () {
                       showModalBottomSheet(
@@ -169,7 +153,7 @@ class SettingsScreen extends StatelessWidget {
                       withBackground: true,
                       backgroundColor: Color(0xff4c91bc),
                     ),
-                    title: 'Changer La Langue ',
+                    title: 'Changer la langue ',
                     subtitle: "Francais",
 
                   ),
@@ -198,7 +182,7 @@ class SettingsScreen extends StatelessWidget {
                     AppCubit.get(context).currentIndex=0;
                       AppCubit.get(context).userModel=null;},
                     icons: Icons.exit_to_app_rounded,
-                subtitle: "Are you sure ? ",
+                subtitle: "Êtes vous sûr?",
                     title: S.of(context).logout,
                   ),
             ],
