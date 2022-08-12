@@ -45,7 +45,7 @@ class SignupScreen2 extends StatelessWidget {
               backgroundColor: Colors.blueGrey,
               title: Row(children: <Widget>[
                 Text(
-                  "  Ativation",
+                  "  Activation",
                   style: GoogleFonts.manrope(
                     fontWeight: FontWeight.w400,
                     fontSize: 24,
@@ -83,7 +83,7 @@ class SignupScreen2 extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            S.of(context).enter_your_phone_number_and_your_cin,
+                            S.of(context).Enter_your_first_last_name,
                             style: GoogleFonts.manrope(
                               fontWeight: FontWeight.w400,
                               fontSize: 16,

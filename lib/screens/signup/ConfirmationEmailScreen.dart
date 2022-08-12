@@ -48,7 +48,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
               backgroundColor: Colors.blueGrey,
               title: Row(children: <Widget>[
                 Text(
-                  "  Ativation",
+                  "  Activation",
                   style: GoogleFonts.manrope(
                     fontWeight: FontWeight.w400,
                     fontSize: 24,
@@ -87,7 +87,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                           height: 35,
                         ),
                         Text(
-                          'Confiffrm your email address',
+                          'Confirmez votre adresse email',
                           style: GoogleFonts.manrope(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -98,7 +98,8 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                           height: 13,
                         ),
                         Text(
-                          'We sent a confirmation email to  ',
+                          'Nous avons envoyé un e-mail de confirmation à  ',
+                          textAlign: TextAlign.center,
                           style: GoogleFonts.manrope(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
@@ -120,7 +121,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                           height: 13,
                         ),
                         Text(
-                          'check your email and click on the \n      confirmation link to continue. ',
+                          'vérifiez votre e-mail et cliquez sur le \n lien de confirmation pour continuer',
                           style: GoogleFonts.manrope(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
@@ -131,10 +132,10 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                           height: 40,
                         ),
                         ButtonTest(
-                          text: "Open Email App",
+                          text: "Ouvrir la boîte mail",
                           function: () async {
                             var result = await OpenMailApp.openMailApp(
-                              nativePickerTitle: 'Select email app to open',
+                              nativePickerTitle: 'Sélectionnez l\'application de messagerie à ouvrir',
                             );
 
                             // If no mail apps found, show error

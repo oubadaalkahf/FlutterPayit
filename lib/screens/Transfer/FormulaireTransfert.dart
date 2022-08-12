@@ -30,11 +30,11 @@ class FormulaireTransfert extends StatefulWidget {
 enum point_of_initiation_methode { dynamic, static }
 class _FormulaireTransfertState extends State<FormulaireTransfert> {
   var pointofinitiationmethode = TextEditingController();
-  var phoneNumber = TextEditingController();
+
   var transactionAmount = TextEditingController();
   var purposeOfTransaction = TextEditingController();
 
-  // Initial Selected Value
+
 
 
   // List of items in our dropdown menu
@@ -100,7 +100,8 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
           elevation: 0,
         ),
         body: SafeArea(
-          child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 60,left: 15),
             child: SingleChildScrollView(
               child: Form(
                 key: formkey,
@@ -142,39 +143,7 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
                         },
                       ),
                       SizedBox(height: 8,),
-                      Text(
-                        'Phone number',
-                        style: TextStyle(fontSize: 18, color: Colors.blueGrey,),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      TextFormField(
-                          keyboardType: TextInputType.phone,
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(9),
-                          ],
-                          controller: phoneNumber,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return " Phone Number must not be empty";
-                          }
-                        },
-                          decoration: InputDecoration(
-                            prefix:Text("+212 | "),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 6),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color(0xff4c91bc), width: 2.0),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.0)),
-                          )
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -288,14 +257,22 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
                         ),
                         margin: EdgeInsets.only(),
                         width: double.infinity,
-                        child: DropdownButtonFormField(
-                          items: oeration_type,
-                       value:selectedValueOperationType ,
-                          onChanged: (String? value) {
-                            setState(() {
-                              selectedValueOperationType = value!;
-                            });
-                          },
+                        child:      Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: DropdownButtonFormField(
+
+                            decoration: InputDecoration(border: InputBorder.none,
+
+                            ),
+
+                            items: oeration_type,
+                            value:selectedValueOperationType ,
+                            onChanged: (String? value) {
+                              setState(() {
+                                selectedValueOperationType = value!;
+                              });
+                            },
+                          ),
                         ),
 
                       ),
@@ -317,6 +294,7 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
                               if (formkey.currentState!.validate()) {
                                 AwesomeDialog(
                                 context: context,
+
                                 dialogType: DialogType.WARNING,
                                 headerAnimationLoop: false,
                                 animType: AnimType.TOPSLIDE,
@@ -335,7 +313,8 @@ class _FormulaireTransfertState extends State<FormulaireTransfert> {
                                     print(transactionAmount.text);
                                     AppCubit.get(context).transferp2p(
                                         '${character?.name}',
-                                        "+212" + phoneNumber.text,
+
+                                        AppCubit.get(context).userModel!.data.phoneNumber,
                                         selectedValue,
                                         transactionAmount.text,
                                         purposeOfTransaction.text,

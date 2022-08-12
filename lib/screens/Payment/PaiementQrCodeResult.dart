@@ -32,7 +32,7 @@ class PaimentQrCodeResult extends StatelessWidget {
             },
           ),
           title: const Text(
-            'Piement d\'argent par QR Code',
+            'Paiement d\'argent par Code QR',
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Color(0xff4c91bc),
@@ -59,7 +59,7 @@ class PaimentQrCodeResult extends StatelessWidget {
               SizedBox(
                 height: 200,
               ),
-              Text("Ce QR code respecte les spécificatoin MarocPay"),
+              Text("Ce Code QR respecte les spécificatoin MarocPay"),
             ],
           ),
         ),

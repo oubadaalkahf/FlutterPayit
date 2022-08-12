@@ -25,6 +25,9 @@ class BillTransactionDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var dateTime = DateTime.parse(DateTime.now().toString());
+
+    var formate1 = "${dateTime.day}-${dateTime.month}-${dateTime.year}";
     return BlocConsumer<AppCubit,AppStates>( listener: (context,state){
       if (state is AppVersementSuccessStates) {
         Navigator.pushAndRemoveUntil(
@@ -41,13 +44,13 @@ class BillTransactionDetails extends StatelessWidget {
 
           title:Center(
             child: Text(
-              'Bill',
+              'Reçu du Transfert',
             ),
           ),
         ),
         body: Column(
           children: [
-            const  SizedBox(height: 25,),
+            const  SizedBox(height: 20,),
             Container(
               color:const Color(0xff4c91bc),
               child: Expanded(
@@ -70,62 +73,99 @@ class BillTransactionDetails extends StatelessWidget {
                     height: 20,
                   ),
                   rowBuilder(
-                      att: "Transaction Type",
-                      text: "${transactionInfos?.transactionType}"),
+                      att: "Date ",
+                      text: "${formate1}"),
                   const SizedBox(
-                    height: 25,
+                    height: 20,
                   ),
                   rowBuilder(
-                      att: "Phone Number",
+                      att: "Compte",
                       text: "${transactionInfos?.merchandPhoneNumber}"),
-                  const  SizedBox(
-                    height: 25,
+                  const SizedBox(
+                    height: 20,
                   ),
                   rowBuilder(
-                      att: "Transaction Amount",
-                      text: "${transactionInfos?.transactionAmount}"),
+                      att: "Type",
+                      text: "${transactionInfos?.transactionType}"),
+
                   const  SizedBox(
-                    height: 25,
+                    height: 20,
                   ),
                   rowBuilder(
-                      att: "Transaction Currency",
-                      text: "${transactionInfos?.transactionCurrency}"),
+                      att: "Montant",
+                      text: "${transactionInfos?.transactionAmount} ${transactionInfos?.transactionCurrency} "),
+
                   const  SizedBox(
-                    height: 25,
+                    height: 20,
                   ),
-                  rowBuilder(att: "Payment Type", text:"${transactionInfos?.paiementType}"),
+                  rowBuilder(att: "Type du Transfert", text:"${transactionInfos?.paiementType}"),
                   const  SizedBox(
                     height: 40,
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width/2.5,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(30),
-                      color: blueGreyColor,
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(30),
-                        onTap: () {
-                          String? destinataire = AppCubit.get(context).userModel?.data.phoneNumber;
-                          String? emetteur = transactionInfos?.merchandPhoneNumber;
-                          print("hello");
-                          AppCubit.get(context).Makevirement(montant: transactionInfos?.transactionAmount,destinataire:  destinataire!, message: "hi",emetteur: emetteur!);
+                  Row(
 
-                        },
-                        child: Ink(
-                          child: Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(40)),
-                            child: const Text(
-                              'Accept Transfer',
-                              style: TextStyle(color: Colors.white,fontSize: 15),
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width/2.5,
+                        child: Material(
+                          borderRadius: BorderRadius.circular(30),
+                          color: blueGreyColor,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(30),
+                            onTap: () {
+                              String? destinataire = AppCubit.get(context).userModel?.data.phoneNumber;
+                              String? emetteur = transactionInfos?.merchandPhoneNumber;
+                              print("hello");
+                              AppCubit.get(context).Makevirement(montant: transactionInfos?.transactionAmount,destinataire:  destinataire!, message: "hi",emetteur: emetteur!);
+
+                            },
+                            child: Ink(
+                              child: Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(40)),
+                                child: const Text(
+                                  "Accepter",
+                                  style: TextStyle(color: Colors.white,fontSize: 15),
+                                ),
+                                alignment: Alignment.center,
+                              ),
                             ),
-                            alignment: Alignment.center,
                           ),
                         ),
                       ),
-                    ),
+                      Container(
+                        width: MediaQuery.of(context).size.width/2.5,
+                        child: Material(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.redAccent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(30),
+                            onTap: () {
+                              AppCubit.get(context).currentIndex = 0;
+                             navigateAndFinish(context,HomeScreen());
+                             showToast(message: "Transaction  annulée");
+
+                            },
+                            child: Ink(
+                              child: Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(40)),
+                                child: const Text(
+                                  "Annuler",
+                                  style: TextStyle(color: Colors.white,fontSize: 15),
+                                ),
+                                alignment: Alignment.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
