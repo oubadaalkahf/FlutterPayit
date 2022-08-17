@@ -60,6 +60,15 @@ class AppCubit extends Cubit<AppStates> {
   const  AccountScreen(),
   ];
 
+  bool isSwitched = CacheHelper.getData(key: "developper") ==null? false : CacheHelper.getData(key: "developper");
+
+  void changeIsSwitched(){
+    CacheHelper.removeData(key: "developper");
+    isSwitched = !isSwitched;
+    emit(IsSwitchedChangeStates());
+    CacheHelper.saveData(key: "developper", value: isSwitched);
+  }
+
   List<Widget> screensHistory = [
   const  TransactionReceiveScreen(),
 const    TransactionSentScreen(),
@@ -68,7 +77,9 @@ const    TransactionSentScreen(),
   static Locale currentLocale = const Locale("fr");
 
   void changeLocale(String _locale, context) {
+
     emit(ChangeLanguageInitialStates());
+
 
     currentLocale = Locale(_locale);
     CacheHelper.saveData(key: 'lang', value: _locale);
@@ -79,6 +90,8 @@ const    TransactionSentScreen(),
   }
 
   int currentStep = 0;
+
+
 
   void changeStep(index) {
     currentStep = currentStep + 1;

@@ -25,15 +25,8 @@ class FormulaireUserTransfer extends StatelessWidget {
     }, builder: (context, state) {
       return Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.of(context)
-                  .push(CustomPageRouteRight(child: TransferMoneyRoute()));
-            },
-          ),
-          title: Padding(
-            padding: const EdgeInsets.only(left: 50.0),
+
+          title: Center(
             child: const Text(
               'Envoi de l\'argent',
               style: TextStyle(color: Colors.white),

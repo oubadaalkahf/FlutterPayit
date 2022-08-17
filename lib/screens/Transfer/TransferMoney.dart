@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
+import 'package:testingg/network/local/cache_helper.dart';
+import 'package:testingg/screens/Transfer/FormulaireUserTransfer.dart';
 import 'package:testingg/screens/Transfer/TransferMoneyRoute.dart';
 import '../../generated/l10n.dart';
 import '../../cubit/app_cubit.dart';
@@ -14,9 +16,15 @@ import 'QrCodeScannerTransfer.dart';
 
 class TransferRoute extends StatelessWidget {
   const TransferRoute({Key? key}) : super(key: key);
+static Widget widget = Container();
 
   @override
   Widget build(BuildContext context) {
+    if(CacheHelper.getData(key: "developper")==true){
+widget = FormulaireTransfert();
+
+    }else if(CacheHelper.getData(key: "developper")==false)
+      widget = FormulaireUserTransfer();
     return Material(
       child: Scaffold(
         backgroundColor: Colors.white.withOpacity(.94),
@@ -65,10 +73,9 @@ class TransferRoute extends StatelessWidget {
                          ),
                   SettingsItem(
                     onTap: () {
-                      Navigator.pushAndRemoveUntil(
+                      Navigator.push(
                           context,
-                          CustomPageRouteLeft(child: TransferMoneyRoute()),
-                          (route) => false);
+                          CustomPageRouteLeft(child: widget));
                     },
                     icons: CupertinoIcons.up_arrow,
                     iconStyle: IconStyle(

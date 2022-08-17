@@ -18,7 +18,6 @@ import 'package:testingg/screens/AccueilScreen.dart';
 import 'package:testingg/screens/HomeScreen.dart';
 import 'package:testingg/screens/LoginScreen.dart';
 import 'package:testingg/screens/signup/SignupScreen1.dart';
-import 'package:testingg/shared/Colors.dart';
 import 'package:testingg/shared/component.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';

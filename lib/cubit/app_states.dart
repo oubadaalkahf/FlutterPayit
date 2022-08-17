@@ -34,6 +34,10 @@ class ChangeLanguageInitialStates extends AppStates {}
 
 
 class AppSigninLoadingStates extends AppStates {}
+class IsSwitchedChangeStates extends AppStates {}
+
+
+
 class AppSigninInitialStates extends AppStates {}
 class AppSigninSuccessStates extends AppStates {}
 class AppSigninErrorStates extends AppStates {
