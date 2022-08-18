@@ -1,10 +1,12 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:testingg/screens/Routes/CustomPageRouteRight.dart';
 import 'package:testingg/screens/SettingsScreen.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
+  const ResetPasswordScreen({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _ResetPasswordScreenState();
@@ -12,7 +14,7 @@ class ResetPasswordScreen extends StatefulWidget {
 }
 
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
-  static String id = "Reset Password";
+
   var oldPassword = TextEditingController();
   var newPassword = TextEditingController();
   var confirmPassword = TextEditingController();
@@ -27,18 +29,18 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             icon:const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.of(context).push(
-                CustomPageRouteRight(child: SettingsScreen()),
+                CustomPageRouteRight(child: const SettingsScreen()),
               );
             },
           ),
           title:const Center(
               child: Padding(
-            padding: const EdgeInsets.only(right: 68.0),
+            padding:  EdgeInsets.only(right: 68.0),
             child: Text(
               'Réinitialiser mot de passe',
             ),
           )),
-          backgroundColor: Color(0xff4c91bc),
+          backgroundColor:const Color(0xff4c91bc),
         ),
         body: SingleChildScrollView(
           child: Padding(

@@ -23,7 +23,7 @@ class TransactionSentScreen extends StatelessWidget {
                   AppCubit.get(context).transactionsEmetteur[index], context,"sent"),
               itemCount: AppCubit.get(context).transactionsEmetteur.length,
               shrinkWrap: true,
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
             ),
           );
         });
@@ -34,21 +34,21 @@ class TransactionSentScreen extends StatelessWidget {
 Widget historyWidgetsent(TransactionModel transaction,context,String type) {
   return Container(
 //      height: 100.0,
-    margin: EdgeInsets.only(bottom: 7, left: 16.0, right: 16.0),
+    margin: const EdgeInsets.only(bottom: 7, left: 16.0, right: 16.0),
     child: Card(
 
       child: TextButton(
 
 
         onPressed: (){
-          navigateTo(context,TransactionDetails());
+          navigateTo(context,const TransactionDetails());
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Row(
             children: <Widget>[
-              Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
+              const  Padding(
+                  padding:  EdgeInsets.only(right: 16.0),
                   //     child: Image.asset("images/ico_receive_money.png",width: 40,height: 40,),
                   child: Icon(Icons.arrow_circle_up_sharp,size: 30,color: Colors.red,)
               ),
@@ -60,20 +60,20 @@ Widget historyWidgetsent(TransactionModel transaction,context,String type) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
 
-                      transaction.emetteur.contains("bank") ?    Text(
+                      transaction.emetteur.contains("bank") ?    const Text(
                         "Dépôt de",
-                        style: TextStyle(
+                        style:TextStyle(
                             color: Colors.black
                             ,fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
-                      ) :    Text(
+                      ) :    const Text(
                         "Envoyé à",
-                        style: TextStyle(
+                        style:TextStyle(
                             color: Colors.black
                             ,fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
                       ),
-                      Text(transaction.destinataire,style: TextStyle( color: Colors.black),)
+                      Text(transaction.destinataire,style: const TextStyle( color: Colors.black),)
                     ],
                   ),
                 ),
@@ -87,7 +87,7 @@ Widget historyWidgetsent(TransactionModel transaction,context,String type) {
                     children: <Widget>[
                       Text(
                         "${transaction.montant} MAD",
-                        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                        style:const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -95,9 +95,9 @@ Widget historyWidgetsent(TransactionModel transaction,context,String type) {
                         children: <Widget>[
                           Expanded(
                             child: Text(
-                              "${transaction.dateTransaction}",
+                              transaction.dateTransaction,
                               textAlign: TextAlign.right,
-                              style: TextStyle( color: Colors.black),
+                              style:const TextStyle( color: Colors.black),
                             ),
                           ),
 

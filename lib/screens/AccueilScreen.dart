@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
@@ -9,7 +9,7 @@ import 'package:testingg/cubit/app_states.dart';
 import 'package:testingg/models/userModel.dart';
 import 'package:testingg/network/local/cache_helper.dart';
 import 'package:testingg/screens/Payment/PaymentRoute.dart';
-import 'package:testingg/screens/Transfer/FormulaireTransfert.dart';
+
 import 'package:testingg/screens/Routes/custom_page_route.dart';
 import 'package:testingg/screens/SettingsScreen.dart';
 import 'package:testingg/screens/Transfer/TransferMoney.dart';
@@ -18,7 +18,7 @@ import 'package:swipe_refresh/swipe_refresh.dart';
 import '../generated/l10n.dart';
 import '../shared/component.dart';
 import 'AlimentationScreen.dart';
-import 'Routes/CustomPageRouteRight.dart';
+
 
 
 class AccueilScreen extends StatelessWidget {
@@ -42,7 +42,7 @@ class AccueilScreen extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {
           if (state is AppVersementSuccessStates) {
-            print("----------------${CacheHelper.getData(key: 'phone')}");
+
             AppCubit.get(context).loadLoggedInUserNative(CacheHelper.getData(key: 'phone'));
           }
         },
@@ -71,14 +71,14 @@ class AccueilScreen extends StatelessWidget {
               Navigator.of(context).push(CustomPageRouteLeft(child: widget));
             },
             child: Container(
-              margin: EdgeInsets.all(4),
-              decoration: BoxDecoration(
+              margin: const EdgeInsets.all(4),
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 color: Color(0xfff1f3f6),
               ),
               child: Center(
                 child: Container(
-                  margin: EdgeInsets.all(23),
+                  margin: const EdgeInsets.all(23),
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('images/$img.png'),
@@ -89,12 +89,12 @@ class AccueilScreen extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         Text(
           name,
-          style: TextStyle(
+          style: const TextStyle(
             fontFamily: 'avenir',
             fontSize: 14,
           ),
@@ -106,11 +106,11 @@ class AccueilScreen extends StatelessWidget {
 
   Widget avatarWidget(String img, String name) {
     return Container(
-      margin: EdgeInsets.only(right: 10),
+      margin: const EdgeInsets.only(right: 10),
       height: 130,
       width: 120,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
+      decoration: const BoxDecoration(
+          borderRadius:  BorderRadius.all(Radius.circular(15)),
           color: Color(0xfff1f3f6)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -122,13 +122,13 @@ class AccueilScreen extends StatelessWidget {
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.white,
-                image: DecorationImage(
+                image:const  DecorationImage(
                     image: AssetImage('images/user.png'), fit: BoxFit.cover),
                 border: Border.all(color: Colors.black, width: 2)),
           ),
           Text(
             name,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 16,
                 fontFamily: 'avenir',
                 fontWeight: FontWeight.w700),
@@ -202,7 +202,7 @@ class AccueilScreen extends StatelessWidget {
                         ),
                         Text(
                           "${userModel?.data.phoneNumber}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.w400),
@@ -214,7 +214,7 @@ class AccueilScreen extends StatelessWidget {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(30),
                         onTap: () {
-                          navigateTo(context, AlimentationScreen());
+                          navigateTo(context, const AlimentationScreen());
                         },
                         child: Ink(
                           child: Container(
@@ -307,18 +307,18 @@ class AccueilScreen extends StatelessWidget {
                 childAspectRatio: 0.7,
                 children: [
                   serviceWidget("transfert-de-donnees1",S.of(context).Money_transfer,
-                      context, TransferRoute()),
+                      context, const TransferRoute()),
                   serviceWidget("top-up", S.of(context).Top_up_your_wallet, context,
-                      AlimentationScreen()),
+                      const  AlimentationScreen()),
                   serviceWidget(
-                      "store",S.of(context).Pay_your_merchand, context, PaymentRoute()),
+                      "store",S.of(context).Pay_your_merchand, context,const PaymentRoute()),
                   serviceWidget(
-                      "phone",S.of(context).Phone_charging, context, SettingsScreen()),
+                      "phone",S.of(context).Phone_charging, context,const  SettingsScreen()),
                   serviceWidget("invoice", S.of(context).Invoice_payment, context,
-                      SettingsScreen()),
+                      const    SettingsScreen()),
                   serviceWidget(
-                      "flight",S.of(context).Ticket_plan, context, SettingsScreen()),
-                  serviceWidget("more", S.of(context).more, context, SettingsScreen()),
+                      "flight",S.of(context).Ticket_plan, context, const SettingsScreen()),
+                  serviceWidget("more", S.of(context).more, context, const SettingsScreen()),
                 ],
               )
             ],

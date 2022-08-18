@@ -2,19 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:testingg/models/userModel.dart';
+
 import 'package:testingg/screens/ResetPasswordScreen.dart';
 import '../cubit/app_cubit.dart';
 import '../generated/l10n.dart';
 import '../network/local/cache_helper.dart';
-import 'Payment/PaymentRoute.dart';
-import 'Transfer/QrCodeScannerTransfer.dart';
+
 import 'HomeScreen.dart';
 import 'LoginScreen.dart';
-import 'QrCodeScreen.dart';
+
 import 'Routes/CustomPageRouteRight.dart';
 import 'Routes/custom_page_route.dart';
-import 'Transfer/FormulaireTransfert.dart';
+
 
 class SettingsScreen extends StatelessWidget {
 
@@ -22,27 +21,27 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UserModel? userModel = AppCubit.get(context).userModel;
+
     return Material(
       child: Scaffold(
         backgroundColor: Colors.white.withOpacity(.94),
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon:const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.of(context).push(
-                CustomPageRouteRight(child: HomeScreen()),
+                CustomPageRouteRight(child:const HomeScreen()),
               );
             },
           ),
-          title: Padding(
-            padding: const EdgeInsets.only(left: 78.0),
-            child: const Text(
+          title:const Padding(
+            padding:  EdgeInsets.only(left: 78.0),
+            child:  Text(
               'Paramètres',
               style: TextStyle(color: Colors.white),
             ),
           ),
-          backgroundColor: Color(0xff4c91bc),
+          backgroundColor:const Color(0xff4c91bc),
           elevation: 0,
         ),
         body: Padding(
@@ -50,17 +49,17 @@ class SettingsScreen extends StatelessWidget {
           child: ListView(
             children: [
               // user cards
-              SizedBox(height: 120,),
+              const    SizedBox(height: 120,),
 
               SettingsGroup(
                 items: [
                   SettingsItem(
                     onTap: () { Navigator.pushAndRemoveUntil(
-                        context, CustomPageRouteLeft(child: ResetPasswordScreen()),(route)=>false
+                        context, CustomPageRouteLeft(child: const ResetPasswordScreen()),(route)=>false
                     );},
                     icons: CupertinoIcons.lock,
                     iconStyle: IconStyle(
-                      backgroundColor: Color(0xff4c91bc),),
+                      backgroundColor: const Color(0xff4c91bc),),
                     title: 'réinitialiser mot de passe',
                     subtitle: "**********",
                   ),
@@ -75,7 +74,7 @@ class SettingsScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   S.of(context).choose_language_title,
-                                  style: TextStyle(
+                                  style:const TextStyle(
                                       color: Colors.blueGrey,
                                       fontWeight: FontWeight.w300,
                                       fontSize: 20),
@@ -95,12 +94,12 @@ class SettingsScreen extends StatelessWidget {
                                   onTap: () {
                                     AppCubit.get(context).changeLocale("ar",context);
 
-                                    print("ar");   print(S.of(context).logout);
+
 
 
                                   },
                                 ),
-                                SizedBox(height: 5,),
+                                const    SizedBox(height: 5,),
                                 ListTile(
                                   leading: Text(
                                     'Français',
@@ -114,14 +113,9 @@ class SettingsScreen extends StatelessWidget {
                                   onTap: () {
 
                                       AppCubit.get(context).changeLocale("fr",context);
-
-                                      print("fr");
-                                      print(S.of(context).logout);
-
-
-                                  },
+                                      },
                                 ),
-                                SizedBox(height: 5,),
+                                const    SizedBox(height: 5,),
                                 ListTile(
                                   leading: Text(
                                     'english',
@@ -136,11 +130,6 @@ class SettingsScreen extends StatelessWidget {
 
                                       AppCubit.get(context).changeLocale("en",context);
 
-                                      print("en");
-                                      print(S.of(context).logout);
-
-
-
                                   },
                                 ),
                               ],
@@ -151,7 +140,7 @@ class SettingsScreen extends StatelessWidget {
                     iconStyle: IconStyle(
                       iconsColor: Colors.white,
                       withBackground: true,
-                      backgroundColor: Color(0xff4c91bc),
+                      backgroundColor:const Color(0xff4c91bc),
                     ),
                     title: 'Changer la langue ',
                     subtitle: "Francais",
@@ -165,18 +154,18 @@ class SettingsScreen extends StatelessWidget {
 
 
                     iconStyle: IconStyle(iconsColor: Colors.red,backgroundColor: Colors.transparent),
-                    titleStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.red),
+                    titleStyle:const TextStyle(fontWeight: FontWeight.bold,color: Colors.red),
 
                     onTap: () {
 
-                      print(AppCubit.get(context).userModel?.data.email);
+
                       AppCubit.get(context).removeFcmToken(AppCubit.get(context).userModel?.data.email);
 
                     CacheHelper.removeData(key: 'token');
                     CacheHelper.removeData(key: 'email');
 
                     Navigator.pushAndRemoveUntil(
-                        context, CustomPageRouteLeft(child: LoginScreen()),(route)=>false
+                        context, CustomPageRouteLeft(child:const LoginScreen()),(route)=>false
                     );
 
                     AppCubit.get(context).currentIndex=0;

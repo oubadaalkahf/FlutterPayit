@@ -1,6 +1,4 @@
-import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,7 +8,7 @@ import 'package:testingg/cubit/app_states.dart';
 import 'package:testingg/generated/l10n.dart';
 import 'package:testingg/screens/signup/OtpScreen.dart';
 import 'package:testingg/shared/component.dart';
-import '../Routes/custom_page_route.dart';
+
 import 'package:iconify_flutter/iconify_flutter.dart';
 class SignupScreen1 extends StatelessWidget {
   static String id = "SignupScreen1";
@@ -73,7 +71,7 @@ class SignupScreen1 extends StatelessWidget {
                               fontSize: 18,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Text(
@@ -162,8 +160,9 @@ class SignupScreen1 extends StatelessWidget {
                                   {
                                     return S.of(context).cin_already_exist;
                                   }
-                                  else
-                                  return null;
+                                  else {
+                                    return null;
+                                  }
                                 },
                                 style: GoogleFonts.manrope(
                                   fontWeight: FontWeight.w400,

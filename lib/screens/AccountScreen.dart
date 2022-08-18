@@ -4,13 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
 import 'package:testingg/models/userModel.dart';
-import 'package:testingg/network/local/cache_helper.dart';
-import 'package:testingg/screens/TransactionsHistory.dart';
-import 'package:testingg/shared/component.dart';
 
-
-import 'HomeScreen.dart';
-import 'Routes/CustomPageRouteRight.dart';
 
 class AccountScreen extends StatelessWidget {
   static String id = "ACCOUNT";

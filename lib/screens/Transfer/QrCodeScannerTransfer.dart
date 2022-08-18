@@ -4,16 +4,18 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
-import 'package:testingg/screens/Transfer/TransferMoney.dart';
+
 import 'package:testingg/screens/Transfer/TransferMoneyRoute.dart';
 import 'package:testingg/shared/Colors.dart';
-import 'package:pretty_qr_code/pretty_qr_code.dart';
 
-import 'FormulaireTransfert.dart';
+
+
 import '../Routes/CustomPageRouteRight.dart';
-import '../Routes/custom_page_route.dart';
+
 
 class QrCodeScannerTransfer extends StatefulWidget {
+  const QrCodeScannerTransfer({Key? key}) : super(key: key);
+
   @override
   _QrCodeScannerTransferState createState() => _QrCodeScannerTransferState();
 }
@@ -25,7 +27,7 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.QR);
-      print(barcodeScanRes);
+
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
@@ -35,7 +37,7 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
     if (!mounted) return;
     setState(() {
       _scanBarcode = barcodeScanRes;
-      if (!_scanBarcode.isEmpty || _scanBarcode.startsWith("000201")) {
+      if (_scanBarcode.isNotEmpty || _scanBarcode.startsWith("000201")) {
         AppCubit().getTransactionInfoTransfer(_scanBarcode, context);
       }
     });
@@ -55,9 +57,9 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
                   );
                 },
               ),
-              title: Padding(
-                padding: const EdgeInsets.only(left: 50.0),
-                child: const Text(
+              title: const Padding(
+                padding:  EdgeInsets.only(left: 50.0),
+                child:  Text(
                   'Recevoir de l\'argent',
                   style: TextStyle(color: Colors.white),
                 ),
@@ -89,7 +91,7 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               Text(
                 'scannez Code QR pour recevoir de l\'argent',
                 style: TextStyle(
@@ -104,14 +106,14 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
       );
 
   Widget _buildMidContainerWithButton() {
-    final buttonHeight =170.0;
+    const buttonHeight =170.0;
     return Stack(
       children: [
         // Use same background color like the second container
         Container(height: buttonHeight, color: Colors.white),
         // Translate the button
         Transform.translate(
-          offset: Offset(0.0, -buttonHeight / 2.0),
+          offset: const Offset(0.0, -buttonHeight / 2.0),
           child: Center(
             child: GestureDetector(
               onTap: () { /* do stuff */ },
@@ -122,7 +124,7 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
                   boxShadow: [
                     BoxShadow(
                       blurRadius: 16.0,
-                      offset: Offset(0.0, 6.0),
+                      offset: const Offset(0.0, 6.0),
                       color: Colors.black.withOpacity(0.16),
                     ),
                   ],
@@ -157,7 +159,7 @@ class _QrCodeScannerTransferState extends State<QrCodeScannerTransfer>
           color: Colors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               Text('Le Code QR doit respecter la norme EMV CO'),
             ],
           ),

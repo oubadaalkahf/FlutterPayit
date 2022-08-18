@@ -2,15 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:testingg/screens/Transfer/FormulaireUserTransfer.dart';
-import '../../generated/l10n.dart';
-import '../../cubit/app_cubit.dart';
+
 import 'FormulaireTransfert.dart';
 import '../HomeScreen.dart';
 import '../Routes/CustomPageRouteRight.dart';
 import '../Routes/custom_page_route.dart';
-
-import 'QrCodeScannerTransfer.dart';
-
 
 class TransferMoneyRoute extends StatelessWidget {
   const TransferMoneyRoute({Key? key}) : super(key: key);
@@ -22,21 +18,21 @@ class TransferMoneyRoute extends StatelessWidget {
         backgroundColor: Colors.white.withOpacity(.94),
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.of(context).push(
-                CustomPageRouteRight(child: HomeScreen()),
+                CustomPageRouteRight(child: const HomeScreen()),
               );
             },
           ),
-          title: Padding(
-            padding: const EdgeInsets.only(left: 48.0),
-            child: const Text(
+          title:const  Padding(
+            padding:  EdgeInsets.only(left: 48.0),
+            child:  Text(
               'Transfert d\'argent',
               style: TextStyle(color: Colors.white),
             ),
           ),
-          backgroundColor: Color(0xff4c91bc),
+          backgroundColor:const Color(0xff4c91bc),
           elevation: 0,
         ),
         body: Padding(
@@ -44,7 +40,7 @@ class TransferMoneyRoute extends StatelessWidget {
           child: ListView(
             children: [
               // user cards
-              SizedBox(
+              const     SizedBox(
                 height: 120,
               ),
               SettingsGroup(
@@ -53,12 +49,12 @@ class TransferMoneyRoute extends StatelessWidget {
                       onTap: () {
                         Navigator.pushAndRemoveUntil(
                             context,
-                            CustomPageRouteLeft(child: FormulaireUserTransfer()),
+                            CustomPageRouteLeft(child: const FormulaireUserTransfer()),
                                 (route) => false);
                       },
                       icons: CupertinoIcons.up_arrow,
                       iconStyle: IconStyle(
-                        backgroundColor: Color(0xff4c91bc),
+                        backgroundColor: const Color(0xff4c91bc),
                       ),
                       title: 'Mode User',
 
@@ -67,14 +63,14 @@ class TransferMoneyRoute extends StatelessWidget {
                       onTap: () {
                         Navigator.pushAndRemoveUntil(
                             context,
-                            CustomPageRouteLeft(child: FormulaireTransfert()),
+                            CustomPageRouteLeft(child:const  FormulaireTransfert()),
                                 (route) => false);
                       },
                       icons: CupertinoIcons.up_arrow,
                       iconStyle: IconStyle(
                         iconsColor: Colors.white,
                         withBackground: true,
-                        backgroundColor: Color(0xff4c91bc),
+                        backgroundColor: const Color(0xff4c91bc),
                       ),
                       title:'Mode Developper',
                   ),

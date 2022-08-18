@@ -1,8 +1,5 @@
 import 'dart:convert';
-import 'dart:math';
 
-import 'package:crypto/crypto.dart';
-import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -60,7 +57,7 @@ class AppCubit extends Cubit<AppStates> {
   const  AccountScreen(),
   ];
 
-  bool isSwitched = CacheHelper.getData(key: "developper") ==null? false : CacheHelper.getData(key: "developper");
+  bool isSwitched = CacheHelper.getData(key: "developper") ?? false;
 
   void changeIsSwitched(){
     CacheHelper.removeData(key: "developper");
@@ -121,9 +118,6 @@ const    TransactionSentScreen(),
   Future<void> userLogin(
       {required String phone_number, required String password}) async {
 
-print("LOGINNNNNNNNNn");
-print(header);
-print(sessionid);
 
 
     emit(AppLoginInitialStates());
@@ -472,9 +466,7 @@ header = response["header"].toString();
     if(paidEntityRef.startsWith("06")){
       paidEntityRef=  paidEntityRef.replaceRange(0, 1, "+212");
     }
-    print(paidEntityRef);
-    print(pointofinitiationmethode);
-    print("-----------------------");
+
     DioHelper.postData(url: 'transferp2p', data: {
       "transaction_type": "transfer p2p",
       "point_of_initiation_method": pointofinitiationmethode,
@@ -485,7 +477,7 @@ header = response["header"].toString();
       "financial_institution_code": "999",
       "operation_type": oper_type
     }).then((value) {
-      print(value.data);
+
       qrString = value.data;
       emit(AppGeneratedQrCodeSuccessStates(value.data));
     }).catchError((error) {

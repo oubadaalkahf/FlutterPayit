@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
-import 'package:testingg/screens/AccueilScreen.dart';
+
 import 'package:testingg/screens/HomeScreen.dart';
 import 'package:testingg/shared/component.dart';
 
@@ -20,26 +20,26 @@ class AlimentationScreen extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(listener: (context, state) {
       if (state is AppVersementSuccessStates) {
         showToast(message: "Versement complet");
-        navigateAndFinish(context, HomeScreen());
+        navigateAndFinish(context,const  HomeScreen());
       }
     }, builder: (context, state) {
       return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon:const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.of(context)
-                  .push(CustomPageRouteRight(child: HomeScreen()));
+                  .push(CustomPageRouteRight(child:const  HomeScreen()));
             },
           ),
-          title: Padding(
-            padding: const EdgeInsets.only(left: 50.0),
-            child: const Text(
+          title:const Padding(
+            padding:  EdgeInsets.only(left: 50.0),
+            child:  Text(
               'Alimentation',
               style: TextStyle(color: Colors.white),
             ),
           ),
-          backgroundColor: Color(0xff4c91bc),
+          backgroundColor: const Color(0xff4c91bc),
           elevation: 0,
         ),
 

@@ -1,5 +1,4 @@
 import 'package:dropdown_plus/dropdown_plus.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,7 +23,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
 
   final formkey = GlobalKey<FormState>();
   var swiftController = DropdownEditingController<String>();
-  bool _isObscure = true;
+
   var phonenumberController = TextEditingController();
 
   var cinController = TextEditingController();
@@ -72,18 +71,18 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 135,
                         ),
                         Container(
                           height: 90,
                           width: 90,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
+                          decoration:const BoxDecoration(
+                              image:DecorationImage(
                             image: AssetImage('images/emailsend.png'),
                           )),
                         ),
-                        SizedBox(
+                        const    SizedBox(
                           height: 35,
                         ),
                         Text(
@@ -94,7 +93,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                             fontStyle: FontStyle.normal,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 13,
                         ),
                         Text(
@@ -106,7 +105,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                               fontStyle: FontStyle.normal,
                               color: Colors.blueGrey),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 13,
                         ),
                         Text(
@@ -117,7 +116,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                             fontStyle: FontStyle.normal,
                           ),
                         ),
-                        SizedBox(
+                        const   SizedBox(
                           height: 13,
                         ),
                         Text(
@@ -128,7 +127,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                               fontStyle: FontStyle.normal,
                               color: Colors.blueGrey),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 40,
                         ),
                         ButtonTest(

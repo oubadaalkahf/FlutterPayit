@@ -1,4 +1,3 @@
-import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -87,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     children: [
                                       Text(
                                         S.of(context).choose_language_title,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: Colors.blueGrey,
                                             fontWeight: FontWeight.w300,
                                             fontSize: 20),
@@ -104,8 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         onTap: () {
                                           AppCubit.get(context)
                                               .changeLocale("ar", context);
-                                          print("ar");
-                                          print(S.of(context).logout);
+
                                         },
                                       ),
                                       const SizedBox(
@@ -124,11 +122,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                           AppCubit.get(context)
                                               .changeLocale("fr", context);
 
-                                          print("fr");
-                                          print(S.of(context).logout);
+
                                         },
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
                                       ListTile(
@@ -144,8 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           AppCubit.get(context)
                                               .changeLocale("en", context);
 
-                                          print("en");
-                                          print(S.of(context).logout);
+
                                         },
                                       ),
                                     ],

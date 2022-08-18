@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
-import 'package:testingg/models/TransactionModel.dart';
-import 'package:testingg/shared/Colors.dart';
+
 import 'package:testingg/shared/component.dart';
 
 class TransactionReceiveScreen extends StatelessWidget {
@@ -23,7 +22,7 @@ class TransactionReceiveScreen extends StatelessWidget {
                   context,"Reçu"),
               itemCount: AppCubit.get(context).transactionsDestinataire.length,
               shrinkWrap: true,
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
             ),
           );
         });

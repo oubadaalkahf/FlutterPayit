@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
-import 'package:testingg/screens/AccueilScreen.dart';
+
 import 'package:testingg/screens/HomeScreen.dart';
 import 'package:testingg/shared/component.dart';
 import '../Routes/CustomPageRouteRight.dart';
-import 'TransferMoneyRoute.dart';
+
 import 'TransferQrCodeResult.dart';
 
 
@@ -26,13 +26,13 @@ class FormulaireUserTransfer extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
 
-          title: Center(
-            child: const Text(
+          title: const Center(
+            child:  Text(
               'Envoi de l\'argent',
               style: TextStyle(color: Colors.white),
             ),
           ),
-          backgroundColor: Color(0xff4c91bc),
+          backgroundColor:const Color(0xff4c91bc),
           elevation: 0,
         ),
 
@@ -96,7 +96,7 @@ class FormulaireUserTransfer extends StatelessWidget {
                   child: AnimatedButton(
 
                     text: 'VALIDER',
-                    color: Color(0xff4c91bc),
+                    color: const Color(0xff4c91bc),
                     pressEvent: () {
                        {
                         AwesomeDialog(
@@ -109,7 +109,7 @@ class FormulaireUserTransfer extends StatelessWidget {
                           desc:
                           'Vous venez d\'envoyer un montant d ${transactionAmount.text} DH ',
                           btnCancelOnPress: () {Navigator.of(context).push(
-                            CustomPageRouteRight(child: HomeScreen()),
+                            CustomPageRouteRight(child: const HomeScreen()),
                           ); },
                           btnOkOnPress: ()  {
                             {

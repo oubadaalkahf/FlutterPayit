@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_conditional_rendering/conditional.dart';
+
 import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/cubit/app_states.dart';
 import 'package:testingg/models/TransactionInfos.dart';
-import 'package:testingg/models/userModel.dart';
-import 'package:testingg/network/local/cache_helper.dart';
+
 import 'package:testingg/screens/AccountScreen.dart';
-import 'package:testingg/screens/Routes/CustomPageRouteRight.dart';
+
 import 'package:testingg/shared/Colors.dart';
 import 'package:testingg/shared/component.dart';
-import 'package:testingg/cubit/app_cubit.dart';
-import 'package:testingg/cubit/app_states.dart';
-
 import '../HomeScreen.dart';
 import '../Routes/custom_page_route.dart';
 
 
 class BillTransactionDetails extends StatelessWidget {
   TransactionInfos? transactionInfos;
-  BillTransactionDetails(this.transactionInfos);
+  BillTransactionDetails(this.transactionInfos, {Key? key}) : super(key: key);
 
 
 
@@ -32,7 +28,7 @@ class BillTransactionDetails extends StatelessWidget {
       if (state is AppVersementSuccessStates) {
         Navigator.pushAndRemoveUntil(
             context,
-            CustomPageRouteLeft(child: HomeScreen()),
+            CustomPageRouteLeft(child: const HomeScreen()),
                 (route) => false);
       }
     },builder: (context,state){
@@ -42,7 +38,7 @@ class BillTransactionDetails extends StatelessWidget {
           backgroundColor:const Color(0xff4c91bc),
           elevation: 2,
 
-          title:Center(
+          title: const Center(
             child: Text(
               'Reçu du Transfert',
             ),
@@ -60,7 +56,7 @@ class BillTransactionDetails extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.white)),
-                    child:    Icon(Icons.receipt_long_outlined,color: Colors.white60,size: 120,),
+                    child:const     Icon(Icons.receipt_long_outlined,color: Colors.white60,size: 120,),
                   ),
                 ),
               ),
@@ -74,7 +70,7 @@ class BillTransactionDetails extends StatelessWidget {
                   ),
                   rowBuilder(
                       att: "Date ",
-                      text: "${formate1}"),
+                      text: formate1),
                   const SizedBox(
                     height: 20,
                   ),
@@ -106,7 +102,7 @@ class BillTransactionDetails extends StatelessWidget {
 
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width/2.5,
                         child: Material(
                           borderRadius: BorderRadius.circular(30),
@@ -116,7 +112,7 @@ class BillTransactionDetails extends StatelessWidget {
                             onTap: () {
                               String? destinataire = AppCubit.get(context).userModel?.data.phoneNumber;
                               String? emetteur = transactionInfos?.merchandPhoneNumber;
-                              print("hello");
+
                               AppCubit.get(context).Makevirement(montant: transactionInfos?.transactionAmount,destinataire:  destinataire!, message: "hi",emetteur: emetteur!);
 
                             },
@@ -136,7 +132,7 @@ class BillTransactionDetails extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width/2.5,
                         child: Material(
                           borderRadius: BorderRadius.circular(30),
@@ -145,7 +141,7 @@ class BillTransactionDetails extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30),
                             onTap: () {
                               AppCubit.get(context).currentIndex = 0;
-                             navigateAndFinish(context,HomeScreen());
+                             navigateAndFinish(context,const HomeScreen());
                              showToast(message: "Transaction  annulée");
 
                             },

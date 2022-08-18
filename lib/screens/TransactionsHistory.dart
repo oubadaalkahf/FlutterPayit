@@ -15,8 +15,8 @@ class TransactionsHistory extends StatelessWidget {
     return BlocConsumer<AppCubit,AppStates>(listener: (context,state){},builder: (context,state){
       return Scaffold(
         appBar: AppBar(
-          title: Padding(
-            padding: const EdgeInsets.only(left: 72),
+          title: const Padding(
+            padding:  EdgeInsets.only(left: 72),
             child: Text("Historiques"),
           ),
           backgroundColor: blueGreyColor,
@@ -36,25 +36,25 @@ class TransactionsHistory extends StatelessWidget {
 
                 selectedTextStyle:
 
-                TextStyle(
+                const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
 
                     fontWeight: FontWeight.w700),
                 unSelectedTextStyle:
 
-                TextStyle(
+                const    TextStyle(
                     color: Colors.black87,
                     fontSize: 14,
                     fontWeight: FontWeight.w500),
-                labels: ["Reçu","Envoyer"],
+                labels: const ["Reçu","Envoyer"],
                 selectedLabelIndex: (index) {
                   AppCubit.get(context).changeBottomHistory(index);
                 },
                 isScroll: false,
               ),
 
-          SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               AppCubit.get(context)
                   .screensHistory[AppCubit.get(context).currentIndexHistory],
 

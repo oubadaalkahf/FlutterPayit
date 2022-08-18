@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
   }
   Widget builderWidget(context, index) {
     return Scaffold(
-      drawer: SideMenu(),
+      drawer:const  SideMenu(),
       appBar: AppBar(
           title: index == 0
               ? Padding(

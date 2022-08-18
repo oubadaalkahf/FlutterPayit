@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -39,7 +38,7 @@ class TransactionDetails extends StatelessWidget {
 
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
-                            borderRadius: BorderRadius.only(topRight: Radius.circular(45),topLeft: Radius.circular(45)),
+                            borderRadius:const BorderRadius.only(topRight: Radius.circular(45),topLeft: Radius.circular(45)),
                           ),
                           height: MediaQuery.of(context).size.height,
                           child: Column(
@@ -75,7 +74,7 @@ class TransactionDetails extends StatelessWidget {
                                 padding: const EdgeInsets.all(10.0),
                                 color: Colors.white,
                                 child: Row(
-                                  children: [
+                                  children:const [
                                     Text("Wallet balance",
                                       style: TextStyle(
                                           color: Colors.black,

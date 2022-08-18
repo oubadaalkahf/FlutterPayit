@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,7 +11,7 @@ import 'package:testingg/shared/component.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 
-import '../../shared/Colors.dart';
+
 import '../Routes/custom_page_route.dart';
 
 class OTP extends StatelessWidget {
@@ -28,9 +28,9 @@ class OTP extends StatelessWidget {
       );
     }
 
-    final jobRoleCtrl = TextEditingController();
+
     final formkey = GlobalKey<FormState>();
-    bool _isObscure = true;
+
     var otpController = OtpFieldController();
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {
@@ -82,7 +82,7 @@ class OTP extends StatelessWidget {
                               fontSize: 18,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Text(
@@ -102,27 +102,27 @@ class OTP extends StatelessWidget {
                     ),
                   ),
                     TextButton(
-                      onPressed: () => navigateAndFinish(context,SignupScreen1()),
+                      onPressed: () => navigateAndFinish(context,const SignupScreen1()),
                       child: Text(
                         S.of(context).MODIFY,
-                        style: TextStyle(
+                        style:const  TextStyle(
                             color: Colors.blueGrey,
                             fontWeight: FontWeight.bold,
                             fontSize: 15),
                       ),
                     ),
                   ]),
-                          SizedBox(
+                          const   SizedBox(
                             height: 35,
                           ),
                           Container(
                             height: 190,
                             width: 190,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage('images/OTPP.png'))),
                           ),
-                          SizedBox(
+                          const   SizedBox(
                             height: 15,
                           ),
                           OTPTextField(
@@ -130,14 +130,14 @@ class OTP extends StatelessWidget {
                             length: 5,
                             width: MediaQuery.of(context).size.width,
                             fieldWidth: 40,
-                            style: TextStyle(fontSize: 17),
+                            style: const TextStyle(fontSize: 17),
                             textFieldAlignment: MainAxisAlignment.spaceAround,
                             fieldStyle: FieldStyle.underline,
                             onCompleted: (pin) {
                               AppCubit.get(context).verifyOtp(pin);
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 25,
                           ),
                           Row(
@@ -145,14 +145,14 @@ class OTP extends StatelessWidget {
                             children: [
                               Text(
                                 S.of(context).Didnt_receive_the_code,
-                                style: TextStyle(
+                                style:const  TextStyle(
                                     color: Colors.black54, fontSize: 15),
                               ),
                               TextButton(
                                 onPressed: () => snackBar("OTP resend!!"),
                                 child: Text(
                                   S.of(context).RESEND,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 11),
@@ -180,7 +180,7 @@ class OTP extends StatelessWidget {
                                   ? () {
                                       Navigator.of(context).push(
                                         CustomPageRouteLeft(
-                                            child: SignupScreen2()),
+                                            child: const SignupScreen2()),
                                       );
                                     }
                                   : null,

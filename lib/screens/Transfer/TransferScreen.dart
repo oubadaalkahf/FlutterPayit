@@ -11,7 +11,7 @@ import 'package:testingg/shared/component.dart';
 import '../../cubit/app_cubit.dart';
 
 class TransferScreen extends StatefulWidget {
-  TransferScreen({key});
+  const TransferScreen({key});
 
 
 
@@ -38,7 +38,7 @@ class _TransferScreenState extends State<TransferScreen> {
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.QR);
-      print(barcodeScanRes);
+
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
@@ -58,7 +58,7 @@ class _TransferScreenState extends State<TransferScreen> {
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(listener: (context, state) {
       if (state is LoadLoggedInUserSuccessStates) {
-        navigateAndFinish(context, HomeScreen());
+        navigateAndFinish(context, const HomeScreen());
         AppCubit.get(context).currentIndex = 0;
       }
     }, builder: (context, state) {
@@ -105,7 +105,7 @@ class _TransferScreenState extends State<TransferScreen> {
                       //create lable
                       labelText: '  Motif',
                       //lable style
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                         fontSize: 16,
                         fontFamily: "verdana_regular",
                         fontWeight: FontWeight.w400,
@@ -122,9 +122,7 @@ class _TransferScreenState extends State<TransferScreen> {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(30),
                     onTap: () {
-                      print(destinataireController.text);
-                      print(montantController.text);
-                      print(messageController.text);
+
                       String emetteur =
                           AppCubit.get(context).userModel!.data.phoneNumber;
 
@@ -167,7 +165,7 @@ class _TransferScreenState extends State<TransferScreen> {
                       controller: montantController,
                       keyboardType: TextInputType.number,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
+                      const TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
                       textAlign: TextAlign.start,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
@@ -198,14 +196,14 @@ class _TransferScreenState extends State<TransferScreen> {
                     ),
                     TextFormField(
                       controller: destinataireController,
-                      style: TextStyle(
+                      style:const  TextStyle(
                         fontSize: 18,
                       ),
                       decoration: InputDecoration(
                         focusColor: Colors.white,
                         //add prefix icon
                         fillColor: Colors.grey,
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Colors.grey,
                           fontSize: 16,
                           fontFamily: "verdana_regular",
@@ -216,19 +214,18 @@ class _TransferScreenState extends State<TransferScreen> {
                         labelText: 'Compte Destinataire',
                         suffixIcon: IconButton(
                             onPressed: () {
-                              print("hi");
+
 
                               scanQR();
 
-                              print("hihiiiiiiiiiii");
-                              print(destinataireController.text);
+
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.qr_code_scanner,
                               color: Colors.green,
                             )),
                         //lable style
-                        labelStyle: TextStyle(
+                        labelStyle: const TextStyle(
                           color: Colors.grey,
                           fontSize: 16,
                           fontFamily: "verdana_regular",
