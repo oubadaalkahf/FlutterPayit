@@ -62,7 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Top_up_your_wallet":
             MessageLookupByLibrary.simpleMessage("Alimenter\nmon PAYIT"),
         "Transfer_to": MessageLookupByLibrary.simpleMessage("Transférer à"),
-        "acceuil": MessageLookupByLibrary.simpleMessage("Acceuil"),
+        "acceuil": MessageLookupByLibrary.simpleMessage("Accueil"),
         "activation": MessageLookupByLibrary.simpleMessage("Activation"),
         "airplane_ticket":
             MessageLookupByLibrary.simpleMessage("billet \nD\'avion"),

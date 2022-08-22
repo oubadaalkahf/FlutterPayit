@@ -24,26 +24,23 @@ class AccountScreen extends StatelessWidget {
                   const  SizedBox(height: 25,),
                   Container(
                     color:const Color(0xff4c91bc),
-                    child: Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding:const EdgeInsets.all(20),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white)),
-                          child: Column(
-                            children: [
-                              const Icon(Icons.person_outline,color: Colors.white60,size: 120,),
-                              Text(
-                                "${userModel?.data.solde} DH",
-                                style:const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 21,
-                                    fontWeight: FontWeight.w800,
-                                    fontFamily: 'avenir'),
-                              ),
-                            ],
-                          ),
+                    child: Padding(
+                      padding:const EdgeInsets.all(20),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white)),
+                        child: Column(
+                          children: [
+                            const Icon(Icons.person_outline,color: Colors.white60,size: 120,),
+                            Text(
+                              "${userModel?.data.solde} DH",
+                              style:const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 21,
+                                  fontWeight: FontWeight.w800,
+                                  fontFamily: 'avenir'),
+                            ),
+                          ],
                         ),
                       ),
                     ),

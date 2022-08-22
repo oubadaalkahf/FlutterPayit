@@ -49,15 +49,12 @@ class BillTransactionDetails extends StatelessWidget {
             const  SizedBox(height: 20,),
             Container(
               color:const Color(0xff4c91bc),
-              child: Expanded(
-                flex: 1,
-                child: Padding(
-                  padding:const EdgeInsets.all(20),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white)),
-                    child:const     Icon(Icons.receipt_long_outlined,color: Colors.white60,size: 120,),
-                  ),
+              child: Padding(
+                padding:const EdgeInsets.all(20),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white)),
+                  child:const     Icon(Icons.receipt_long_outlined,color: Colors.white60,size: 120,),
                 ),
               ),
             ),

@@ -4,16 +4,14 @@ import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:testingg/models/userModel.dart';
 import 'package:testingg/screens/Payment/FormulairePayment.dart';
 import 'package:testingg/screens/Payment/QrCodeScannerPayment.dart';
-import 'package:testingg/screens/ResetPasswordScreen.dart';
+
 import '../../cubit/app_cubit.dart';
-import '../../network/local/cache_helper.dart';
-import '../Transfer/QrCodeScannerTransfer.dart';
+
 import '../HomeScreen.dart';
-import '../LoginScreen.dart';
-import '../QrCodeScreen.dart';
+
 import '../Routes/CustomPageRouteRight.dart';
 import '../Routes/custom_page_route.dart';
-import '../Transfer/FormulaireTransfert.dart';
+
 
 class PaymentRoute extends StatelessWidget {
   const PaymentRoute({Key? key}) : super(key: key);

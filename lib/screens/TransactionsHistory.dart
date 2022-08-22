@@ -17,7 +17,7 @@ class TransactionsHistory extends StatelessWidget {
         appBar: AppBar(
           title: const Padding(
             padding:  EdgeInsets.only(left: 72),
-            child: Text("Historiques"),
+            child: Text("Historique"),
           ),
           backgroundColor: blueGreyColor,
         ),

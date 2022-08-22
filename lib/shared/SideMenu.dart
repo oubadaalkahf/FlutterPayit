@@ -8,7 +8,7 @@ import 'package:testingg/network/local/cache_helper.dart';
 import 'package:testingg/screens/AccountScreen.dart';
 
 import 'package:testingg/screens/LoginScreen.dart';
-import 'package:testingg/screens/QrCodeScreen.dart';
+
 import 'package:testingg/screens/Routes/custom_page_route.dart';
 import 'package:testingg/screens/SettingsScreen.dart';
 import 'package:testingg/screens/TransactionsHistory.dart';
@@ -99,57 +99,6 @@ class SideMenu extends StatelessWidget {
             const   SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 30),
-              child: ListTile(
-                leading: const Icon(
-                  Icons.qr_code,
-                  color: Color(0xff4c91bc),
-                  size: 32,
-                ),
-                title: Text(
-                  S.of(context).my_qr_code,
-                  style: GoogleFonts.manrope(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    fontStyle: FontStyle.normal,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.of(context)
-                      .push(CustomPageRouteLeft(child: QrCodeScreen()));
-                },
-              ),
-            ),
-            const   SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const  EdgeInsets.only(left: 30),
-              child: ListTile(
-                leading:const Icon(
-                  Icons.account_balance_wallet_rounded,
-                  color: Color(0xff4c91bc),
-                  size: 32,
-                ),
-                title: Text(
-                  S.of(context).my_account,
-                  style: GoogleFonts.manrope(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    fontStyle: FontStyle.normal,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.of(context).push(
-                    CustomPageRouteLeft(child:const AccountScreen()),
-                  );
-                },
-              ),
-            ),
-            const        SizedBox(
-              height: 10,
-            ),
 
             Padding(
               padding:const EdgeInsets.only(left: 30),
@@ -199,9 +148,7 @@ class SideMenu extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 8.9,
-            ),
+
          const   Padding(
               padding: EdgeInsets.only(left: 50),
               child: Divider(),

@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:testingg/screens/Payment/PaymentRoute.dart';
-import 'package:testingg/screens/Transfer/TransferMoney.dart';
-import 'package:pretty_qr_code/pretty_qr_code.dart';
+
 
 import '../../cubit/app_cubit.dart';
-import '../Transfer/FormulaireTransfert.dart';
+
 import '../Routes/CustomPageRouteRight.dart';
-import '../Routes/CustomPageRouteRight.dart';
-import '../Routes/custom_page_route.dart';
 
 
 class QrCodeScannerPayment extends StatefulWidget {

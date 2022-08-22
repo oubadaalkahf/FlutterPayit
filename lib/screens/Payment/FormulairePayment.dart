@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:testingg/cubit/app_cubit.dart';
 import 'package:testingg/screens/Payment/PaiementQrCodeResult.dart';
-
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:testingg/screens/Payment/PaymentRoute.dart';
 
 import '../../cubit/app_states.dart';
@@ -61,7 +61,7 @@ class _FormulairePaymentState extends State<FormulairePayment> {
   String valueofoftransactioncurrency = '504';
 
   List<DropdownMenuItem<String>> get dropdownItems {
-    List<DropdownMenuItem<String>> menuItems = [
+    List<DropdownMenuItem<String>> menuItems = const[
       DropdownMenuItem(child: Text("MAD"), value: "504"),
       DropdownMenuItem(child: Text("EURO"), value: "978"),
       DropdownMenuItem(child: Text("USD"), value: "840"),
@@ -71,7 +71,7 @@ class _FormulairePaymentState extends State<FormulairePayment> {
 
   String selectedValue = "504";
   List<DropdownMenuItem<String>> get dropdowncountrycode {
-    List<DropdownMenuItem<String>> menuItems = [
+    List<DropdownMenuItem<String>> menuItems =const [
       DropdownMenuItem(child: Text("MAROC"), value: "MA"),
       DropdownMenuItem(child: Text("USA"), value: "US"),
       DropdownMenuItem(child: Text("Royaume-Uni"), value: "GB"),

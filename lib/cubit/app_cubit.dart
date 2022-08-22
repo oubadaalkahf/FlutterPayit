@@ -177,7 +177,7 @@ transactionsDestinataire = [];
   }
 
 
-  //-----------------------------------------------------------------------//
+
   Future<void> userSignUp({
     required String? email,
     required String? phoneNumber,
@@ -238,9 +238,6 @@ transactionsDestinataire = [];
       emit(RemoveTokenErrorStates());
     }
   }
-
-
-  //-----------------------------------------------------------------------//
 
 
 
