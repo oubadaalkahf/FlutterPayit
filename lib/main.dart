@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:bloc/bloc.dart';
